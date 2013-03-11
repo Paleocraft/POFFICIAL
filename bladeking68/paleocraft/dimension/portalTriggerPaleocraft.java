@@ -15,7 +15,7 @@ public portalTriggerPaleocraft(int par1, int par2)
 {
 super(par1, par2, Material.rock);
 this.setTickRandomly(true);
-this.setCreativeTab(Paleocraft.PaleocraftBlocks);
+//this.setCreativeTab(Paleocraft.PaleocraftBlocks);
 this.setHardness(1.2F);
 this.setStepSound(Block.soundGlassFootstep);
 this.setBlockName("portalTriggerXXX");
