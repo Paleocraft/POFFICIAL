@@ -39,6 +39,6 @@ par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, this.tickRate() + 
 @Override
 public String getTextureFile()
 {
-return "bladeking68/minecraft/paleocraftD/block.png";
+return "Paleocraft/PaleocraftBlocks.png";
 }
 }

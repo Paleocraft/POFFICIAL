@@ -14,6 +14,7 @@ public class ItemFossil extends Item
        public ItemFossil(int id)
        {
              super(id);
+             this.maxStackSize = 1;
              this.setCreativeTab(Paleocraft.PaleocraftBlocks);
        }
       

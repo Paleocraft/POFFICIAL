@@ -31,11 +31,11 @@ CBronzeItem = config.getItem("Celestial Bronze Ingot ID", 1400); //This gets the
 itemCBronzeIngotID = CBronzeItem.getInt(); //This gets the value*/
 
 //Item ID's (last left off: 1414)
-itemFossilID = config.getItem("Fossil ID", 253).getInt();
+itemFossilID = config.getItem("Fossil ID", 5000).getInt(5000);
 
 //Block ID's
-blockPaleoPortalID = config.getBlock("Paleoplains Portal ID", 251).getInt();
-blockPaleoPortalPlacerID = config.getBlock("Paleoplains Portal Placer Block ID", 252).getInt();
+blockPaleoPortalID = config.getBlock("Paleoplains Portal ID", 1251).getInt(1251);
+blockPaleoPortalPlacerID = config.getBlock("Paleoplains Portal Placer Block ID", 1252).getInt(1252);
 
 //General
 spawnBary = config.get(config.CATEGORY_GENERAL, "Spawn Baryonyx", false).getBoolean(false);
