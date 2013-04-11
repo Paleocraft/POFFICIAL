@@ -1,11 +1,11 @@
 package fisherman77.paleocraft.common;
 
-import bladeking68.paleocraft.dimension.BiomeGenPaleoplains;
-import bladeking68.paleocraft.dimension.BlockPortalPaleocraft;
-import bladeking68.paleocraft.dimension.ItemFossil;
-import bladeking68.paleocraft.dimension.PaleocraftBlocksCreativeTab;
-import bladeking68.paleocraft.dimension.WorldProviderPaleocraft;
-import bladeking68.paleocraft.dimension.portalTriggerPaleocraft;
+//import bladeking68.paleocraft.dimension.BiomeGenPaleoplains;
+//import bladeking68.paleocraft.dimension.BlockPortalPaleocraft;
+//import bladeking68.paleocraft.dimension.ItemFossil;
+//import bladeking68.paleocraft.dimension.PaleocraftBlocksCreativeTab;
+//import bladeking68.paleocraft.dimension.WorldProviderPaleocraft;
+//import bladeking68.paleocraft.dimension.portalTriggerPaleocraft;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EnumCreatureType;
@@ -45,7 +45,7 @@ serverPacketHandlerSpec = @SidedPacketHandler(channels = {"Paleocraft"}, packetH
 //==========
 //Mod Basics
 //==========
-@Mod(modid="Paleocraft",name="Paleocraft")
+@Mod(modid="Paleocraft",name="Paleocraft",version="Beta")
 
 public class Paleocraft {
 	public static Block PaleocraftPortal;
@@ -60,11 +60,11 @@ boolean spawnCiti;
 boolean spawnDromie;
 boolean spawnTroo;
 boolean spawnDimorph;
-public static BiomeGenBase Paleoplains;
-public static CreativeTabs PaleocraftBlocks = new PaleocraftBlocksCreativeTab(CreativeTabs.getNextID(),"Paleocraft");
-public static Item portalTrigger;
-public static Block portalPlacer2;
-public static int PaleocraftDimension = 20;
+//public static BiomeGenBase Paleoplains;
+//public static CreativeTabs PaleocraftBlocks = new PaleocraftBlocksCreativeTab(CreativeTabs.getNextID(),"Paleocraft");
+//public static Item portalTrigger;
+//public static Block portalPlacer2;
+//public static int PaleocraftDimension = 20;
 @PreInit
 public void PreLoad(FMLPreInitializationEvent e)
 {
@@ -85,20 +85,22 @@ PaleocraftConfigCore.loadConfig(e);
  * We've got to put this stuff here in case we reference it in the Init
  */
 //Biome Paleoplains
-	Paleoplains = new BiomeGenPaleoplains(53).setColor(2900485).setBiomeName("PaleoPlains").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
+//	Paleoplains = new BiomeGenPaleoplains(53).setColor(2900485).setBiomeName("PaleoPlains").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
 
 //Items
-	portalTrigger = new ItemFossil(cc.itemFossilID).setItemName("Fossil");
+//	portalTrigger = new ItemFossil(cc.itemFossilID).setUnlocalizedName("Fossil");
 
 //Blocks
-	portalPlacer2 = new portalTriggerPaleocraft(252, 1).setBlockName("portaltrigger");
-	PaleocraftPortal = new BlockPortalPaleocraft(251, 0).setBlockName("portal");
-	
-	spawnBary = cc.spawnBary;
+//	portalPlacer2 = new portalTriggerPaleocraft(252, 1).setUnlocalizedName("portaltrigger");
+//	PaleocraftPortal = new BlockPortalPaleocraft(251, 0).setUnlocalizedName("portal");
+
+//Config
+/*	spawnBary = cc.spawnBary;
 	spawnCiti = cc.spawnCiti;
 	spawnDimorph = cc.spawnDimorph;
 	spawnTroo = cc.spawnTroo;
 	spawnDromie = cc.spawnDromie;
+	*/
 
 }
 
@@ -109,7 +111,7 @@ NetworkRegistry.instance().registerGuiHandler(this, proxy); //Registers the clas
 
 
 //Game registery 
-GameRegistry.addBiome(Paleoplains);
+/*GameRegistry.addBiome(Paleoplains);
 GameRegistry.registerBlock(PaleocraftPortal, "Paleocraft Portal");
 GameRegistry.registerBlock(portalPlacer2, "FossilMiddle");
 
@@ -129,7 +131,7 @@ DimensionManager.registerDimension(PaleocraftDimension, PaleocraftDimension);
 ItemStack stonestack = new ItemStack(Block.stone);
 ItemStack bonestack = new ItemStack(Item.bone);
 GameRegistry.addRecipe(new ItemStack(portalTrigger), "xxx", "xyx", "xxx",
-        'x', stonestack, 'y', bonestack);
+        'x', stonestack, 'y', bonestack);*/
 
 
 
@@ -138,33 +140,33 @@ GameRegistry.addRecipe(new ItemStack(portalTrigger), "xxx", "xyx", "xxx",
 	//Baryonyx
 		EntityRegistry.registerGlobalEntityID(EntityBaryonyx.class, "Baryonyx", EntityRegistry.findGlobalUniqueEntityId(), 0x405135, 0xC4C67D);
 		LanguageRegistry.instance().addStringLocalization("entity.Baryonyx.name", "Baryonyx");
-		if(spawnBary == true){
-			EntityRegistry.addSpawn(EntityBaryonyx.class, 4, 1, 1, EnumCreatureType.creature, Paleocraft.Paleoplains);
-			//EntityRegistry.addSpawn(entityName, weightedProb, min, max, spawnList, biomes)
-		}
+		//if(spawnBary == true){
+		//	EntityRegistry.addSpawn(EntityBaryonyx.class, 4, 1, 1, EnumCreatureType.creature, Paleocraft.Paleoplains);
+		//	EntityRegistry.addSpawn(entityName, weightedProb, min, max, spawnList, biomes)
+		//}
 	//Citipati
 		EntityRegistry.registerGlobalEntityID(EntityCitipati.class, "Citipati", EntityRegistry.findGlobalUniqueEntityId(), 0xA67822, 0xA14A5C);
 		LanguageRegistry.instance().addStringLocalization("entity.Citipati.name", "Citipati");
-		if(spawnCiti == true){
-			EntityRegistry.addSpawn(EntityCitipati.class, 7, 2, 5, EnumCreatureType.creature, Paleocraft.Paleoplains);
-		}
+		//if(spawnCiti == true){
+		//	EntityRegistry.addSpawn(EntityCitipati.class, 7, 2, 5, EnumCreatureType.creature, Paleocraft.Paleoplains);
+		//}
 	//Dromaeosaurus
 		EntityRegistry.registerGlobalEntityID(EntityDromaeosaurus.class, "Dromaeosaurus", EntityRegistry.findGlobalUniqueEntityId(), 0x5C5B5C, 0x551305);
 		LanguageRegistry.instance().addStringLocalization("entity.Dromaeosaurus.name", "Dromaeosaurus");
-		if(spawnDromie == true){
-			EntityRegistry.addSpawn(EntityDromaeosaurus.class, 7, 3, 6, EnumCreatureType.creature, Paleocraft.Paleoplains);
-		}
+		//if(spawnDromie == true){
+		//	EntityRegistry.addSpawn(EntityDromaeosaurus.class, 7, 3, 6, EnumCreatureType.creature, Paleocraft.Paleoplains);
+		//}
 	//Troodon
 		EntityRegistry.registerGlobalEntityID(EntityTroodon.class, "Troodon", EntityRegistry.findGlobalUniqueEntityId(), 0x5A5A5A, 0xE8E1BF);
 		LanguageRegistry.instance().addStringLocalization("entity.Troodon.name", "Troodon");
-		if(spawnTroo == true){
-			EntityRegistry.addSpawn(EntityTroodon.class, 3, 1, 3, EnumCreatureType.creature, Paleocraft.Paleoplains);
-		}
+		//if(spawnTroo == true){
+		//	EntityRegistry.addSpawn(EntityTroodon.class, 3, 1, 3, EnumCreatureType.creature, Paleocraft.Paleoplains);
+		//}
 	//Dimorphodon
 		EntityRegistry.registerGlobalEntityID(EntityDimorphodon.class, "Dimorphodon", EntityRegistry.findGlobalUniqueEntityId(), 0xC8C968, 0x6064C4);
 		LanguageRegistry.instance().addStringLocalization("entity.Dimorphodon.name", "Dimorphodon");
-		if(spawnDimorph == true){
-			EntityRegistry.addSpawn(EntityDimorphodon.class, 8, 3, 10, EnumCreatureType.creature, Paleocraft.Paleoplains);
-		}
+		//if(spawnDimorph == true){
+		//	EntityRegistry.addSpawn(EntityDimorphodon.class, 8, 3, 10, EnumCreatureType.creature, Paleocraft.Paleoplains);
+		//}
 	}
 }

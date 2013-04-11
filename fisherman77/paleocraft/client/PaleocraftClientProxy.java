@@ -16,15 +16,12 @@ import fisherman77.paleocraft.common.mobs.RenderCitipati;
 import fisherman77.paleocraft.common.mobs.RenderDimorphodon;
 import fisherman77.paleocraft.common.mobs.RenderDromaeosaurus;
 import fisherman77.paleocraft.common.mobs.RenderTroodon;
-import fisherman77.zeuscraft.common.mobs.EntityCentaur;
-import fisherman77.zeuscraft.common.mobs.ModelCentaur;
-import fisherman77.zeuscraft.common.mobs.RenderCentaur;
 import net.minecraftforge.client.MinecraftForgeClient;
 public class PaleocraftClientProxy extends PaleocraftCommonProxy {
         
 public void registerRenderInformation(){
-	MinecraftForgeClient.preloadTexture(ITEMS_PNG);
-	MinecraftForgeClient.preloadTexture(BLOCK_PNG);
+	//MinecraftForgeClient.preloadTexture(ITEMS_PNG);
+	//MinecraftForgeClient.preloadTexture(BLOCK_PNG);
 }
 
 public void registerRenderers(){

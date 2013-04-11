@@ -86,51 +86,6 @@ public class EntityDimorphodon extends EntityFlying implements IMob
 
         double var9 = 64.0D;
 
-        if (this.targetedEntity != null && this.targetedEntity.getDistanceSqToEntity(this) < var9 * var9)
-        {
-            double var11 = this.targetedEntity.posX - this.posX;
-            double var13 = this.targetedEntity.boundingBox.minY + (double)(this.targetedEntity.height / 2.0F) - (this.posY + (double)(this.height / 2.0F));
-            double var15 = this.targetedEntity.posZ - this.posZ;
-            this.renderYawOffset = this.rotationYaw = -((float)Math.atan2(var11, var15)) * 180.0F / (float)Math.PI;
-
-            if (this.canEntityBeSeen(this.targetedEntity))
-            {
-                if (this.attackCounter == 10)
-                {
-                    this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1007, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
-                }
-
-                ++this.attackCounter;
-
-                if (this.attackCounter == 20)
-                {
-                    this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1008, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
-                    EntityLargeFireball var17 = new EntityLargeFireball(this.worldObj, this, var11, var13, var15);
-                    var17.field_92012_e = this.field_92009_j;
-                    double var18 = 4.0D;
-                    Vec3 var20 = this.getLook(1.0F);
-                    var17.posX = this.posX + var20.xCoord * var18;
-                    var17.posY = this.posY + (double)(this.height / 2.0F) + 0.5D;
-                    var17.posZ = this.posZ + var20.zCoord * var18;
-                    this.worldObj.spawnEntityInWorld(var17);
-                    this.attackCounter = -40;
-                }
-            }
-            else if (this.attackCounter > 0)
-            {
-                --this.attackCounter;
-            }
-        }
-        else
-        {
-            this.renderYawOffset = this.rotationYaw = -((float)Math.atan2(this.motionX, this.motionZ)) * 180.0F / (float)Math.PI;
-
-            if (this.attackCounter > 0)
-            {
-                --this.attackCounter;
-            }
-        }
-
         if (!this.worldObj.isRemote)
         {
             byte var21 = this.dataWatcher.getWatchableObjectByte(16);
