@@ -2,7 +2,9 @@ package fisherman77.paleocraft.common.mobs;
 
 import java.util.Random;
 
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
@@ -23,10 +25,11 @@ public class EntityBaryonyx extends EntityMob
   this.texture = "/Paleocraft/Mobs/Bary/Bary.png";	
   this.moveSpeed = 0.5F;
   
+  this.tasks.addTask(0, new EntityAISwimming(this));
   this.tasks.addTask(1, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.tasks.addTask(2, new EntityAIWander(this, this.moveSpeed));
-  this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 5.0F, 0, true));
- }
+  this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false)); 
+  }
 
  /**
   * Returns the sound this mob makes while it's alive.
