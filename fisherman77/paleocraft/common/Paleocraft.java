@@ -45,7 +45,7 @@ serverPacketHandlerSpec = @SidedPacketHandler(channels = {"Paleocraft"}, packetH
 //==========
 //Mod Basics
 //==========
-@Mod(modid="Paleocraft",name="Paleocraft",version="Beta")
+@Mod(modid="Paleocraft",name="Paleocraft",version="Release")
 
 public class Paleocraft {
 	public static Block PaleocraftPortal;

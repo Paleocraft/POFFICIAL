@@ -9,9 +9,14 @@ import net.minecraft.block.BlockCloth;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
+import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITargetNonTamed;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
@@ -35,7 +40,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 
-public class EntityDromaeosaurus extends EntityAnimal
+public class EntityDromaeosaurus extends EntityTameable
 {
 	
  public EntityDromaeosaurus(World par1World) 
@@ -47,12 +52,34 @@ public class EntityDromaeosaurus extends EntityAnimal
   this.setSize(1.0F, 1.0F);
   
   this.tasks.addTask(0, new EntityAISwimming(this));
-  this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityChicken.class, this.moveSpeed, false));
-  this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-  this.tasks.addTask(3, new EntityAIWander(this, this.moveSpeed));
-  this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-  this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityChicken.class, 16.0F, 0, true));
+  this.tasks.addTask(1, new EntityAILeapAtTarget(this, 0.4F));
+  this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityChicken.class, this.moveSpeed, false));
+  this.tasks.addTask(3, new EntityAIFollowOwner(this, this.moveSpeed, 10.0F, 2.0F));
+  this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+  this.tasks.addTask(5, new EntityAIWander(this, this.moveSpeed));
+  this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
+  this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
+  this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
+  this.targetTasks.addTask(4, new EntityAITargetNonTamed(this, EntityChicken.class, 16.0F, 0, true));
   
+ }
+ 
+ /**
+  * (abstract) Protected helper method to write subclass entity data to NBT.
+  */
+ public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
+ {
+     super.writeEntityToNBT(par1NBTTagCompound);
+     par1NBTTagCompound.setBoolean("Angry", this.isAngry());
+ }
+
+ /**
+  * (abstract) Protected helper method to read subclass entity data from NBT.
+  */
+ public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
+ {
+     super.readEntityFromNBT(par1NBTTagCompound);
+     this.setAngry(par1NBTTagCompound.getBoolean("Angry"));
  }
  
  protected boolean isAIEnabled()
@@ -94,9 +121,9 @@ public class EntityDromaeosaurus extends EntityAnimal
  /**
   * Max Health
   */
- public int getMaxHealth() 
+ public int getMaxHealth()
  {
-  return 8;
+     return this.isTamed() ? 20 : 8;
  }
  
  public EnumCreatureAttribute getCreatureAttribute()
@@ -181,4 +208,95 @@ public EntityAgeable createChild(EntityAgeable entityageable) {
 	// TODO Auto-generated method stub
 	return null;
 }
+
+/**
+ * TAMABILITY
+ */
+/**
+ * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
+ */
+public boolean interact(EntityPlayer par1EntityPlayer)
+{
+	ItemStack itemstack = par1EntityPlayer.inventory.getCurrentItem();
+	
+	if (itemstack != null && itemstack.itemID == Item.beefRaw.itemID && !this.isAngry())
+    {
+		if(this.isTamed() == false){
+			if (!par1EntityPlayer.capabilities.isCreativeMode)
+			{
+				--itemstack.stackSize;
+			}
+
+			if (itemstack.stackSize <= 0)
+			{
+				par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, (ItemStack)null);
+			}
+			
+			if (!this.worldObj.isRemote)
+			{
+                this.setTamed(true);
+                this.setPathToEntity((PathEntity)null);
+                this.setAttackTarget((EntityLiving)null);
+                this.setEntityHealth(20);
+                this.setOwner(par1EntityPlayer.username);
+                this.playTameEffect(true);
+                this.worldObj.setEntityState(this, (byte)7);
+                par1EntityPlayer.addChatMessage("[Paleocraft] You have tamed this dromaeosaurus!");
+			}
+		}
+		else{
+			par1EntityPlayer.addChatMessage("[Paleocraft] This Dromaeosaurus is already tamed.");
+		}
+			
+    }
+	else if(this.isAngry())
+	{
+		par1EntityPlayer.addChatMessage("[Paleocraft] Trying to tame an angry Dromie? Really?");
+	}
+	else if(!(itemstack.itemID == Item.beefRaw.itemID))
+	{
+		par1EntityPlayer.addChatMessage("[Paleocraft] You need raw meat to tame a Dromaeosaurus.");
+	}
+	
+	return true;
+}
+
+/**
+ * Sets the active target the Task system uses for tracking
+ */
+public void setAttackTarget(EntityLiving par1EntityLiving)
+{
+    super.setAttackTarget(par1EntityLiving);
+
+    if (par1EntityLiving instanceof EntityPlayer)
+    {
+        this.setAngry(true);
+    }
+}
+
+/**
+ * Determines whether this wolf is angry or not.
+ */
+public boolean isAngry()
+{
+    return (this.dataWatcher.getWatchableObjectByte(16) & 2) != 0;
+}
+
+/**
+ * Sets whether this wolf is angry or not.
+ */
+public void setAngry(boolean par1)
+{
+    byte b0 = this.dataWatcher.getWatchableObjectByte(16);
+
+    if (par1)
+    {
+        this.dataWatcher.updateObject(16, Byte.valueOf((byte)(b0 | 2)));
+    }
+    else
+    {
+        this.dataWatcher.updateObject(16, Byte.valueOf((byte)(b0 & -3)));
+    }
+}
+
 }

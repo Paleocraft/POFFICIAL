@@ -6,6 +6,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
@@ -36,10 +37,12 @@ public class EntityTroodon extends EntityAnimal
   this.setSize(1.0F, 1.0F);
   
   this.tasks.addTask(0, new EntityAISwimming(this));
-  this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityChicken.class, this.moveSpeed, false));
-  this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-  this.tasks.addTask(3, new EntityAIWander(this, this.moveSpeed));
-  this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityChicken.class, 16.0F, 0, true));
+  this.tasks.addTask(1, new EntityAILeapAtTarget(this, 0.4F));
+  this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityChicken.class, this.moveSpeed, false));
+  this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+  this.tasks.addTask(4, new EntityAIWander(this, this.moveSpeed));
+  this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
+  this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityChicken.class, 16.0F, 0, true));
  }
  
  /**
