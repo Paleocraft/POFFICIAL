@@ -59,6 +59,30 @@ public class EntityDromaeosaurus extends EntityAnimal
  {
      return true;
  }
+ 
+ /**
+  * Returns the sound this mob makes while it's alive.
+  */
+ protected String getLivingSound()
+ {
+     return "paleocraft.dromie.living";
+ }
+
+ /**
+  * Returns the sound this mob makes when it is hurt.
+  */
+ protected String getHurtSound()
+ {
+     return "paleocraft.dromie.hurt";
+ }
+
+ /**
+  * Returns the sound this mob makes on death.
+  */
+ protected String getDeathSound()
+ {
+     return "paleocraft.dromie.smallcarndeath";
+ }
 
  /**
   * Setting Damage
