@@ -285,6 +285,10 @@ public class ModelBaryonyx extends ModelBase
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
   {
 	  this.LeftLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+	  this.LeftFoot.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+	  this.LeftThigh.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
 	  this.RightLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+	  this.RightFoot.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+	  this.RightThigh.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
   }
 }
