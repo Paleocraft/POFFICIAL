@@ -1,11 +1,17 @@
-package bladeking68.paleocraft.dimension;
+package bladeking68.minecraft.paleocraftD;
 
-import net.minecraft.world.PortalPosition;
-import net.minecraft.world.Teleporter;
+import net.minecraft.util.ChunkCoordinates;
 
-public class PortalPositionPaleocraft extends PortalPosition
+public class PortalPositionPaleocraft extends ChunkCoordinates
 {
-public PortalPositionPaleocraft(Teleporter par1Teleporter, int par2, int par3, int par4, long par5) {
-super(par1Teleporter, par2, par3, par4, par5);
-}
+    public long field_85087_d;
+
+    final TeleporterPaleocraft field_85088_e;
+
+    public PortalPositionPaleocraft(TeleporterPaleocraft par1Teleporter, int par2, int par3, int par4, long par5)
+    {
+        super(par2, par3, par4);
+        this.field_85088_e = par1Teleporter;
+        this.field_85087_d = par5;
+    }
 }
