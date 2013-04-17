@@ -1,4 +1,4 @@
-package bladeking68.paleocraft.dimension;
+package bladeking68.minecraft.paleocraftD;
 
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE;
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.MINESHAFT;
@@ -602,12 +602,12 @@ public class ChunkProviderPaleocraft implements IChunkProvider
 
                 if (this.worldObj.isBlockFreezable(var12 + var4, var14 - 1, var13 + var5))
                 {
-                    this.worldObj.setBlockWithNotify(var12 + var4, var14 - 1, var13 + var5, Block.ice.blockID);
+                    this.worldObj.setBlock(var12 + var4, var14 - 1, var13 + var5, Block.ice.blockID);
                 }
 
                 if (this.worldObj.canSnowAt(var12 + var4, var14, var13 + var5))
                 {
-                    this.worldObj.setBlockWithNotify(var12 + var4, var14, var13 + var5, Block.snow.blockID);
+                    this.worldObj.setBlock(var12 + var4, var14, var13 + var5, Block.snow.blockID);
                 }
             }
         }
@@ -655,7 +655,7 @@ public class ChunkProviderPaleocraft implements IChunkProvider
      * Returns a list of creatures of the specified type that can spawn at the given location.
      */
     public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4)
-    {
+  {
         BiomeGenBase var5 = this.worldObj.getBiomeGenForCoords(par2, par4);
         return var5 == null ? null : (var5 == BiomeGenBase.swampland && par1EnumCreatureType == EnumCreatureType.monster && this.scatteredFeatureGenerator.hasStructureAt(par2, par3, par4) ? this.scatteredFeatureGenerator.getScatteredFeatureSpawnList() : var5.getSpawnableList(par1EnumCreatureType));
     }
@@ -683,4 +683,10 @@ public class ChunkProviderPaleocraft implements IChunkProvider
             this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
         }
     }
+
+    @Override
+	public boolean unloadQueuedChunks() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
