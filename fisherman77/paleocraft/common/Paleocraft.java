@@ -60,11 +60,13 @@ boolean spawnCiti;
 boolean spawnDromie;
 boolean spawnTroo;
 boolean spawnDimorph;
-//public static BiomeGenBase Paleoplains;
-//public static CreativeTabs PaleocraftBlocks = new PaleocraftBlocksCreativeTab(CreativeTabs.getNextID(),"Paleocraft");
-//public static Item portalTrigger;
+public static BiomeGenBase Paleoplains;
+public static CreativeTabs PaleocraftBlocks = new PaleocraftBlocksCreativeTab(CreativeTabs.getNextID(),"Paleocraft");
+public static Item portalTrigger;
 //public static Block portalPlacer2;
-//public static int PaleocraftDimension = 20;
+public static int PaleocraftDimension = 20;
+public static Item fossil;
+
 @PreInit
 public void PreLoad(FMLPreInitializationEvent e)
 {
@@ -84,15 +86,15 @@ PaleocraftConfigCore.loadConfig(e);
 /**
  * We've got to put this stuff here in case we reference it in the Init
  */
-//Biome Paleoplains
-//	Paleoplains = new BiomeGenPaleoplains(53).setColor(2900485).setBiomeName("PaleoPlains").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
+Biome Paleoplains
+	Paleoplains = new BiomeGenPaleoplains(53).setColor(2900485).setBiomeName("PaleoPlains").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
 
-//Items
-//	portalTrigger = new ItemFossil(cc.itemFossilID).setUnlocalizedName("Fossil");
+Items
+	fossil = new ItemFossil(253).setUnlocalizedName("Fossil");
 
-//Blocks
-//	portalPlacer2 = new portalTriggerPaleocraft(252, 1).setUnlocalizedName("portaltrigger");
-//	PaleocraftPortal = new BlockPortalPaleocraft(251, 0).setUnlocalizedName("portal");
+Blocks
+	portalTrigger = new portalTriggerPaleocraft(252, 1).setUnlocalizedName("portaltrigger");
+	PaleocraftPortal = new BlockPortalPaleocraft(251).setUnlocalizedName("paleocraftportal");
 
 //Config
 /*	spawnBary = cc.spawnBary;
@@ -110,16 +112,16 @@ public void InitPaleocraft(FMLInitializationEvent event){ //Your main initializa
 NetworkRegistry.instance().registerGuiHandler(this, proxy); //Registers the class that deals with GUI data
 
 
-//Game registery 
-/*GameRegistry.addBiome(Paleoplains);
+Game registery 
+GameRegistry.addBiome(Paleoplains);
 GameRegistry.registerBlock(PaleocraftPortal, "Paleocraft Portal");
-GameRegistry.registerBlock(portalPlacer2, "FossilMiddle");
+GameRegistry.registerBlock(portalTrigger, "Fossilmiddle");
 
 
 //Language registery
-LanguageRegistry.addName(PaleocraftPortal, "Paleocraft Portal");
-LanguageRegistry.addName(portalTrigger, "Fossil");
-LanguageRegistry.addName(portalPlacer2, "Fossil Middle");
+ LanguageRegistry.addName(PaleocraftPortal, "Paleocraft Portal");
+                LanguageRegistry.addName(fossil, "fossil");
+                LanguageRegistry.addName(portalTrigger, "Fossilmiddle");
 
 //Dimension
 DimensionManager.registerProviderType(PaleocraftDimension, WorldProviderPaleocraft.class, false);
