@@ -42,9 +42,15 @@ public void onBlockAdded(World par1World, int par2, int par3, int par4)
 
 
 
-@SideOnly(Side.CLIENT)
-public void registerIcons(IconRegister par1IconRegister)
+//@SideOnly(Side.CLIENT)
+//public void registerIcons(IconRegister par1IconRegister)
+//{
+ //this.blockIcon = par1IconRegister.registerIcon(PaleocraftDimension.PaleocraftDimension + "Portal" + this.getUnlocalizedName2());
+//}
+//}
+
+public void registerIcons(IconRegister iconRegister)
 {
- this.blockIcon = par1IconRegister.registerIcon(PaleocraftDimension.PaleocraftDimension + "Portal" + this.getUnlocalizedName2());
+         blockIcon = iconRegister.registerIcon("Paleocraft Dimension:Portal trigger");
 }
 }
