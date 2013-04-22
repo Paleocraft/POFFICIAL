@@ -1,11 +1,11 @@
 package fisherman77.paleocraft.common;
 
-//import bladeking68.paleocraft.dimension.BiomeGenPaleoplains;
-//import bladeking68.paleocraft.dimension.BlockPortalPaleocraft;
-//import bladeking68.paleocraft.dimension.ItemFossil;
-//import bladeking68.paleocraft.dimension.PaleocraftBlocksCreativeTab;
-//import bladeking68.paleocraft.dimension.WorldProviderPaleocraft;
-//import bladeking68.paleocraft.dimension.portalTriggerPaleocraft;
+import bladeking68.paleocraft.dimension.BiomeGenPaleoplains;
+import bladeking68.paleocraft.dimension.BlockPortalPaleocraft;
+import bladeking68.paleocraft.dimension.ItemFossil;
+import bladeking68.paleocraft.dimension.PaleocraftBlocksCreativeTab;
+import bladeking68.paleocraft.dimension.WorldProviderPaleocraft;
+import bladeking68.paleocraft.dimension.portalTriggerPaleocraft;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EnumCreatureType;
@@ -62,7 +62,7 @@ boolean spawnTroo;
 boolean spawnDimorph;
 public static BiomeGenBase Paleoplains;
 public static CreativeTabs PaleocraftBlocks = new PaleocraftBlocksCreativeTab(CreativeTabs.getNextID(),"Paleocraft");
-public static Item portalTrigger;
+public static Block portalTrigger;
 //public static Block portalPlacer2;
 public static int PaleocraftDimension = 20;
 public static Item fossil;
@@ -120,7 +120,7 @@ GameRegistry.registerBlock(portalTrigger, "Fossilmiddle");
 
 //Language registery
  LanguageRegistry.addName(PaleocraftPortal, "Paleocraft Portal");
-                LanguageRegistry.addName(fossil, "fossil");
+                LanguageRegistry.addName(fossil, "Fossil");
                 LanguageRegistry.addName(portalTrigger, "Fossilmiddle");
 
 //Dimension
@@ -132,7 +132,7 @@ DimensionManager.registerDimension(PaleocraftDimension, PaleocraftDimension);
 //crafting recipe (Fossil)
 ItemStack stonestack = new ItemStack(Block.stone);
 ItemStack bonestack = new ItemStack(Item.bone);
-GameRegistry.addRecipe(new ItemStack(portalTrigger), "xxx", "xyx", "xxx",
+GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
         'x', stonestack, 'y', bonestack);*/
 
 
