@@ -1,4 +1,4 @@
-package bladeking68.minecraft.paleocraftD;
+package bladeking68.paleocraft.dimension;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -12,10 +12,12 @@ import net.minecraft.world.World;
 import net.minecraft.client.renderer.texture.IconRegister;
 public class ItemFossil extends Item
 {
+       private Object iconIndex;
+
        public ItemFossil(int id)
        {
              super(id);
-             this.setCreativeTab(PaleocraftDimension.PaleocraftBlocks);
+             this.setCreativeTab(fisherman77.paleocraft.common.Paleocraft.PaleocraftBlocks);
        }
       
    
@@ -62,7 +64,7 @@ public class ItemFossil extends Item
                if (i1 == 0)
                {
                    par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-                   par3World.setBlock(par4, par5, par6, PaleocraftDimension.portalTrigger.blockID);
+                   par3World.setBlock(par4, par5, par6, fisherman77.paleocraft.common.Paleocraft.portalTrigger.blockID);
                }
 
                par1ItemStack.damageItem(1, par2EntityPlayer);
@@ -73,9 +75,12 @@ public class ItemFossil extends Item
 //public void updateIcons(IconRegister par1IconRegister)
 //{
 // this.iconIndex = par1IconRegister.registerIcon(PaleocraftDimension.PaleocraftDimension + "Paleocraft Dimension" + this.getUnlocalizedName());
-//}
+//}}
 
-public void updateIcons(IconRegister iconRegister)
-{
-         iconIndex = iconRegister.registerIcon("Paleocraft Dimension:Fossil");
-}}
+       @Override
+       @SideOnly(Side.CLIENT)
+       public void registerIcons(IconRegister iconRegister)
+       {
+       itemIcon = iconRegister.registerIcon("Paleocraft Dimension:" + this.getUnlocalizedName());
+       }
+}
