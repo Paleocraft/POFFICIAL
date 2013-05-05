@@ -12,7 +12,7 @@ super(position, tabID); //The constructor for your tab
 @SideOnly(Side.CLIENT)
 public int getTabIconItemIndex() //The item it displays for your tab
 {
-return fisherman77.paleocraft.common.Paleocraft.fossil.itemID; //For this we'll use the ruby
+return fisherman77.paleocraft.common.Paleocraft.fossil.itemID; 
 }
 public String getTranslatedTabLabel()
 {
