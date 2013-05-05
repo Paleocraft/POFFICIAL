@@ -1,4 +1,4 @@
-package bladeking68.minecraft.paleocraftD;
+package bladeking68.paleocraft.dimension;
 
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE;
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.MINESHAFT;
@@ -688,5 +688,11 @@ public class ChunkProviderPaleocraft implements IChunkProvider
 	public boolean unloadQueuedChunks() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void func_104112_b() {
+		// TODO Auto-generated method stub
+		
 	}
 }
