@@ -1,4 +1,6 @@
-package bladeking68.minecraft.paleocraftD;
+
+
+package bladeking68.paleocraft.dimension;
 
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -9,8 +11,8 @@ public class WorldProviderPaleocraft extends WorldProvider
 {
  public void registerWorldChunkManager()
  {
-  this.worldChunkMgr = new WorldChunkManagerHell(PaleocraftDimension.Paleoplains, 0.8F, 0.1F);
-  this.dimensionId = PaleocraftDimension.PaleocraftDimension;
+  this.worldChunkMgr = new WorldChunkManagerPaleocraft(fisherman77.paleocraft.common.Paleocraft.Paleoplains);
+  this.dimensionId = fisherman77.paleocraft.common.Paleocraft.PaleocraftDimension;
  }
  
  public String getDimensionName() 
