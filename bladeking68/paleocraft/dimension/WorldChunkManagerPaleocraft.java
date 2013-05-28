@@ -1,3 +1,5 @@
+package bladeking68.paleocraft.dimension;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;

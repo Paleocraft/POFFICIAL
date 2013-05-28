@@ -13,7 +13,7 @@ public class BiomeGenPaleoplains extends BiomeGenBase
               this.spawnableMonsterList.clear();
              this.spawnableCreatureList.clear();
              this.spawnableWaterCreatureList.clear();
-             this.spawnableMonsterList.add(new SpawnListEntry(EntityNAME.class, 1, 4, 4)); //Fisherman just keep coping this for each dino and the numbers are the spawn rate i think so you can edit that if you want
+             //this.spawnableMonsterList.add(new SpawnListEntry(EntityNAME.class, 1, 4, 4)); //Fisherman just keep coping this for each dino and the numbers are the spawn rate i think so you can edit that if you want
       
       
       }

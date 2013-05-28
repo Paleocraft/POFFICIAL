@@ -1,10 +1,8 @@
-package bladeking68.minecraft.paleocraftD;
+package bladeking68.paleocraft.dimension;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import bladeking68.minecraft.paleocraftD.BlockPortalPaleocraft;
-import bladeking68.minecraft.paleocraftD.client.ClientProxy;
-
+import fisherman77.paleocraft.common.Paleocraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -28,7 +26,7 @@ this.setStepSound(Block.soundGlassFootstep);
 
 public void onBlockAdded(World par1World, int par2, int par3, int par4)
 {
-    if (par1World.provider.dimensionId > 20 || par1World.getBlockId(par2, par3 - 1, par4) != Block.cobblestoneMossy.blockID || !((BlockPortalPaleocraft) PaleocraftDimension.PaleocraftPortal).tryToCreatePortal(par1World, par2, par3, par4))
+    if (par1World.provider.dimensionId > 20 || par1World.getBlockId(par2, par3 - 1, par4) != Block.cobblestoneMossy.blockID || !((BlockPortalPaleocraft) Paleocraft.PaleocraftPortal).tryToCreatePortal(par1World, par2, par3, par4))
    
         {
             par1World.setBlockToAir(par2, par3, par4);
