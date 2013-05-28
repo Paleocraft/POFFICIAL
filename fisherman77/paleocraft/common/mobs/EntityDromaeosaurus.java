@@ -244,7 +244,7 @@ public boolean interact(EntityPlayer par1EntityPlayer)
                 par1EntityPlayer.addChatMessage("[Paleocraft] You have tamed this dromaeosaurus!");
 			}
 		}
-		else{
+		else if(this.isTamed() == true){
 			par1EntityPlayer.addChatMessage("[Paleocraft] This Dromaeosaurus is already tamed.");
 		}
 			

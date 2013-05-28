@@ -5,6 +5,7 @@ import java.util.Random;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAIFleeSun;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -19,6 +20,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
@@ -37,10 +39,11 @@ public class EntityTroodon extends EntityAnimal
   this.setSize(1.0F, 1.0F);
   
   this.tasks.addTask(0, new EntityAISwimming(this));
-  this.tasks.addTask(1, new EntityAILeapAtTarget(this, 0.4F));
-  this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityChicken.class, this.moveSpeed, false));
-  this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-  this.tasks.addTask(4, new EntityAIWander(this, this.moveSpeed));
+  this.tasks.addTask(1, new EntityAIFleeSun(this, this.moveSpeed));
+  this.tasks.addTask(2, new EntityAILeapAtTarget(this, 0.4F));
+  this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityChicken.class, this.moveSpeed, false));
+  this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+  this.tasks.addTask(5, new EntityAIWander(this, this.moveSpeed));
   this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
   this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityChicken.class, 16.0F, 0, true));
  }
@@ -169,5 +172,9 @@ public boolean attackEntityAsMob(Entity par1Entity)
     return flag;
 }
 
+protected void dropFewItems(boolean par1, int par2)
+{
+  this.dropItem(Item.feather.itemID, 2);
+}
 
 }

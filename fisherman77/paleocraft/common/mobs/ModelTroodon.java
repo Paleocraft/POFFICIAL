@@ -228,3 +228,4 @@ public class ModelTroodon extends ModelBase
 	  this.RightFoot.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
 	  this.RightThigh.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
   }
+}
