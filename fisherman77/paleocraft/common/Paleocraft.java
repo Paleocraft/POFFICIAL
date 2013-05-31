@@ -100,7 +100,7 @@ PaleocraftConfigCore.loadConfig(e);
 //Config
 	spawnBary = cc.spawnBary;
 	spawnCiti = cc.spawnCiti;
-	spawnDimorph = cc.spawnDimorph;
+	//spawnDimorph = cc.spawnDimorph;
 	spawnTroo = cc.spawnTroo;
 	spawnDromie = cc.spawnDromie;
 	
@@ -163,7 +163,7 @@ GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
 		EntityRegistry.registerGlobalEntityID(EntityTroodon.class, "Troodon", EntityRegistry.findGlobalUniqueEntityId(), 0x5A5A5A, 0xE8E1BF);
 		LanguageRegistry.instance().addStringLocalization("entity.Troodon.name", "Troodon");
 		if(spawnTroo == true){
-			EntityRegistry.addSpawn(EntityTroodon.class, 3, 1, 3, EnumCreatureType.monster, Paleocraft.Paleoplains);
+			EntityRegistry.addSpawn(EntityTroodon.class, 3, 1, 3, EnumCreatureType.creature, Paleocraft.Paleoplains);
 		}
 	//Dimorphodon
 		EntityRegistry.registerGlobalEntityID(EntityDimorphodon.class, "Dimorphodon", EntityRegistry.findGlobalUniqueEntityId(), 0xC8C968, 0x6064C4);

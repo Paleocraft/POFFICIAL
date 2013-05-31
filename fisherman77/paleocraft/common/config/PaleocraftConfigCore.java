@@ -40,7 +40,7 @@ blockPaleoPortalPlacerID = config.getBlock("Paleoplains Portal Placer Block ID",
 //General
 spawnBary = config.get(config.CATEGORY_GENERAL, "Spawn Baryonyx", false).getBoolean(false);
 spawnCiti = config.get(config.CATEGORY_GENERAL, "Spawn Citipati", false).getBoolean(false);
-spawnDimorph = config.get(config.CATEGORY_GENERAL, "Spawn Dimorphodon", false).getBoolean(false);
+//spawnDimorph = config.get(config.CATEGORY_GENERAL, "Spawn Dimorphodon", false).getBoolean(false);
 spawnTroo = config.get(config.CATEGORY_GENERAL, "Spawn Troodon", false).getBoolean(false);
 spawnDromie = config.get(config.CATEGORY_GENERAL, "Spawn Dromaeosaurus", false).getBoolean(false);
 
