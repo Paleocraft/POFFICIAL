@@ -1,5 +1,4 @@
 package bladeking68.paleocraft.dimension;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
