@@ -34,7 +34,7 @@ public class EntityTroodon extends EntityAnimal
  {
   super(par1World);
   this.texture = "/Paleocraft/Mobs/Troo/Troodon.png";	
-  this.moveSpeed = 0.5F;
+  this.moveSpeed = 0.4F;
   
   this.setSize(1.0F, 1.0F);
   

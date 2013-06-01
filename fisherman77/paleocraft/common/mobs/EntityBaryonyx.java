@@ -25,9 +25,9 @@ public class EntityBaryonyx extends EntityMob
  {
   super(par1World);
   this.texture = "/Paleocraft/Mobs/Bary/Bary.png";	
-  this.moveSpeed = 0.5F;
+  this.moveSpeed = 0.4F;
   
-  this.setSize(1.0F, 2.5F);
+  this.setSize(6F, 6F);
   
   this.tasks.addTask(0, new EntityAISwimming(this));
   this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, false));

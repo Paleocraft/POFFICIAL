@@ -32,7 +32,7 @@ public class EntityCitipati extends EntityAnimal
  {
   super(par1World);
   this.texture = "/Paleocraft/Mobs/Citi/Citipati.png";	
-  this.moveSpeed = 0.5F;
+  this.moveSpeed = 0.4F;
   
   this.setSize(1.0F, 1.0F);
   

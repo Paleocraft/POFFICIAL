@@ -32,7 +32,7 @@ public class EntityDimorphodon extends EntityFlying implements IMob
     {
         super(par1World);
         this.texture = "/Paleocraft/Mobs/Dimorph/Dimorph.png";
-        this.setSize(4.0F, 4.0F);
+        this.setSize(1.0F, 1.0F);
         this.isImmuneToFire = true;
         this.experienceValue = 5;
     }
