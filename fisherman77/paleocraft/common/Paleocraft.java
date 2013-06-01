@@ -1,6 +1,5 @@
 package fisherman77.paleocraft.common;
 
-import bladeking68.paleocraft.dimension.BiomeGenPaleodesert;
 import bladeking68.paleocraft.dimension.BiomeGenPaleoplains;
 import bladeking68.paleocraft.dimension.BlockPortalPaleocraft;
 import bladeking68.paleocraft.dimension.ItemFossil;
@@ -92,7 +91,7 @@ PaleocraftConfigCore.loadConfig(e);
  */
 //Biome Paleoplains
 	Paleoplains = new BiomeGenPaleoplains(56).setColor(2900485).setBiomeName("PaleoPlains").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
-	Paleodesert = new BiomeGenPaleodesert(54).setColor(2900485).setBiomeName("Paleodesert").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
+	//Paleodesert = new BiomeGenPaleodesert(54).setColor(2900485).setBiomeName("Paleodesert").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
 //Items
 	fossil = new ItemFossil(253).setUnlocalizedName("Fossil");
 
