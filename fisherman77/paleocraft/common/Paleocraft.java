@@ -1,5 +1,6 @@
 package fisherman77.paleocraft.common;
 
+import bladeking68.paleocraft.dimension.BiomeGenPaleodesert;
 import bladeking68.paleocraft.dimension.BiomeGenPaleoplains;
 import bladeking68.paleocraft.dimension.BlockPortalPaleocraft;
 import bladeking68.paleocraft.dimension.ItemFossil;
@@ -11,6 +12,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
@@ -37,6 +39,7 @@ import fisherman77.paleocraft.common.mobs.EntityDimorphodon;
 import fisherman77.paleocraft.common.mobs.EntityDromaeosaurus;
 import fisherman77.paleocraft.common.mobs.EntityTroodon;
 
+
 @NetworkMod(clientSideRequired=true,serverSideRequired=true, //Whether client side and server side are needed
 clientPacketHandlerSpec = @SidedPacketHandler(channels = {"Paleocraft" }, packetHandler = PaleocraftClientPacketHandler.class), //For clientside packet handling
 serverPacketHandlerSpec = @SidedPacketHandler(channels = {"Paleocraft"}, packetHandler = PaleocraftServerPacketHandler.class)) //For serverside packet handling
@@ -61,11 +64,12 @@ boolean spawnDromie;
 boolean spawnTroo;
 boolean spawnDimorph;
 public static BiomeGenBase Paleoplains;
+public static BiomeGenBase Paleodesert;
 public static CreativeTabs PaleocraftBlocks = new PaleocraftBlocksCreativeTab(CreativeTabs.getNextID(),"Paleocraft");
 public static Block portalTrigger;
 //public static Block portalPlacer2;
 public static int PaleocraftDimension = 20;
-public static Item fossil;
+public static Item fossil; 
 
 @PreInit
 public void PreLoad(FMLPreInitializationEvent e)
@@ -86,26 +90,25 @@ PaleocraftConfigCore.loadConfig(e);
 /**
  * We've got to put this stuff here in case we reference it in the Init
  */
-//Biome
-	//Paleoplains
-	Paleoplains = new BiomeGenPaleoplains(53).setColor(2900485).setBiomeName("PaleoPlains").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
-
+//Biome Paleoplains
+	Paleoplains = new BiomeGenPaleoplains(56).setColor(2900485).setBiomeName("PaleoPlains").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
+	Paleodesert = new BiomeGenPaleodesert(54).setColor(2900485).setBiomeName("Paleodesert").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
 //Items
-	fossil = new ItemFossil(cc.itemFossilID).setUnlocalizedName("Fossil");
+	fossil = new ItemFossil(253).setUnlocalizedName("Fossil");
 
 //Blocks
-	portalTrigger = new portalTriggerPaleocraft(cc.blockPaleoPortalPlacerID, 1).setUnlocalizedName("portaltrigger");
-	PaleocraftPortal = new BlockPortalPaleocraft(cc.blockPaleoPortalID).setUnlocalizedName("paleocraftportal");
+	portalTrigger = new portalTriggerPaleocraft(252, 1).setUnlocalizedName("portaltrigger");
+	PaleocraftPortal = new BlockPortalPaleocraft(251).setUnlocalizedName("paleocraftportal");}
 
 //Config
-	spawnBary = cc.spawnBary;
+/*	spawnBary = cc.spawnBary;
 	spawnCiti = cc.spawnCiti;
-	//spawnDimorph = cc.spawnDimorph;
+	spawnDimorph = cc.spawnDimorph;
 	spawnTroo = cc.spawnTroo;
 	spawnDromie = cc.spawnDromie;
-	
+	*/
 
-}
+
 
 @Init
 public void InitPaleocraft(FMLInitializationEvent event){ //Your main initialization method
@@ -114,7 +117,7 @@ NetworkRegistry.instance().registerGuiHandler(this, proxy); //Registers the clas
 
 
 //Game registery 
-GameRegistry.addBiome(Paleoplains);
+//GameRegistry.addBiome(Paleoplains);
 GameRegistry.registerBlock(PaleocraftPortal, "Paleocraft Portal");
 GameRegistry.registerBlock(portalTrigger, "Fossilmiddle");
 
@@ -143,28 +146,28 @@ GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
 	//Baryonyx
 		EntityRegistry.registerGlobalEntityID(EntityBaryonyx.class, "Baryonyx", EntityRegistry.findGlobalUniqueEntityId(), 0x405135, 0xC4C67D);
 		LanguageRegistry.instance().addStringLocalization("entity.Baryonyx.name", "Baryonyx");
-		if(spawnBary == true){
-			EntityRegistry.addSpawn(EntityBaryonyx.class, 4, 1, 1, EnumCreatureType.creature, Paleocraft.Paleoplains);
+		//if(spawnBary == true){
+		//EntityRegistry.addSpawn(EntityBaryonyx.class, 4, 1, 1, EnumCreatureType.creature, Paleocraft.Paleoplains);
 		//	EntityRegistry.addSpawn(entityName, weightedProb, min, max, spawnList, biomes)
-		}
+		//}
 	//Citipati
 		EntityRegistry.registerGlobalEntityID(EntityCitipati.class, "Citipati", EntityRegistry.findGlobalUniqueEntityId(), 0xA67822, 0xA14A5C);
 		LanguageRegistry.instance().addStringLocalization("entity.Citipati.name", "Citipati");
-		if(spawnCiti == true){
-			EntityRegistry.addSpawn(EntityCitipati.class, 7, 2, 5, EnumCreatureType.creature, Paleocraft.Paleoplains);
-		}
+		//if(spawnCiti == true){
+		//	EntityRegistry.addSpawn(EntityCitipati.class, 7, 2, 5, EnumCreatureType.creature, Paleocraft.Paleoplains);
+		//}
 	//Dromaeosaurus
 		EntityRegistry.registerGlobalEntityID(EntityDromaeosaurus.class, "Dromaeosaurus", EntityRegistry.findGlobalUniqueEntityId(), 0x5C5B5C, 0x551305);
 		LanguageRegistry.instance().addStringLocalization("entity.Dromaeosaurus.name", "Dromaeosaurus");
 		if(spawnDromie == true){
-			EntityRegistry.addSpawn(EntityDromaeosaurus.class, 7, 3, 6, EnumCreatureType.creature, Paleocraft.Paleoplains);
+			EntityRegistry.addSpawn(EntityDromaeosaurus.class, 30, 2, 4, EnumCreatureType.creature, Paleocraft.Paleoplains);
 		}
 	//Troodon
 		EntityRegistry.registerGlobalEntityID(EntityTroodon.class, "Troodon", EntityRegistry.findGlobalUniqueEntityId(), 0x5A5A5A, 0xE8E1BF);
 		LanguageRegistry.instance().addStringLocalization("entity.Troodon.name", "Troodon");
-		if(spawnTroo == true){
+		//if(spawnTroo == true){
 			EntityRegistry.addSpawn(EntityTroodon.class, 3, 1, 3, EnumCreatureType.creature, Paleocraft.Paleoplains);
-		}
+		//}
 	//Dimorphodon
 		EntityRegistry.registerGlobalEntityID(EntityDimorphodon.class, "Dimorphodon", EntityRegistry.findGlobalUniqueEntityId(), 0xC8C968, 0x6064C4);
 		LanguageRegistry.instance().addStringLocalization("entity.Dimorphodon.name", "Dimorphodon");
