@@ -17,14 +17,14 @@ public class WorldChunkManagerPaleocraft extends WorldChunkManager {
         public WorldChunkManagerPaleocraft(BiomeGenBase par1BiomeGenBase) {
                 this.biomeGenerator = par1BiomeGenBase;
         }
- 
+       
         /**
          * Returns the BiomeGenBase related to the x, z position on the world.
          */
         public BiomeGenBase getBiomeGenAt(int par1, int par2) {
                 return this.biomeGenerator;
         }
- 
+        
         /**
          * Returns an array of biomes for the location input.
          */
@@ -36,7 +36,7 @@ public class WorldChunkManagerPaleocraft extends WorldChunkManager {
                 Arrays.fill(par1ArrayOfBiomeGenBase, 0, par4 * par5, this.biomeGenerator);
                 return par1ArrayOfBiomeGenBase;
         }
- 
+        
         /**
          * Returns a list of temperatures to use for the specified blocks. Args:
          * listToReuse, x, y, width, length
