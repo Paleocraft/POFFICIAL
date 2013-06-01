@@ -47,7 +47,7 @@ public class EntityDromaeosaurus extends EntityTameable
  {
   super(par1World);
   this.texture = "/Paleocraft/Mobs/Dromie/Dromaeosaurus.png";
-  this.moveSpeed = 0.5F;
+  this.moveSpeed = 0.3F;
   
   this.setSize(1.0F, 1.0F);
   
@@ -219,41 +219,43 @@ public boolean interact(EntityPlayer par1EntityPlayer)
 {
 	ItemStack itemstack = par1EntityPlayer.inventory.getCurrentItem();
 	
-	if (itemstack != null && itemstack.itemID == Item.beefRaw.itemID && !this.isAngry())
+	if (itemstack != null && itemstack.itemID == Item.beefRaw.itemID)
     {
-		if(this.isTamed() == false){
-			if (!par1EntityPlayer.capabilities.isCreativeMode)
-			{
-				--itemstack.stackSize;
+		if(!this.isAngry())
+		{
+			if(this.isTamed() == false){
+				if (!par1EntityPlayer.capabilities.isCreativeMode)
+				{
+					--itemstack.stackSize;
+				}
+	
+				if (itemstack.stackSize <= 0)
+				{
+					par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, (ItemStack)null);
+				}
+				
+				if (!this.worldObj.isRemote)
+				{
+	                this.setTamed(true);
+	                this.setPathToEntity((PathEntity)null);
+	                this.setAttackTarget((EntityLiving)null);
+	                this.setEntityHealth(20);
+	                this.setOwner(par1EntityPlayer.username);
+	                this.playTameEffect(true);
+	                this.worldObj.setEntityState(this, (byte)7);
+	                par1EntityPlayer.addChatMessage("[Paleocraft] You have tamed this dromaeosaurus!");
+				}
 			}
-
-			if (itemstack.stackSize <= 0)
-			{
-				par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, (ItemStack)null);
+			else if(this.isTamed() == true){
+				par1EntityPlayer.addChatMessage("[Paleocraft] This Dromaeosaurus is already tamed.");
 			}
-			
-			if (!this.worldObj.isRemote)
-			{
-                this.setTamed(true);
-                this.setPathToEntity((PathEntity)null);
-                this.setAttackTarget((EntityLiving)null);
-                this.setEntityHealth(20);
-                this.setOwner(par1EntityPlayer.username);
-                this.playTameEffect(true);
-                this.worldObj.setEntityState(this, (byte)7);
-                par1EntityPlayer.addChatMessage("[Paleocraft] You have tamed this dromaeosaurus!");
-			}
+	    }
+		else if(this.isAngry())
+		{
+				par1EntityPlayer.addChatMessage("[Paleocraft] Trying to tame an angry Dromie? Really?");
 		}
-		else if(this.isTamed() == true){
-			par1EntityPlayer.addChatMessage("[Paleocraft] This Dromaeosaurus is already tamed.");
-		}
-			
     }
-	else if(this.isAngry())
-	{
-		par1EntityPlayer.addChatMessage("[Paleocraft] Trying to tame an angry Dromie? Really?");
-	}
-	else if(!(itemstack.itemID == Item.beefRaw.itemID))
+	else
 	{
 		par1EntityPlayer.addChatMessage("[Paleocraft] You need raw meat to tame a Dromaeosaurus.");
 	}
