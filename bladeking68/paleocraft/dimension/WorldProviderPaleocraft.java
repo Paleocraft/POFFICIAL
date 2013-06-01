@@ -1,5 +1,4 @@
 
-
 package bladeking68.paleocraft.dimension;
 
 import net.minecraft.world.WorldProvider;
@@ -30,6 +29,20 @@ public class WorldProviderPaleocraft extends WorldProvider
      return "Paleocraft Dimension";
  }
 
+ public boolean renderClouds()
+ {
+
+  return true;
+
+ }
+ 
+ public boolean renderStars()
+ {
+
+  return true;
+
+ }
+
  
  @Override
  public IChunkProvider createChunkGenerator()
@@ -37,4 +50,3 @@ public class WorldProviderPaleocraft extends WorldProvider
   return new ChunkProviderPaleocraft(worldObj, worldObj.getSeed(), true);
  }
 }
-
