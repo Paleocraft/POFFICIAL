@@ -1,9 +1,20 @@
 package fisherman77.paleocraft.common;
 
+import bladeking68.paleocraft.dimension.BiomeGenPaleoSwamp;
+import bladeking68.paleocraft.dimension.BiomeGenPaleodesert;
+import bladeking68.paleocraft.dimension.BiomeGenPaleoforest;
 import bladeking68.paleocraft.dimension.BiomeGenPaleoplains;
+import bladeking68.paleocraft.dimension.BiomeGenPaleosea;
 import bladeking68.paleocraft.dimension.BlockPortalPaleocraft;
+
+import bladeking68.paleocraft.dimension.Blockdirttest;
+import bladeking68.paleocraft.dimension.Blockseaweed;
+import bladeking68.paleocraft.dimension.Blocktree1sapling;
 import bladeking68.paleocraft.dimension.ItemFossil;
+import bladeking68.paleocraft.dimension.MainRegistryPaleocraft;
 import bladeking68.paleocraft.dimension.PaleocraftBlocksCreativeTab;
+import bladeking68.paleocraft.dimension.PaleocraftEventClass;
+import bladeking68.paleocraft.dimension.WorldGenPaleocraftTree1;
 import bladeking68.paleocraft.dimension.WorldProviderPaleocraft;
 import bladeking68.paleocraft.dimension.portalTriggerPaleocraft;
 import net.minecraft.block.Block;
@@ -13,6 +24,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenSwamp;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
@@ -51,7 +63,8 @@ serverPacketHandlerSpec = @SidedPacketHandler(channels = {"Paleocraft"}, packetH
 
 public class Paleocraft {
 	public static Block PaleocraftPortal;
-@Instance("Paleocraft") //The instance, this is very important later on
+	
+	@Instance("Paleocraft") //The instance, this is very important later on
 public static Paleocraft instance = new Paleocraft();
 
 @SidedProxy(clientSide = "fisherman77.paleocraft.client.PaleocraftClientProxy", serverSide = "fisherman77.paleocraft.common.PaleocraftCommonProxy") //Tells Forge the location of your proxies
@@ -64,15 +77,26 @@ boolean spawnTroo;
 boolean spawnDimorph;
 public static BiomeGenBase Paleoplains;
 public static BiomeGenBase Paleodesert;
+public static BiomeGenBase Paleosea;
+public static BiomeGenBase Paleoforest;
+public static BiomeGenBase Paleoswamp;
 public static CreativeTabs PaleocraftBlocks = new PaleocraftBlocksCreativeTab(CreativeTabs.getNextID(),"Paleocraft");
 public static Block portalTrigger;
+public static Block treesapling1;
+public static Block seaweed;
+public static Block dirttest;
 //public static Block portalPlacer2;
 public static int PaleocraftDimension = 20;
-public static Item fossil; 
+public static Item fossil;
+public static BiomeGenBase TutorialBiomeDeafult; 
 
 @PreInit
 public void PreLoad(FMLPreInitializationEvent e)
 {
+	
+	//event bonemeal
+	MinecraftForge.EVENT_BUS.register(new PaleocraftEventClass());
+	
 	
 /**
 * Registering Paleocraft sounds...
@@ -89,15 +113,30 @@ PaleocraftConfigCore.loadConfig(e);
 /**
  * We've got to put this stuff here in case we reference it in the Init
  */
-//Biome Paleoplains
+//Biomes
 	Paleoplains = new BiomeGenPaleoplains(56).setColor(2900485).setBiomeName("PaleoPlains").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
-	//Paleodesert = new BiomeGenPaleodesert(54).setColor(2900485).setBiomeName("Paleodesert").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
-//Items
+	Paleodesert = new BiomeGenPaleodesert(54).setColor(2900485).setBiomeName("Paleodesert").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
+	Paleosea = new BiomeGenPaleosea(55).setColor(2900485).setBiomeName("Paleosea").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(-1.0F, 0.4F);
+	Paleoforest = new BiomeGenPaleoforest(53).setColor(2900485).setBiomeName("Paleoforest").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(-0.2F, 0.1F);
+	 
+	//Paleoforest = new BiomeGenPaleoforest(25);
+	Paleoswamp = new BiomeGenPaleoSwamp(52).setColor(522674).setBiomeName("PaleoSwamp").func_76733_a(9154376).setMinMaxHeight(-0.2F, 0.1F).setTemperatureRainfall(0.8F, 0.9F);
 	fossil = new ItemFossil(253).setUnlocalizedName("Fossil");
 
 //Blocks
+	 seaweed = new Blockseaweed(254).setUnlocalizedName("seaweed");
 	portalTrigger = new portalTriggerPaleocraft(252, 1).setUnlocalizedName("portaltrigger");
-	PaleocraftPortal = new BlockPortalPaleocraft(251).setUnlocalizedName("paleocraftportal");}
+	PaleocraftPortal = new BlockPortalPaleocraft(251).setUnlocalizedName("paleocraftportal");
+    treesapling1 = new Blocktree1sapling(253, 0).setUnlocalizedName("tree1");
+    dirttest = new Blockdirttest(250).setUnlocalizedName("Test1");}
+   // seaweed = new Blockseaweed(254).setUnlocalizedName("seaweed");}
+    
+//Test (Trees)
+
+
+
+
+
 
 //Config
 /*	spawnBary = cc.spawnBary;
@@ -116,18 +155,23 @@ NetworkRegistry.instance().registerGuiHandler(this, proxy); //Registers the clas
 
 
 //Game registery 
-//GameRegistry.addBiome(Paleoplains);
+GameRegistry.addBiome(Paleoplains);
 GameRegistry.registerBlock(PaleocraftPortal, "Paleocraft Portal");
 GameRegistry.registerBlock(portalTrigger, "Fossilmiddle");
-
-
+GameRegistry.registerWorldGenerator(new WorldGenPaleocraftTree1(false));
+GameRegistry.registerBlock(treesapling1, "Tree 1");
+GameRegistry.registerBlock(seaweed, "Seaweed");
+GameRegistry.registerBlock(dirttest, "Test1");
+MainRegistryPaleocraft.RegisterInit();
 //Language registery
  LanguageRegistry.addName(PaleocraftPortal, "Paleocraft Portal");
                 LanguageRegistry.addName(fossil, "Fossil");
                 LanguageRegistry.addName(portalTrigger, "Fossilmiddle");
-
-//Dimension
-DimensionManager.registerProviderType(PaleocraftDimension, WorldProviderPaleocraft.class, false);
+                LanguageRegistry.addName(treesapling1, "Tree 1");
+                LanguageRegistry.addName(seaweed, "Seaweed");
+                LanguageRegistry.addName(dirttest, "Test1");
+                //Dimension
+  DimensionManager.registerProviderType(PaleocraftDimension, WorldProviderPaleocraft.class, true);
 
 DimensionManager.registerDimension(PaleocraftDimension, PaleocraftDimension);
 
