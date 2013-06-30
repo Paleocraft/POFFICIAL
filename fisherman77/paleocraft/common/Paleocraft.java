@@ -48,7 +48,9 @@ import fisherman77.paleocraft.common.mobs.EntityBaryonyx;
 import fisherman77.paleocraft.common.mobs.EntityCitipati;
 import fisherman77.paleocraft.common.mobs.EntityDimorphodon;
 import fisherman77.paleocraft.common.mobs.EntityDromaeosaurus;
+import fisherman77.paleocraft.common.mobs.EntitySpino;
 import fisherman77.paleocraft.common.mobs.EntityTroodon;
+import fisherman77.paleocraft.common.mobs.EntityTylo;
 
 
 @NetworkMod(clientSideRequired=true,serverSideRequired=true, //Whether client side and server side are needed
@@ -217,5 +219,15 @@ GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
 		//if(spawnDimorph == true){
 		//	EntityRegistry.addSpawn(EntityDimorphodon.class, 8, 3, 10, EnumCreatureType.creature, Paleocraft.Paleoplains);
 		//}
-	}
+	//Tylosaurus
+		EntityRegistry.registerGlobalEntityID(EntityTylo.class, "Tylosaurus", EntityRegistry.findGlobalUniqueEntityId(), 0x45369F, 0xFFFFFF);
+		LanguageRegistry.instance().addStringLocalization("entity.Tylosaurus.name", "Tylosaurus");
+
+		
+	//Spinosaurus
+		EntityRegistry.registerGlobalEntityID(EntitySpino.class, "Spinosaurus", EntityRegistry.findGlobalUniqueEntityId(), 0x0E1640, 0xF78708);
+		LanguageRegistry.instance().addStringLocalization("entity.Spinosaurus.name", "Spinosaurus");
+
+		
+}
 }
