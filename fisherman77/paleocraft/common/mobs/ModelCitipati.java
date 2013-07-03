@@ -228,6 +228,13 @@ public class ModelCitipati extends ModelBase
 	  this.Right_Leg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
 	  this.Right_Foot.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
 	  this.Right_Thigh.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+	  Head.rotateAngleY = f3 / 57.29578F;
+	  Head.rotateAngleX = f4 / 57.29578F;
+	  Beak.rotateAngleY = f3 / 57.29578F;
+	  Beak.rotateAngleX = f4 / 57.29578F;
+	  Crest.rotateAngleY = f3 / 57.29578F;
+	  Crest.rotateAngleX = f4 / 57.29578F;
+  
   }
 
 }

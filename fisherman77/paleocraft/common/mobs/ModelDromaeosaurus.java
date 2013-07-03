@@ -183,8 +183,8 @@ public class ModelDromaeosaurus extends ModelBase
   
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
   {
-    super.render(entity, f, f1, f2, f3, f4, f5);
-    setRotationAngles(f, f1, f2, f3, f4, f5);
+	  super.render(entity, f, f1, f2, f3, f4, f5);
+	    setRotationAngles(f, f1, f2, f3, f4, f5, f5, f5);
     LeftArm.render(f5);
     RightArm.render(f5);
     Neck1.render(f5);
@@ -216,7 +216,7 @@ public class ModelDromaeosaurus extends ModelBase
     model.rotateAngleZ = z;
   }
   
-  public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
+  public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, float par5, float par4)
   {
 	  this.LeftLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
 	  this.LeftFoot.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
@@ -226,6 +226,12 @@ public class ModelDromaeosaurus extends ModelBase
 	  this.RightFoot.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
 	  this.RightClaw.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
 	  this.RightThigh.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+	  Head.rotateAngleY = f3 / 57.29578F;
+	  Head.rotateAngleX = f4 / 57.29578F;
+	  Crest.rotateAngleY = f3 / 57.29578F;
+	  Crest.rotateAngleX = f4 / 57.29578F;
+	  Snout.rotateAngleY = f3 / 57.29578F;
+	  Snout.rotateAngleX = f4 / 57.29578F;
   }
 
 }
