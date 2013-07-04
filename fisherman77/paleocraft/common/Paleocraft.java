@@ -15,6 +15,10 @@ import bladeking68.paleocraft.dimension.MainRegistryPaleocraft;
 import bladeking68.paleocraft.dimension.PaleocraftBlocksCreativeTab;
 import bladeking68.paleocraft.dimension.PaleocraftEventClass;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import bladeking68.paleocraft.dimension.WorldGenPaleocraftTree1;
+>>>>>>> cf2b2035a922b33695ff8f915928b7fdb626ac6c
 =======
 import bladeking68.paleocraft.dimension.WorldGenPaleocraftTree1;
 >>>>>>> cf2b2035a922b33695ff8f915928b7fdb626ac6c
