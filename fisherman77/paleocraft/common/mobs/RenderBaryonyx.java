@@ -4,26 +4,35 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraft.client.resources.ResourceLocation;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public class RenderBaryonyx extends RenderLiving
 {
-    private static final ResourceLocation field_110833_a = new ResourceLocation("Paleocraft/Mobs/Bary/Bary.png");
+    /** Scale of the model to use */
+    private float scale;
 
-    public RenderBaryonyx(ModelBase par1ModelBase, float par2)
+    public RenderBaryonyx(ModelBase par1ModelBase, float par2, float par3)
     {
-        super(par1ModelBase, par2);
+        super(par1ModelBase, par2 * par3);
+        this.scale = par3;
     }
 
-    protected ResourceLocation func_110832_a(EntityBaryonyx par1EntityBaryonyx)
+    /**
+     * Applies the scale to the transform matrix
+     */
+    protected void preRenderScale(EntityBaryonyx par1EntityBaryonyx, float par2)
     {
-        return field_110833_a;
+        GL11.glScalef(this.scale, this.scale, this.scale);
     }
 
-    protected ResourceLocation func_110775_a(Entity par1Entity)
+    /**
+     * Allows the render to do any OpenGL state modifications necessary before the model is rendered. Args:
+     * entityLiving, partialTickTime
+     */
+    protected void preRenderCallback(EntityLiving par1EntityLiving, float par2)
     {
-        return this.func_110832_a((EntityBaryonyx)par1Entity);
+        this.preRenderScale((EntityBaryonyx)par1EntityLiving, par2);
     }
 }

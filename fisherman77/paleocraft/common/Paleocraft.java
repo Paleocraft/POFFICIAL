@@ -1,12 +1,19 @@
 package fisherman77.paleocraft.common;
 
+import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.common.MinecraftForge;
 import bladeking68.paleocraft.dimension.BiomeGenPaleoSwamp;
 import bladeking68.paleocraft.dimension.BiomeGenPaleodesert;
 import bladeking68.paleocraft.dimension.BiomeGenPaleoforest;
 import bladeking68.paleocraft.dimension.BiomeGenPaleoplains;
 import bladeking68.paleocraft.dimension.BiomeGenPaleosea;
 import bladeking68.paleocraft.dimension.BlockPortalPaleocraft;
-
 import bladeking68.paleocraft.dimension.Blockdirttest;
 import bladeking68.paleocraft.dimension.Blockseaweed;
 import bladeking68.paleocraft.dimension.Blocktree1sapling;
@@ -14,50 +21,31 @@ import bladeking68.paleocraft.dimension.ItemFossil;
 import bladeking68.paleocraft.dimension.MainRegistryPaleocraft;
 import bladeking68.paleocraft.dimension.PaleocraftBlocksCreativeTab;
 import bladeking68.paleocraft.dimension.PaleocraftEventClass;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 import bladeking68.paleocraft.dimension.WorldGenPaleocraftTree1;
->>>>>>> cf2b2035a922b33695ff8f915928b7fdb626ac6c
-=======
-import bladeking68.paleocraft.dimension.WorldGenPaleocraftTree1;
->>>>>>> cf2b2035a922b33695ff8f915928b7fdb626ac6c
 import bladeking68.paleocraft.dimension.WorldProviderPaleocraft;
 import bladeking68.paleocraft.dimension.portalTriggerPaleocraft;
-import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.WorldType;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.biome.BiomeGenSwamp;
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.DimensionManager;
-import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.PreInit;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
-import cpw.mods.fml.common.SidedProxy;
-import fisherman77.paleocraft.client.PaleocraftClientProxy;
 import fisherman77.paleocraft.common.config.PaleocraftConfigCore;
-import fisherman77.paleocraft.common.handlers.*;
+import fisherman77.paleocraft.common.handlers.PaleocraftClientPacketHandler;
+import fisherman77.paleocraft.common.handlers.PaleocraftServerPacketHandler;
+import fisherman77.paleocraft.common.handlers.PaleocraftSoundHandler;
 import fisherman77.paleocraft.common.mobs.EntityBaryonyx;
 import fisherman77.paleocraft.common.mobs.EntityCitipati;
 import fisherman77.paleocraft.common.mobs.EntityDimorphodon;
 import fisherman77.paleocraft.common.mobs.EntityDromaeosaurus;
-import fisherman77.paleocraft.common.mobs.EntitySpino;
 import fisherman77.paleocraft.common.mobs.EntityTroodon;
-import fisherman77.paleocraft.common.mobs.EntityTylo;
 
 
 @NetworkMod(clientSideRequired=true,serverSideRequired=true, //Whether client side and server side are needed
@@ -227,13 +215,13 @@ GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
 		//	EntityRegistry.addSpawn(EntityDimorphodon.class, 8, 3, 10, EnumCreatureType.creature, Paleocraft.Paleoplains);
 		//}
 	//Tylosaurus
-		EntityRegistry.registerGlobalEntityID(EntityTylo.class, "Tylosaurus", EntityRegistry.findGlobalUniqueEntityId(), 0x45369F, 0xFFFFFF);
-		LanguageRegistry.instance().addStringLocalization("entity.Tylosaurus.name", "Tylosaurus");
+		//EntityRegistry.registerGlobalEntityID(EntityTylo.class, "Tylosaurus", EntityRegistry.findGlobalUniqueEntityId(), 0x45369F, 0xFFFFFF);
+		//LanguageRegistry.instance().addStringLocalization("entity.Tylosaurus.name", "Tylosaurus");
 
 		
 	//Spinosaurus
-		EntityRegistry.registerGlobalEntityID(EntitySpino.class, "Spinosaurus", EntityRegistry.findGlobalUniqueEntityId(), 0x0E1640, 0xF78708);
-		LanguageRegistry.instance().addStringLocalization("entity.Spinosaurus.name", "Spinosaurus");
+		//EntityRegistry.registerGlobalEntityID(EntitySpino.class, "Spinosaurus", EntityRegistry.findGlobalUniqueEntityId(), 0x0E1640, 0xF78708);
+		//LanguageRegistry.instance().addStringLocalization("entity.Spinosaurus.name", "Spinosaurus");
 
 		
 }

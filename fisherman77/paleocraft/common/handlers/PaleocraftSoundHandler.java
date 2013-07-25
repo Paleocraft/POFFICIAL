@@ -58,15 +58,7 @@ public class PaleocraftSoundHandler
             event.manager.soundPoolSounds.addSound("paleocraft/Tylo/TyloHurt.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Tylo/TyloHurt.ogg"));
             event.manager.soundPoolSounds.addSound("paleocraft/Tylo/LargeCarnDeath.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Tylo/LargeCarnDeath.ogg"));
              
-<<<<<<< HEAD
-<<<<<<< HEAD
-        //Spinosaurus
-=======
             //Spinosaurus
->>>>>>> cf2b2035a922b33695ff8f915928b7fdb626ac6c
-=======
-            //Spinosaurus
->>>>>>> cf2b2035a922b33695ff8f915928b7fdb626ac6c
             event.manager.soundPoolSounds.addSound("paleocraft/Spino/Spino1.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Spino/Spino1.ogg"));            
             event.manager.soundPoolSounds.addSound("paleocraft/Spino/Spino2.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Spino/Spino2.ogg"));            
             event.manager.soundPoolSounds.addSound("paleocraft/Spino/Spino3.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Spino/Spino3.ogg"));            
