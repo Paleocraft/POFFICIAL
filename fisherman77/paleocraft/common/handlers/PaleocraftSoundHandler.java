@@ -17,55 +17,55 @@ public class PaleocraftSoundHandler
         try 
         {
         //BARY
-            event.manager.soundPoolSounds.addSound("paleocraft/bary/living1.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Bary/Bary1.ogg"));
-            event.manager.soundPoolSounds.addSound("paleocraft/bary/living2.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Bary/Bary2.ogg"));
-            event.manager.soundPoolSounds.addSound("paleocraft/bary/living3.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Bary/Bary3.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/bary/hurt.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Bary/BaryHurt.ogg"));
+            event.manager.addSound("paleocraft:baryliving1.ogg");
+            event.manager.addSound("paleocraft:baryliving2.ogg");
+            event.manager.addSound("paleocraft:baryliving3.ogg");            
+            event.manager.addSound("paleocraft:baryhurt.ogg");
             
         //CITIPATI
-            event.manager.soundPoolSounds.addSound("paleocraft/citi/living1.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Citi/Citi1.ogg"));
-            event.manager.soundPoolSounds.addSound("paleocraft/citi/living2.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Citi/Citi2.ogg"));
-            event.manager.soundPoolSounds.addSound("paleocraft/citi/living3.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Citi/Citi3.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/citi/hurt.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Citi/CitiHurt.ogg"));
-            event.manager.soundPoolSounds.addSound("paleocraft/citi/smallherbdeath.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Citi/SmallHerbDeath.ogg"));
+            event.manager.addSound("paleocraft:citiliving1.ogg");
+            event.manager.addSound("paleocraft:citiliving2.ogg");
+            event.manager.addSound("paleocraft:citiliving3.ogg");            
+            event.manager.addSound("paleocraft:citi/hurt.ogg");
+            event.manager.addSound("paleocraft:citi/smallherbdeath.ogg");
             
         //DROMAEOSAURUS
-            event.manager.soundPoolSounds.addSound("paleocraft/dromie/living1.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Dromie/Dromie1.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/dromie/living2.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Dromie/Dromie2.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/dromie/living3.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Dromie/Dromie3.ogg"));
-            event.manager.soundPoolSounds.addSound("paleocraft/dromie/living4.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Dromie/Dromie4.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/dromie/living5.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Dromie/Dromie5.ogg"));
-            event.manager.soundPoolSounds.addSound("paleocraft/dromie/hurt.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Dromie/DromieHurt.ogg"));
-            event.manager.soundPoolSounds.addSound("paleocraft/dromie/smallcarndeath.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Dromie/SmallCarnDeath.ogg"));
+            event.manager.addSound("paleocraft:dromieliving1.ogg");            
+            event.manager.addSound("paleocraft:dromieliving2.ogg");            
+            event.manager.addSound("paleocraft:dromieliving3.ogg");
+            event.manager.addSound("paleocraft:dromieliving4.ogg");            
+            event.manager.addSound("paleocraft:dromieliving5.ogg");
+            event.manager.addSound("paleocraft:dromie/hurt.ogg");
+            event.manager.addSound("paleocraft:dromie/smallcarndeath.ogg");
 
         //TROODON
-            event.manager.soundPoolSounds.addSound("paleocraft/troo/living1.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Troo/Troo1.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/troo/living2.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Troo/Troo2.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/troo/living3.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Troo/Troo3.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/troo/hurt.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Troo/TrooHurt.ogg"));
-            event.manager.soundPoolSounds.addSound("paleocraft/troo/smallcarndeath.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Troo/SmallCarnDeath.ogg"));
+            event.manager.addSound("paleocraft:trooliving1.ogg");            
+            event.manager.addSound("paleocraft:trooliving2.ogg");            
+            event.manager.addSound("paleocraft:trooliving3.ogg");            
+            event.manager.addSound("paleocraft:troo/hurt.ogg");
+            event.manager.addSound("paleocraft:troo/smallcarndeath.ogg");
             
         //DIMORPHODON
-            event.manager.soundPoolSounds.addSound("paleocraft/dimorph/living1.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Dimorph/Dimorph1.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/dimorph/living2.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Dimorph/Dimorph2.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/dimorph/hurt.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Dimorph/DimorphHurt.ogg"));
-            event.manager.soundPoolSounds.addSound("paleocraft/dimorph/smallcarndeath.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Dimorph/TinyDeath.ogg"));
+            event.manager.addSound("paleocraft:dimorphliving1.ogg");            
+            event.manager.addSound("paleocraft:dimorphliving2.ogg");            
+            event.manager.addSound("paleocraft:dimorph/hurt.ogg");
+            event.manager.addSound("paleocraft:dimorph/smallcarndeath.ogg");
             
         //Tylo
-            event.manager.soundPoolSounds.addSound("paleocraft/Tylo/Tylo1.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Tylo/Tylo1.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/Tylo/Tylo2.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Tylo/Tylo2.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/Tylo/Tylo3.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Tylo/Tylo3.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/Tylo/TyloHurt.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Tylo/TyloHurt.ogg"));
-            event.manager.soundPoolSounds.addSound("paleocraft/Tylo/LargeCarnDeath.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Tylo/LargeCarnDeath.ogg"));
+            event.manager.addSound("paleocraft:tyloliving1.ogg");            
+            event.manager.addSound("paleocraft:tyloliving2.ogg");            
+            event.manager.addSound("paleocraft:tyloliving3.ogg");            
+            event.manager.addSound("paleocraft:tylohurt.ogg");
+            event.manager.addSound("paleocraft:largecarndeath.ogg");
              
             //Spinosaurus
-            event.manager.soundPoolSounds.addSound("paleocraft/Spino/Spino1.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Spino/Spino1.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/Spino/Spino2.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Spino/Spino2.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/Spino/Spino3.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Spino/Spino3.ogg"));            
-            event.manager.soundPoolSounds.addSound("paleocraft/Spino/SpinoHurt.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Spino/SpinoHurt.ogg"));
-            event.manager.soundPoolSounds.addSound("paleocraft/Spino/LargeCarnDeath.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Spino/LargeCarnDeath.ogg"));
-            event.manager.soundPoolSounds.addSound("paleocraft/Spino/SpinoMad1.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Spino/SpinoMad1.ogg"));
-            event.manager.soundPoolSounds.addSound("paleocraft/Spino/SpinoMad2.ogg", Paleocraft.class.getResource("/Paleocraft/Mobs/Spino/SpinoMad2.ogg"));
+            event.manager.addSound("paleocraft:spinoliving1.ogg");            
+            event.manager.addSound("paleocraft:spinoliving2.ogg");            
+            event.manager.addSound("paleocraft:spinoliving3.ogg");            
+            event.manager.addSound("paleocraft:spinohurt.ogg");
+            event.manager.addSound("paleocraft:largecarndeath.ogg");
+            event.manager.addSound("paleocraft:spinomad1.ogg");
+            event.manager.addSound("paleocraft:spinomad2.ogg");
         } 
         catch (Exception e)
         {
