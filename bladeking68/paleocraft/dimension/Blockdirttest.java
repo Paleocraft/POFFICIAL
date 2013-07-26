@@ -11,7 +11,7 @@ public class Blockdirttest extends Block
     public Blockdirttest(int par1)
     {
         super(par1, Material.grass);
-        this.setCreativeTab(fisherman77.paleocraft.common.Paleocraft.PaleocraftBlocks);
+        //this.setCreativeTab(fisherman77.paleocraft.common.Paleocraft.PaleocraftBlocks);
     }
     public void registerIcons(IconRegister iconRegister)
     {
