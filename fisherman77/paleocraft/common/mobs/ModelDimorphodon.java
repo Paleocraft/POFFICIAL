@@ -18,7 +18,7 @@ import net.minecraft.util.MathHelper;
 
 public class ModelDimorphodon extends ModelBase
 {
-  //fields
+	  //fields
     ModelRenderer LeftWing;
     ModelRenderer Tail;
     ModelRenderer RightLeg;

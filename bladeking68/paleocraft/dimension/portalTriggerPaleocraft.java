@@ -49,6 +49,6 @@ public void onBlockAdded(World par1World, int par2, int par3, int par4)
 
 public void registerIcons(IconRegister iconRegister)
 {
-         blockIcon = iconRegister.registerIcon("Paleocraft Dimension:Portal trigger");
+         blockIcon = iconRegister.registerIcon("paleocraft:Portal trigger");
 }
 }

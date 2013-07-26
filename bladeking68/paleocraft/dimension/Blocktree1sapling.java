@@ -158,6 +158,6 @@ return par1 == Block.grass.blockID || par1 == Block.grass.blockID || par1 == Blo
 }
 public void registerIcons(IconRegister iconRegister)
 {
-         blockIcon = iconRegister.registerIcon("Paleocraft Dimension:tree1");
+         blockIcon = iconRegister.registerIcon("paleocraft:tree1");
 }
 }

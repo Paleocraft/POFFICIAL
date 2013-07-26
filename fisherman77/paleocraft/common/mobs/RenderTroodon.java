@@ -1,31 +1,80 @@
 package fisherman77.paleocraft.common.mobs;
 
+import org.lwjgl.opengl.GL11;
+
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.ResourceLocation;
+
+//Tons of credit to CrackedEgg and his Reptiles mod. Check it out, it's pretty awesome!
 
 public class RenderTroodon extends RenderLiving
 {
- protected ModelTroodon model;
- 
- public RenderTroodon (ModelTroodon modelTroodon, float f)
- {
-  super(modelTroodon, f);
-  model = ((ModelTroodon)mainModel);
- }
- 
- public void renderTroodon(EntityTroodon entity, double par2, double par4, double par6, float par8, float par9)
-    {
-        super.doRenderLiving(entity, par2, par4, par6, par8, par9);
-    }
- 
- public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
-    {
-        renderTroodon((EntityTroodon)par1EntityLiving, par2, par4, par6, par8, par9);
-    }
- 
- public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
-    {
-        renderTroodon((EntityTroodon)par1Entity, par2, par4, par6, par8, par9);
-    }
+	private static final ResourceLocation skin = new ResourceLocation("paleocraft", "textures/entity/Troo.png");
+	private static final ResourceLocation eyes = new ResourceLocation("paleocraft", "textures/entity/TrooEyes.png");
+
+	public RenderTroodon(ModelBase modelbase, float f) {
+		super(modelbase, f);
+		setRenderPassModel((ModelTroodon) modelbase);
+	}
+
+	public RenderTroodon() {
+		super(new ModelTroodon(), 0.8F);
+		setRenderPassModel(new ModelTroodon());
+	}
+
+	public void renderCroc(EntityTroodon entitycroc, double d, double d1, double d2, float f, float f1) {
+		super.doRenderLiving(entitycroc, d, d1, d2, f, f1);
+	}
+
+	public void doRenderLiving(EntityLivingBase entityliving, double d, double d1, double d2, float f, float f1) {
+		renderCroc((EntityTroodon) entityliving, d, d1, d2, f, f1);
+	}
+
+    @Override
+	public void doRender(Entity entity, double d, double d1, double d2,	float f, float f1) {
+		renderCroc((EntityTroodon) entity, d, d1, d2, f, f1);
+	}
+
+	/*protected int setCrocEyeBrightness(EntityTroodon entitycroc, int i, float f) {
+		if (i != 0) {
+			return -1;
+		} else {
+			func_110776_a(eyes);
+			// float alpha = (1.0F - entitycroc.getBrightness(1.0F)) * 0.5F;
+			// GL11.glEnable(GL11.GL_BLEND);
+			// GL11.glDisable(GL11.GL_ALPHA_TEST);
+			// GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			// GL11.glColor4f(1.0F, 1.0F, 1.0F, alpha);
+			GL11.glEnable(GL11.GL_BLEND);
+            GL11.glDisable(GL11.GL_ALPHA_TEST);
+			GL11.glBlendFunc(GL11.GL_ONE, GL11.GL_ONE);
+
+			if (entitycroc.isInvisible()) {
+                GL11.glDepthMask(false);
+            } else {
+                GL11.glDepthMask(true);
+            }
+			char color = 61680;
+			int u = color % 65536;
+			int v = color / 65536;
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) u / 1.0F, (float) v / 1.0F);
+			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+			return 1;
+		}
+	}
+
+    @Override
+	protected int shouldRenderPass(EntityLivingBase entityliving, int i, float f) {
+		return setCrocEyeBrightness((EntityTroodon) entityliving, i, f);
+	}*/
+
+	@Override
+	protected ResourceLocation func_110775_a(Entity entity) {
+		return skin;
+	}
 }

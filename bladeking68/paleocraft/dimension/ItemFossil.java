@@ -71,16 +71,10 @@ public class ItemFossil extends Item
                return true;
                 }}
 
-//@SideOnly(Side.CLIENT)
-//public void updateIcons(IconRegister par1IconRegister)
-//{
-// this.iconIndex = par1IconRegister.registerIcon(PaleocraftDimension.PaleocraftDimension + "Paleocraft Dimension" + this.getUnlocalizedName());
-//}}
-
        @Override
        @SideOnly(Side.CLIENT)
        public void registerIcons(IconRegister iconRegister)
        {
-       itemIcon = iconRegister.registerIcon("Paleocraft Dimension:" + this.getUnlocalizedName());
+       itemIcon = iconRegister.registerIcon("paleocraft:" + "Fossil");
        }
 }

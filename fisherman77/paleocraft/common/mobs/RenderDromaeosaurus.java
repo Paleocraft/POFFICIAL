@@ -1,31 +1,38 @@
 package fisherman77.paleocraft.common.mobs;
 
+import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.ResourceLocation;
 
 public class RenderDromaeosaurus extends RenderLiving
 {
- protected ModelDromaeosaurus model;
- 
- public RenderDromaeosaurus (ModelDromaeosaurus modelDromaeosaurus, float f)
- {
-  super(modelDromaeosaurus, f);
-  model = ((ModelDromaeosaurus)mainModel);
- }
- 
- public void renderDromaeosaurus(EntityDromaeosaurus entity, double par2, double par4, double par6, float par8, float par9)
-    {
-        super.doRenderLiving(entity, par2, par4, par6, par8, par9);
-    }
- 
- public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
-    {
-        renderDromaeosaurus((EntityDromaeosaurus)par1EntityLiving, par2, par4, par6, par8, par9);
-    }
- 
- public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
-    {
-        renderDromaeosaurus((EntityDromaeosaurus)par1Entity, par2, par4, par6, par8, par9);
-    }
+	private static final ResourceLocation skin = new ResourceLocation("paleocraft", "textures/entity/Dromie.png");
+
+	public RenderDromaeosaurus(ModelBase modelbase, float shadowSize) {
+		super(modelbase, shadowSize);
+	}
+
+	public void func_177_a(EntityDromaeosaurus entityDromie, double d, double d1,
+			double d2, float f, float f1) {
+		super.doRenderLiving(entityDromie, d, d1, d2, f, f1);
+	}
+
+	public void doRenderLiving(EntityLivingBase entityliving, double d, double d1,
+			double d2, float f, float f1) {
+		func_177_a((EntityDromaeosaurus) entityliving, d, d1, d2, f, f1);
+	}
+
+    @Override
+	public void doRender(Entity entity, double d, double d1, double d2,
+			float f, float f1) {
+		func_177_a((EntityDromaeosaurus) entity, d, d1, d2, f, f1);
+	}
+
+	@Override
+	protected ResourceLocation func_110775_a(Entity entity) {
+		return skin;
+	}
 }

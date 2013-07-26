@@ -15,6 +15,6 @@ public class Blockseaweed extends BlockFlower
     }
     public void registerIcons(IconRegister iconRegister)
     {
-             blockIcon = iconRegister.registerIcon("Paleocraft Dimension:seaweed");
+             blockIcon = iconRegister.registerIcon("paleocraft:seaweed");
     }
     }

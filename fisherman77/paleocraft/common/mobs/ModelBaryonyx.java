@@ -18,7 +18,7 @@ import net.minecraft.util.MathHelper;
 
 public class ModelBaryonyx extends ModelBase
 {
-  //fields
+	  //fields
     ModelRenderer Spines;
     ModelRenderer Tail6;
     ModelRenderer Tail5;
@@ -109,14 +109,12 @@ public class ModelBaryonyx extends ModelBase
       RightClaw.setTextureSize(100, 100);
       RightClaw.mirror = true;
       setRotation(RightClaw, -1.117011F, -0.418879F, -0.3490659F);
-      //RightHand.mirror = true;
       RightHand = new ModelRenderer(this, 54, 88);
       RightHand.addBox(-1F, 0F, -5F, 1, 2, 3);
       RightHand.setRotationPoint(-5F, 14F, -8F);
       RightHand.setTextureSize(100, 100);
       RightHand.mirror = true;
       setRotation(RightHand, 0.7504916F, -0.3665191F, -0.3490659F);
-      //RightHand.mirror = false;
       RightArmLower = new ModelRenderer(this, 1, 47);
       RightArmLower.addBox(-1F, 0F, -5F, 1, 2, 5);
       RightArmLower.setRotationPoint(-4F, 12F, -6F);

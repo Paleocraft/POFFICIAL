@@ -20,6 +20,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.DamageSource;
@@ -33,32 +34,26 @@ public class EntityTroodon extends EntityAnimal
  public EntityTroodon(World par1World) 
  {
   super(par1World);
-  this.texture = "/Paleocraft/Mobs/Troo/Troodon.png";	
-  this.moveSpeed = 0.4F;
   
   this.setSize(1.0F, 1.0F);
   
   this.tasks.addTask(0, new EntityAISwimming(this));
-  this.tasks.addTask(1, new EntityAIFleeSun(this, this.moveSpeed));
+  this.tasks.addTask(1, new EntityAIFleeSun(this, 1.0));
   this.tasks.addTask(2, new EntityAILeapAtTarget(this, 0.4F));
-  this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityChicken.class, this.moveSpeed, false));
-  this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-  this.tasks.addTask(5, new EntityAIWander(this, this.moveSpeed));
+  this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityChicken.class, 1.0, false));
+  this.tasks.addTask(4, new EntityAIWander(this, 0.4));
+  this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-  this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityChicken.class, 16.0F, 0, true));
+  this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityChicken.class, 0, true));
  }
  
- /**
-  * Setting Damage
-  */
- public int func_82193_c(Entity par1Entity) {
-	 return 1;
-	 }
- 
- public int getMaxHealth() 
- {
-  return 8;
- }
+	@Override
+	protected void func_110147_ax() {
+	    super.func_110147_ax();
+	    
+	    func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.4); // moveSpeed
+	    func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(8); // maxHealth
+	}
  
  public EnumCreatureAttribute getCreatureAttribute()
     {
@@ -75,7 +70,7 @@ protected boolean isAIEnabled()
  */
 protected String getLivingSound()
 {
-    return "paleocraft.troo.living";
+    return "paleocraft:trooliving";
 }
 
 /**
@@ -83,7 +78,7 @@ protected String getLivingSound()
  */
 protected String getHurtSound()
 {
-    return "paleocraft.troo.hurt";
+    return "paleocraft:troohurt";
 }
 
 /**
@@ -91,7 +86,7 @@ protected String getHurtSound()
  */
 protected String getDeathSound()
 {
-    return "paleocraft.troo.smallcarndeath";
+    return "paleocraft:troosmallcarndeath";
 }
 
 
@@ -106,8 +101,10 @@ protected boolean canDespawn()
 return false;
 }
 
+
+//ATTACKING OTHER MOBS - OVERRIDING ENTITYANIMAL
 /**
- * ATTACKING OTHER MOBS - OVERRIDING ENTITYANIMAL
+ * Basic mob attack. Default to touch of death in EntityCreature. Overridden by each mob to define their attack.
  */
 protected void attackEntity(Entity par1Entity, float par2)
 {
@@ -118,58 +115,10 @@ protected void attackEntity(Entity par1Entity, float par2)
     }
 }
 
-public int getAttackStrength(Entity par1Entity)
-{
-	 return 3;
-}
-
 public boolean attackEntityAsMob(Entity par1Entity)
 {
-    int i = this.getAttackStrength(par1Entity);
-
-    if (this.isPotionActive(Potion.damageBoost))
-    {
-        i += 3 << this.getActivePotionEffect(Potion.damageBoost).getAmplifier();
-    }
-
-    if (this.isPotionActive(Potion.weakness))
-    {
-        i -= 2 << this.getActivePotionEffect(Potion.weakness).getAmplifier();
-    }
-
-    int j = 0;
-
-    if (par1Entity instanceof EntityLiving)
-    {
-        i += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLiving)par1Entity);
-        j += EnchantmentHelper.getKnockbackModifier(this, (EntityLiving)par1Entity);
-    }
-
-    boolean flag = par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), i);
-
-    if (flag)
-    {
-        if (j > 0)
-        {
-            par1Entity.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * (float)j * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)j * 0.5F));
-            this.motionX *= 0.6D;
-            this.motionZ *= 0.6D;
-        }
-
-        int k = EnchantmentHelper.getFireAspectModifier(this);
-
-        if (k > 0)
-        {
-            par1Entity.setFire(k * 4);
-        }
-
-        if (par1Entity instanceof EntityLiving)
-        {
-            EnchantmentThorns.func_92096_a(this, (EntityLiving)par1Entity, this.rand);
-        }
-    }
-
-    return flag;
+	int i = 2; //attackStrength
+    return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float)i);
 }
 
 protected void dropFewItems(boolean par1, int par2)

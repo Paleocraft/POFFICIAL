@@ -6,6 +6,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
@@ -18,7 +19,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
@@ -28,34 +31,28 @@ import net.minecraft.world.World;
 public class EntityCitipati extends EntityAnimal
 {
 	
- public EntityCitipati(World par1World) 
+ public EntityCitipati(World world) 
  {
-  super(par1World);
-  this.texture = "/Paleocraft/Mobs/Citi/Citipati.png";	
-  this.moveSpeed = 0.4F;
+	 super(world);
   
   this.setSize(1.0F, 1.0F);
   
   this.getNavigator().setAvoidsWater(true);
   
-  this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityChicken.class, this.moveSpeed, false));
-  this.tasks.addTask(1, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-  this.tasks.addTask(2, new EntityAIWander(this, this.moveSpeed));
-  this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityChicken.class, 16.0F, 0, true));
- }
-
- /**
-  * Returns the amount of damage a mob should deal.
-  */
- public int getAttackStrength(Entity par1Entity)
- {
-	 return 2;
+  this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityChicken.class, 1.0D, false));
+  this.tasks.addTask(1, new EntityAIPanic(this, 1.25D));
+  this.tasks.addTask(2, new EntityAIWander(this, 0.4D));
+  this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+  this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityChicken.class, 0, true));
  }
  
- public int getMaxHealth() 
- {
-  return 9;
- }
+	@Override
+	protected void func_110147_ax() {
+	    super.func_110147_ax();
+	    
+	    func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.4); // moveSpeed
+	    func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(9); // maxHealth
+	}
  
  public EnumCreatureAttribute getCreatureAttribute()
     {
@@ -72,7 +69,7 @@ protected boolean isAIEnabled()
  */
 protected String getLivingSound()
 {
-    return "paleocraft.citi.living";
+    return "paleocraft:citiliving";
 }
 
 /**
@@ -80,7 +77,7 @@ protected String getLivingSound()
  */
 protected String getHurtSound()
 {
-    return "paleocraft.citi.hurt";
+    return "paleocraft:citihurt";
 }
 
 /**
@@ -88,7 +85,7 @@ protected String getHurtSound()
  */
 protected String getDeathSound()
 {
-    return "paleocraft.citi.smallherbdeath";
+    return "paleocraft:smallherbdeath";
 }
 
 protected boolean canDespawn()
@@ -102,8 +99,9 @@ public EntityAgeable createChild(EntityAgeable entityageable) {
 	return null;
 }
 
+//ATTACKING OTHER MOBS - OVERRIDING ENTITYANIMAL
 /**
- * ATTACKING OTHER MOBS - OVERRIDING ENTITYANIMAL
+ * Basic mob attack. Default to touch of death in EntityCreature. Overridden by each mob to define their attack.
  */
 protected void attackEntity(Entity par1Entity, float par2)
 {
@@ -116,50 +114,7 @@ protected void attackEntity(Entity par1Entity, float par2)
 
 public boolean attackEntityAsMob(Entity par1Entity)
 {
-    int i = this.getAttackStrength(par1Entity);
-
-    if (this.isPotionActive(Potion.damageBoost))
-    {
-        i += 3 << this.getActivePotionEffect(Potion.damageBoost).getAmplifier();
-    }
-
-    if (this.isPotionActive(Potion.weakness))
-    {
-        i -= 2 << this.getActivePotionEffect(Potion.weakness).getAmplifier();
-    }
-
-    int j = 0;
-
-    if (par1Entity instanceof EntityLiving)
-    {
-        i += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLiving)par1Entity);
-        j += EnchantmentHelper.getKnockbackModifier(this, (EntityLiving)par1Entity);
-    }
-
-    boolean flag = par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), i);
-
-    if (flag)
-    {
-        if (j > 0)
-        {
-            par1Entity.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * (float)j * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)j * 0.5F));
-            this.motionX *= 0.6D;
-            this.motionZ *= 0.6D;
-        }
-
-        int k = EnchantmentHelper.getFireAspectModifier(this);
-
-        if (k > 0)
-        {
-            par1Entity.setFire(k * 4);
-        }
-
-        if (par1Entity instanceof EntityLiving)
-        {
-            EnchantmentThorns.func_92096_a(this, (EntityLiving)par1Entity, this.rand);
-        }
-    }
-
-    return flag;
+	int i = 10; //attackStrength
+    return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float)i);
 }
 }

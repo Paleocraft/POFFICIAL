@@ -6,33 +6,36 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.ResourceLocation;
 
 @SideOnly(Side.CLIENT)
 public class RenderCitipati extends RenderLiving
 {
-    public RenderCitipati(ModelBase par1ModelBase, float par2)
-    {
-        super(par1ModelBase, par2);
-    }
+	private static final ResourceLocation skin = new ResourceLocation("paleocraft", "textures/entity/Citi.png");
 
-    public void renderCitipati(EntityCitipati par1EntityCitipati, double par2, double par4, double par6, float par8, float par9)
-    {
-        super.doRenderLiving(par1EntityCitipati, par2, par4, par6, par8, par9);
-    }
+	public RenderCitipati(ModelBase modelbase, float shadowSize) {
+		super(modelbase, shadowSize);
+	}
 
-    public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
-    {
-        this.renderCitipati((EntityCitipati)par1EntityLiving, par2, par4, par6, par8, par9);
-    }
+	public void func_177_a(EntityCitipati entityCiti, double d, double d1,
+			double d2, float f, float f1) {
+		super.doRenderLiving(entityCiti, d, d1, d2, f, f1);
+	}
 
-    /**
-     * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then
-     * handing it off to a worker function which does the actual work. In all probabilty, the class Render is generic
-     * (Render<T extends Entity) and this method has signature public void doRender(T entity, double d, double d1,
-     * double d2, float f, float f1). But JAD is pre 1.5 so doesn't do that.
-     */
-    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
-    {
-        this.renderCitipati((EntityCitipati)par1Entity, par2, par4, par6, par8, par9);
-    }
+	public void doRenderLiving(EntityLivingBase entityliving, double d, double d1,
+			double d2, float f, float f1) {
+		func_177_a((EntityCitipati) entityliving, d, d1, d2, f, f1);
+	}
+
+    @Override
+	public void doRender(Entity entity, double d, double d1, double d2,
+			float f, float f1) {
+		func_177_a((EntityCitipati) entity, d, d1, d2, f, f1);
+	}
+
+	@Override
+	protected ResourceLocation func_110775_a(Entity entity) {
+		return skin;
+	}
 }

@@ -19,7 +19,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
@@ -28,12 +30,21 @@ import net.minecraft.world.World;
 
 public class EntityTylo extends EntityWaterMob
 {
+	
+	private double moveSpeed;
+	private int maxHealth;
+	private int attackStrength;
   
  public EntityTylo(World par1World) 
  {
-  super(par1World);
-  this.texture = "/Paleocraft/Mobs/Tylo/Tylo.png";	
-  this.moveSpeed = 0.4F;
+  super(par1World);	
+
+	//STATS
+	  //-------------------
+	  this.moveSpeed = 0.4D;
+	  this.maxHealth = 9;
+	  this.attackStrength = 2;
+	  //-------------------
   
   this.setSize(1.0F, 1.0F);
   
@@ -42,7 +53,7 @@ public class EntityTylo extends EntityWaterMob
   this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, false));
   this.tasks.addTask(1, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.tasks.addTask(2, new EntityAIWander(this, this.moveSpeed));
-  this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
+  this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
   this.tasks.addTask(0, new EntityAISwimming(this));
   this.getNavigator().setCanSwim(true);}
   
@@ -102,8 +113,9 @@ return false;
 
 
 
+//ATTACKING OTHER MOBS - OVERRIDING ENTITYANIMAL
 /**
- * ATTACKING OTHER MOBS - OVERRIDING ENTITYANIMAL
+ * Basic mob attack. Default to touch of death in EntityCreature. Overridden by each mob to define their attack.
  */
 protected void attackEntity(Entity par1Entity, float par2)
 {
@@ -116,47 +128,36 @@ protected void attackEntity(Entity par1Entity, float par2)
 
 public boolean attackEntityAsMob(Entity par1Entity)
 {
-    int i = this.getAttackStrength(par1Entity);
+    float f = (float)this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111126_e();
+    int i = 0;
 
-    if (this.isPotionActive(Potion.damageBoost))
+    if (par1Entity instanceof EntityLivingBase)
     {
-        i += 3 << this.getActivePotionEffect(Potion.damageBoost).getAmplifier();
+        f += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLivingBase)par1Entity);
+        i += EnchantmentHelper.getKnockbackModifier(this, (EntityLivingBase)par1Entity);
     }
 
-    if (this.isPotionActive(Potion.weakness))
-    {
-        i -= 2 << this.getActivePotionEffect(Potion.weakness).getAmplifier();
-    }
-
-    int j = 0;
-
-    if (par1Entity instanceof EntityLiving)
-    {
-        i += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLiving)par1Entity);
-        j += EnchantmentHelper.getKnockbackModifier(this, (EntityLiving)par1Entity);
-    }
-
-    boolean flag = par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), i);
+    boolean flag = par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), f);
 
     if (flag)
     {
-        if (j > 0)
+        if (i > 0)
         {
-            par1Entity.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * (float)j * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)j * 0.5F));
+            par1Entity.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F));
             this.motionX *= 0.6D;
             this.motionZ *= 0.6D;
         }
 
-        int k = EnchantmentHelper.getFireAspectModifier(this);
+        int j = EnchantmentHelper.getFireAspectModifier(this);
 
-        if (k > 0)
+        if (j > 0)
         {
-            par1Entity.setFire(k * 4);
+            par1Entity.setFire(j * 4);
         }
 
-        if (par1Entity instanceof EntityLiving)
+        if (par1Entity instanceof EntityLivingBase)
         {
-            EnchantmentThorns.func_92096_a(this, (EntityLiving)par1Entity, this.rand);
+            EnchantmentThorns.func_92096_a(this, (EntityLivingBase)par1Entity, this.rand);
         }
     }
 

@@ -1,11 +1,19 @@
 package fisherman77.paleocraft.common;
 
+import java.lang.reflect.Type;
+import java.util.LinkedList;
+
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityEggInfo;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import bladeking68.paleocraft.dimension.BiomeGenPaleoSwamp;
@@ -25,11 +33,13 @@ import bladeking68.paleocraft.dimension.WorldGenPaleocraftTree1;
 import bladeking68.paleocraft.dimension.WorldProviderPaleocraft;
 import bladeking68.paleocraft.dimension.portalTriggerPaleocraft;
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
@@ -45,7 +55,9 @@ import fisherman77.paleocraft.common.mobs.EntityBaryonyx;
 import fisherman77.paleocraft.common.mobs.EntityCitipati;
 import fisherman77.paleocraft.common.mobs.EntityDimorphodon;
 import fisherman77.paleocraft.common.mobs.EntityDromaeosaurus;
+import fisherman77.paleocraft.common.mobs.EntitySpino;
 import fisherman77.paleocraft.common.mobs.EntityTroodon;
+import fisherman77.paleocraft.common.mobs.EntityTylo;
 
 
 @NetworkMod(clientSideRequired=true,serverSideRequired=true, //Whether client side and server side are needed
@@ -115,18 +127,15 @@ PaleocraftConfigCore.loadConfig(e);
 	Paleodesert = new BiomeGenPaleodesert(54).setColor(2900485).setBiomeName("Paleodesert").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
 	Paleosea = new BiomeGenPaleosea(55).setColor(2900485).setBiomeName("Paleosea").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(-1.0F, 0.4F);
 	Paleoforest = new BiomeGenPaleoforest(53).setColor(2900485).setBiomeName("Paleoforest").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(-0.2F, 0.1F);
-	 
-	//Paleoforest = new BiomeGenPaleoforest(25);
 	Paleoswamp = new BiomeGenPaleoSwamp(52).setColor(522674).setBiomeName("PaleoSwamp").func_76733_a(9154376).setMinMaxHeight(-0.2F, 0.1F).setTemperatureRainfall(0.8F, 0.9F);
 	fossil = new ItemFossil(253).setUnlocalizedName("Fossil");
 
 //Blocks
-	 seaweed = new Blockseaweed(254).setUnlocalizedName("seaweed");
+	seaweed = new Blockseaweed(254).setUnlocalizedName("seaweed");
 	portalTrigger = new portalTriggerPaleocraft(252, 1).setUnlocalizedName("portaltrigger");
 	PaleocraftPortal = new BlockPortalPaleocraft(251).setUnlocalizedName("paleocraftportal");
     treesapling1 = new Blocktree1sapling(253, 0).setUnlocalizedName("tree1");
     dirttest = new Blockdirttest(250).setUnlocalizedName("Test1");}
-   // seaweed = new Blockseaweed(254).setUnlocalizedName("seaweed");}
     
 //Test (Trees)
 
@@ -182,31 +191,24 @@ GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
 
 
 //MOBS
-		proxy.registerRenderers();
+	proxy.registerRenderers();
+		
+	registerEntity(EntityBaryonyx.class, "Baryonyx",  0x405135, 0xC4C67D);
+	registerEntity(EntityCitipati.class, "Citipati",  0xA67822, 0xA14A5C);
+	registerEntity(EntityDimorphodon.class, "Dimorphodon", 0xC8C968, 0x6064C4);
+	registerEntity(EntityDromaeosaurus.class, "Dromaeosaurus",  0x5C5B5C, 0x551305);
+	registerEntity(EntityTroodon.class, "Troodon", 0x5A5A5A, 0xE8E1BF);
+
 	//Baryonyx
-		EntityRegistry.registerGlobalEntityID(EntityBaryonyx.class, "Baryonyx", EntityRegistry.findGlobalUniqueEntityId(), 0x405135, 0xC4C67D);
 		LanguageRegistry.instance().addStringLocalization("entity.Baryonyx.name", "Baryonyx");
-		//if(spawnBary == true){
-		//EntityRegistry.addSpawn(EntityBaryonyx.class, 4, 1, 1, EnumCreatureType.creature, Paleocraft.Paleoplains);
-		//	EntityRegistry.addSpawn(entityName, weightedProb, min, max, spawnList, biomes)
-		//}
 	//Citipati
-		EntityRegistry.registerGlobalEntityID(EntityCitipati.class, "Citipati", EntityRegistry.findGlobalUniqueEntityId(), 0xA67822, 0xA14A5C);
 		LanguageRegistry.instance().addStringLocalization("entity.Citipati.name", "Citipati");
-		//if(spawnCiti == true){
-		//	EntityRegistry.addSpawn(EntityCitipati.class, 7, 2, 5, EnumCreatureType.creature, Paleocraft.Paleoplains);
-		//}
 	//Dromaeosaurus
-		EntityRegistry.registerGlobalEntityID(EntityDromaeosaurus.class, "Dromaeosaurus", EntityRegistry.findGlobalUniqueEntityId(), 0x5C5B5C, 0x551305);
 		LanguageRegistry.instance().addStringLocalization("entity.Dromaeosaurus.name", "Dromaeosaurus");
-		if(spawnDromie == true){
-			EntityRegistry.addSpawn(EntityDromaeosaurus.class, 30, 2, 4, EnumCreatureType.creature, Paleocraft.Paleoplains);
-		}
 	//Troodon
-		EntityRegistry.registerGlobalEntityID(EntityTroodon.class, "Troodon", EntityRegistry.findGlobalUniqueEntityId(), 0x5A5A5A, 0xE8E1BF);
 		LanguageRegistry.instance().addStringLocalization("entity.Troodon.name", "Troodon");
 		//if(spawnTroo == true){
-			EntityRegistry.addSpawn(EntityTroodon.class, 3, 1, 3, EnumCreatureType.creature, Paleocraft.Paleoplains);
+			//EntityRegistry.addSpawn(EntityTroodon.class, 3, 1, 3, EnumCreatureType.creature, Paleocraft.Paleoplains);
 		//}
 	//Dimorphodon
 		EntityRegistry.registerGlobalEntityID(EntityDimorphodon.class, "Dimorphodon", EntityRegistry.findGlobalUniqueEntityId(), 0xC8C968, 0x6064C4);
@@ -225,4 +227,17 @@ GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
 
 		
 }
+	
+	public void registerEntity(Class<? extends Entity> entityClass, String entityName, int bkEggColor, int fgEggColor) {
+		int id = EntityRegistry.findGlobalUniqueEntityId();
+	
+		EntityRegistry.registerGlobalEntityID(entityClass, entityName, id);
+		EntityList.entityEggs.put(Integer.valueOf(id), new EntityEggInfo(id, bkEggColor, fgEggColor));
+	}
+	
+	public void addSpawn(Class<? extends EntityLiving> entityClass, int spawnProb, int min, int max, BiomeGenBase[] biomes) {
+		if (spawnProb > 0) {
+			EntityRegistry.addSpawn(entityClass, spawnProb, min, max, EnumCreatureType.creature, biomes);
+		}
+	}
 }

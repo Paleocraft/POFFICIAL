@@ -1,7 +1,10 @@
 package fisherman77.paleocraft.common.mobs;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityLargeFireball;
@@ -16,32 +19,31 @@ import net.minecraft.world.World;
 
 public class EntityDimorphodon extends EntityFlying implements IMob
 {
-    public int courseChangeCooldown = 0;
+    public int courseChangeCooldown;
     public double waypointX;
     public double waypointY;
     public double waypointZ;
-    private Entity targetedEntity = null;
-
-    /** Cooldown time between target loss and new target aquirement. */
-    private int aggroCooldown = 0;
-    public int prevAttackCounter = 0;
-    public int attackCounter = 0;
-    private int field_92009_j = 1;
 
     public EntityDimorphodon(World par1World)
     {
         super(par1World);
-        this.texture = "/Paleocraft/Mobs/Dimorph/Dimorph.png";
-        this.setSize(1.0F, 1.0F);
-        this.isImmuneToFire = true;
-        this.experienceValue = 5;
+        this.setSize(0.4F, 0.4F);
     }
     
-    public int getMaxHealth() 
+	@Override
+	protected void func_110147_ax() {
+	    super.func_110147_ax();
+	    
+	    func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.4); // moveSpeed
+	    func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(9); // maxHealth
+	}
+
+    @SideOnly(Side.CLIENT)
+    public boolean func_110182_bF()
     {
-     return 3;
+        return this.dataWatcher.getWatchableObjectByte(16) != 0;
     }
-    
+
     protected void entityInit()
     {
         super.entityInit();
@@ -51,14 +53,12 @@ public class EntityDimorphodon extends EntityFlying implements IMob
     protected void updateEntityActionState()
     {
 
-        this.despawnEntity();
-        this.prevAttackCounter = this.attackCounter;
-        double var1 = this.waypointX - this.posX;
-        double var3 = this.waypointY - this.posY;
-        double var5 = this.waypointZ - this.posZ;
-        double var7 = var1 * var1 + var3 * var3 + var5 * var5;
+        double d0 = this.waypointX - this.posX;
+        double d1 = this.waypointY - this.posY;
+        double d2 = this.waypointZ - this.posZ;
+        double d3 = d0 * d0 + d1 * d1 + d2 * d2;
 
-        if (var7 < 1.0D || var7 > 3600.0D)
+        if (d3 < 1.0D || d3 > 3600.0D)
         {
             this.waypointX = this.posX + (double)((this.rand.nextFloat() * 2.0F - 1.0F) * 16.0F);
             this.waypointY = this.posY + (double)((this.rand.nextFloat() * 2.0F - 1.0F) * 16.0F);
@@ -68,13 +68,13 @@ public class EntityDimorphodon extends EntityFlying implements IMob
         if (this.courseChangeCooldown-- <= 0)
         {
             this.courseChangeCooldown += this.rand.nextInt(5) + 2;
-            var7 = (double)MathHelper.sqrt_double(var7);
+            d3 = (double)MathHelper.sqrt_double(d3);
 
-            if (this.isCourseTraversable(this.waypointX, this.waypointY, this.waypointZ, var7))
+            if (this.isCourseTraversable(this.waypointX, this.waypointY, this.waypointZ, d3))
             {
-                this.motionX += var1 / var7 * 0.1D;
-                this.motionY += var3 / var7 * 0.1D;
-                this.motionZ += var5 / var7 * 0.1D;
+                this.motionX += d0 / d3 * 0.1D;
+                this.motionY += d1 / d3 * 0.1D;
+                this.motionZ += d2 / d3 * 0.1D;
             }
             else
             {
@@ -84,18 +84,7 @@ public class EntityDimorphodon extends EntityFlying implements IMob
             }
         }
 
-        double var9 = 64.0D;
-
-        if (!this.worldObj.isRemote)
-        {
-            byte var21 = this.dataWatcher.getWatchableObjectByte(16);
-            byte var12 = (byte)(this.attackCounter > 10 ? 1 : 0);
-
-            if (var21 != var12)
-            {
-                this.dataWatcher.updateObject(16, Byte.valueOf(var12));
-            }
-        }
+        double d4 = 64.0D;
     }
 
     /**
@@ -103,16 +92,16 @@ public class EntityDimorphodon extends EntityFlying implements IMob
      */
     private boolean isCourseTraversable(double par1, double par3, double par5, double par7)
     {
-        double var9 = (this.waypointX - this.posX) / par7;
-        double var11 = (this.waypointY - this.posY) / par7;
-        double var13 = (this.waypointZ - this.posZ) / par7;
-        AxisAlignedBB var15 = this.boundingBox.copy();
+        double d4 = (this.waypointX - this.posX) / par7;
+        double d5 = (this.waypointY - this.posY) / par7;
+        double d6 = (this.waypointZ - this.posZ) / par7;
+        AxisAlignedBB axisalignedbb = this.boundingBox.copy();
 
-        for (int var16 = 1; (double)var16 < par7; ++var16)
+        for (int i = 1; (double)i < par7; ++i)
         {
-            var15.offset(var9, var11, var13);
+            axisalignedbb.offset(d4, d5, d6);
 
-            if (!this.worldObj.getCollidingBoundingBoxes(this, var15).isEmpty())
+            if (!this.worldObj.getCollidingBoundingBoxes(this, axisalignedbb).isEmpty())
             {
                 return false;
             }
@@ -126,7 +115,7 @@ public class EntityDimorphodon extends EntityFlying implements IMob
      */
     protected String getLivingSound()
     {
-        return "paleocraft.dimorph.living";
+        return "paleocraft:dimorphliving";
     }
 
     /**
@@ -134,7 +123,7 @@ public class EntityDimorphodon extends EntityFlying implements IMob
      */
     protected String getHurtSound()
     {
-        return "paleocraft.dimorph.hurt";
+        return "paleocraft:dimorphhurt";
     }
 
     /**
@@ -142,28 +131,6 @@ public class EntityDimorphodon extends EntityFlying implements IMob
      */
     protected String getDeathSound()
     {
-        return "paleocraft.dimorph.smallcarndeath";
+        return "paleocraft:smallcarndeath";
     }
-    
-    protected boolean canDespawn()
-	{
-	return false;
-	}
-
-    /**
-     * Drop 0-2 items of this living's type. @param par1 - Whether this entity has recently been hit by a player. @param
-     * par2 - Level of Looting used to kill this mob.
-     
-    protected void dropFewItems(boolean par1, int par2)
-    {
-            this.dropItem(Item.ghastTear.itemID, 1);
-    }*/
-
-    /**
-     * Returns the volume for the sounds this mob makes.
-     
-    protected float getSoundVolume()
-    {
-        return 10.0F;
-    }*/
 }

@@ -20,7 +20,7 @@ public class BlockPortalPaleocraft extends BlockBreakable
 {
 public BlockPortalPaleocraft(int par1)
 {
-super(par1, "Paleocraft Dimension:Portal", Material.portal, false);
+super(par1, "paleocraft:Portal", Material.portal, false);
 this.setTickRandomly(true);
 this.setHardness(-1.0F);
 this.setStepSound(soundGlassFootstep);

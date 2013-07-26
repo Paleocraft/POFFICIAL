@@ -22,13 +22,20 @@ import net.minecraft.world.World;
 public class EntitySpino extends EntityMob
 {
 
-   
+	private double moveSpeed;
+	private int maxHealth;
+	private int attackStrength;
 	
  public EntitySpino(World par1World) 
  {
   super(par1World);
-  this.texture = "/Paleocraft/Mobs/Spino/Spino.png";	
-  this.moveSpeed = 0.4F;
+
+	//STATS
+	  //-------------------
+	  this.moveSpeed = 0.3D;
+	  this.maxHealth = 8;
+	  this.attackStrength = 2;
+	  //-------------------
   
   this.setSize(6F, 6F);
   
@@ -37,7 +44,7 @@ public class EntitySpino extends EntityMob
   this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.tasks.addTask(3, new EntityAIWander(this, this.moveSpeed));
   this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false)); 
-  this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 10.0F, 0, true));
+  this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
   
  }
 
@@ -46,7 +53,7 @@ public class EntitySpino extends EntityMob
   */
  protected String getLivingSound()
  {
-     return "paleocraft.Spino.Spino1";
+     return "paleocraft:spinoliving1";
  }
 
  /**
@@ -54,7 +61,7 @@ public class EntitySpino extends EntityMob
   */
  protected String getHurtSound()
  {
-     return "paleocraft.Spino.SpinoHurt";
+     return "paleocraft:spinohurt";
  }
 
  /**
@@ -62,7 +69,7 @@ public class EntitySpino extends EntityMob
   */
  protected String getDeathSound()
  {
-     return "paleocraft.Spino.LargeCarnDeath";
+     return "paleocraft:LargeCarnDeath";
  }
  
  public int getMaxHealth() 

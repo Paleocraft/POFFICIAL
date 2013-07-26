@@ -15,6 +15,6 @@ public class Blockdirttest extends Block
     }
     public void registerIcons(IconRegister iconRegister)
     {
-             blockIcon = iconRegister.registerIcon("Paleocraft Dimension:Test1");
+             blockIcon = iconRegister.registerIcon("paleocraft:Test1");
     }
     }
