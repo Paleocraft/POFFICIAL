@@ -13,9 +13,9 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class BiomeGenPaleoSwamp extends BiomeGenBase
 {
-    private WorldGenTrees WorldGenPaleocraftTree1;
+    private net.minecraft.world.gen.feature.WorldGenForest WorldGenForest;
 
-  public BiomeGenPaleoSwamp(int par1)
+	public BiomeGenPaleoSwamp(int par1)
     {
         super(par1);
         this.theBiomeDecorator.treesPerChunk = 2;
@@ -26,16 +26,14 @@ public class BiomeGenPaleoSwamp extends BiomeGenBase
         this.theBiomeDecorator.clayPerChunk = 1;
         this.theBiomeDecorator.waterlilyPerChunk = 4;
         this.waterColorMultiplier = 14745518;
+        this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityBaryonyx.class,  1, 1, 1));
         //this.spawnableMonsterList.add(new SpawnListEntry(EntitySlime.class, 1, 1, 1));
     }
 
     /**
      * Gets a WorldGen appropriate for this biome.
      */
-	public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
-	{
-	return (WorldGenerator)(par1Random.nextInt(5) == 0 ? this.worldGeneratorForest : (par1Random.nextInt(10) == 0 ? this.WorldGenPaleocraftTree1 : this.worldGeneratorTrees));}
-
+	
 
     /**
      * Provides the basic grass color based on the biome temperature and rainfall
