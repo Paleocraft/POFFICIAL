@@ -9,7 +9,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.biome.SpawnListEntry;
 import net.minecraft.world.gen.feature.WorldGenHugeTrees;
 import net.minecraft.world.gen.feature.WorldGenShrub;
 import net.minecraft.world.gen.feature.WorldGenTrees;
@@ -33,7 +32,6 @@ this.theBiomeDecorator.treesPerChunk = 25;
 //this.topBlock = ((byte)fisherman77.paleocraft.common.Paleocraft.dirttest.blockID);
 //this.fillerBlock = ((byte)Block.dirt.blockID);
 //this.WorldGenPaleocraftTree1 = new WorldGenPaleocraftTree1(false);
-this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityDromaeosaurus.class, 3, 4, 4));
 this.setBiomeName("PaleoForest");}
 
 /** this changes the water colour, its set to red now but google the java colours **/
