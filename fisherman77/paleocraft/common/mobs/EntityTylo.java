@@ -2,6 +2,7 @@ package fisherman77.paleocraft.common.mobs;
 
 import java.util.Random;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -30,47 +31,64 @@ import net.minecraft.world.World;
 
 public class EntityTylo extends EntityWaterMob
 {
-	
-	private double moveSpeed;
-	private int maxHealth;
-	private int attackStrength;
   
  public EntityTylo(World par1World) 
  {
   super(par1World);	
-
-	//STATS
-	  //-------------------
-	  this.moveSpeed = 0.4D;
-	  this.maxHealth = 9;
-	  this.attackStrength = 2;
-	  //-------------------
   
   this.setSize(1.0F, 1.0F);
   
-  //this.getNavigator().setAvoidsWater(true);
-  
-  this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, false));
-  this.tasks.addTask(1, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-  this.tasks.addTask(2, new EntityAIWander(this, this.moveSpeed));
+  this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.6F, false));
+  this.tasks.addTask(1, new EntityAIWander(this, 0.4F));
+  this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
   this.tasks.addTask(0, new EntityAISwimming(this));
-  this.getNavigator().setCanSwim(true);}
-  
+  this.getNavigator().setCanSwim(true);
+ }
 
+@Override
+protected void func_110147_ax() {
+    super.func_110147_ax();
+    
+    func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.4); // moveSpeed
+    func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(9); // maxHealth
+} 
  
+//ATTACKING OTHER MOBS - OVERRIDING ENTITYWATERMOB
 /**
-  * Returns the amount of damage a mob should deal.
-  */
- public int getAttackStrength(Entity par1Entity)
- {
-	 return 2;
- }
- 
- public int getMaxHealth() 
- {
-  return 9;
- }
+* Basic mob attack. Default to touch of death in EntityCreature. Overridden by each mob to define their attack.
+*/
+protected void attackEntity(Entity par1Entity, float par2)
+{
+   if (this.attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY && par1Entity.boundingBox.minY < this.boundingBox.maxY)
+   {
+       this.attackTime = 20;
+       this.attackEntityAsMob(par1Entity);
+   }
+}
+
+public boolean attackEntityAsMob(Entity par1Entity)
+{
+	int i = 2; //attackStrength
+   return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float)i);
+}
+
+/**
+ * Checks if the entity's current position is a valid location to spawn this entity.
+ */
+public boolean getCanSpawnHere()
+{
+    return this.posY > 45.0D && this.posY < 63.0D && super.getCanSpawnHere();
+}
+
+/**
+ * Checks if this entity is inside water (if inWater field is true as a result of handleWaterMovement() returning
+ * true)
+ */
+public boolean isInWater()
+{
+    return this.worldObj.handleMaterialAcceleration(this.boundingBox.expand(0.0D, -0.6000000238418579D, 0.0D), Material.water, this);
+}
  
  public EnumCreatureAttribute getCreatureAttribute()
     {
@@ -109,58 +127,5 @@ protected String getDeathSound()
 protected boolean canDespawn()
 {
 return false;
-}
-
-
-
-//ATTACKING OTHER MOBS - OVERRIDING ENTITYANIMAL
-/**
- * Basic mob attack. Default to touch of death in EntityCreature. Overridden by each mob to define their attack.
- */
-protected void attackEntity(Entity par1Entity, float par2)
-{
-    if (this.attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY && par1Entity.boundingBox.minY < this.boundingBox.maxY)
-    {
-        this.attackTime = 20;
-        this.attackEntityAsMob(par1Entity);
-    }
-}
-
-public boolean attackEntityAsMob(Entity par1Entity)
-{
-    float f = (float)this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111126_e();
-    int i = 0;
-
-    if (par1Entity instanceof EntityLivingBase)
-    {
-        f += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLivingBase)par1Entity);
-        i += EnchantmentHelper.getKnockbackModifier(this, (EntityLivingBase)par1Entity);
-    }
-
-    boolean flag = par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), f);
-
-    if (flag)
-    {
-        if (i > 0)
-        {
-            par1Entity.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F));
-            this.motionX *= 0.6D;
-            this.motionZ *= 0.6D;
-        }
-
-        int j = EnchantmentHelper.getFireAspectModifier(this);
-
-        if (j > 0)
-        {
-            par1Entity.setFire(j * 4);
-        }
-
-        if (par1Entity instanceof EntityLivingBase)
-        {
-            EnchantmentThorns.func_92096_a(this, (EntityLivingBase)par1Entity, this.rand);
-        }
-    }
-
-    return flag;
 }
 }

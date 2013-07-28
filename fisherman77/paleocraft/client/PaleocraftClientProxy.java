@@ -37,8 +37,8 @@ public void registerRenderers(){
 	RenderingRegistry.registerEntityRenderingHandler(EntityDimorphodon.class, new RenderDimorphodon(new ModelDimorphodon(), shadowSize, 0.25F));
 	RenderingRegistry.registerEntityRenderingHandler(EntityDromaeosaurus.class, new RenderDromaeosaurus(new ModelDromaeosaurus(), shadowSize));
 	RenderingRegistry.registerEntityRenderingHandler(EntityTroodon.class, new RenderTroodon(new ModelTroodon(), shadowSize));
-//	RenderingRegistry.registerEntityRenderingHandler(EntityTylo.class, new RenderTylo(new ModelTylo(), shadowSize));
-//	RenderingRegistry.registerEntityRenderingHandler(EntitySpino.class, new RenderSpino(new ModelSpino(), shadowSize));
+	RenderingRegistry.registerEntityRenderingHandler(EntityTylo.class, new RenderTylo(new ModelTylo(), shadowSize));
+	RenderingRegistry.registerEntityRenderingHandler(EntitySpino.class, new RenderSpino(new ModelSpino(), shadowSize, 3.0F));
 }
 
 }

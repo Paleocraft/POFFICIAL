@@ -118,14 +118,6 @@ public class EntityDromaeosaurus extends EntityTameable
      return "paleocraft:dromiesmallcarndeath";
  }
  
- /**
-  * Max Health
-  */
- public int getMaxHealth()
- {
-     return this.isTamed() ? 20 : 8;
- }
- 
  public EnumCreatureAttribute getCreatureAttribute()
     {
         return EnumCreatureAttribute.UNDEFINED;

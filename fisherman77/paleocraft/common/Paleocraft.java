@@ -68,7 +68,7 @@ serverPacketHandlerSpec = @SidedPacketHandler(channels = {"Paleocraft"}, packetH
 //==========
 //Mod Basics
 //==========
-@Mod(modid="Paleocraft",name="Paleocraft",version="Release")
+@Mod(modid="Paleocraft",name="Paleocraft",version="Dev Build")
 
 public class Paleocraft {
 	public static Block PaleocraftPortal;
@@ -197,7 +197,9 @@ GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
 	registerEntity(EntityCitipati.class, "Citipati",  0xA67822, 0xA14A5C);
 	registerEntity(EntityDimorphodon.class, "Dimorphodon", 0xC8C968, 0x6064C4);
 	registerEntity(EntityDromaeosaurus.class, "Dromaeosaurus",  0x5C5B5C, 0x551305);
+	registerEntity(EntitySpino.class, "Spinosaurus", 0x0E1640, 0xF78708);
 	registerEntity(EntityTroodon.class, "Troodon", 0x5A5A5A, 0xE8E1BF);
+	registerEntity(EntityTylo.class, "Tylosaurus", 0x45369F, 0xFFFFFF);
 
 	//Baryonyx
 		LanguageRegistry.instance().addStringLocalization("entity.Baryonyx.name", "Baryonyx");
@@ -211,19 +213,16 @@ GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
 			//EntityRegistry.addSpawn(EntityTroodon.class, 3, 1, 3, EnumCreatureType.creature, Paleocraft.Paleoplains);
 		//}
 	//Dimorphodon
-		EntityRegistry.registerGlobalEntityID(EntityDimorphodon.class, "Dimorphodon", EntityRegistry.findGlobalUniqueEntityId(), 0xC8C968, 0x6064C4);
 		LanguageRegistry.instance().addStringLocalization("entity.Dimorphodon.name", "Dimorphodon");
 		//if(spawnDimorph == true){
 		//	EntityRegistry.addSpawn(EntityDimorphodon.class, 8, 3, 10, EnumCreatureType.creature, Paleocraft.Paleoplains);
 		//}
 	//Tylosaurus
-		//EntityRegistry.registerGlobalEntityID(EntityTylo.class, "Tylosaurus", EntityRegistry.findGlobalUniqueEntityId(), 0x45369F, 0xFFFFFF);
-		//LanguageRegistry.instance().addStringLocalization("entity.Tylosaurus.name", "Tylosaurus");
+		LanguageRegistry.instance().addStringLocalization("entity.Tylosaurus.name", "Tylosaurus");
 
 		
 	//Spinosaurus
-		//EntityRegistry.registerGlobalEntityID(EntitySpino.class, "Spinosaurus", EntityRegistry.findGlobalUniqueEntityId(), 0x0E1640, 0xF78708);
-		//LanguageRegistry.instance().addStringLocalization("entity.Spinosaurus.name", "Spinosaurus");
+		LanguageRegistry.instance().addStringLocalization("entity.Spinosaurus.name", "Spinosaurus");
 
 		
 }
