@@ -56,7 +56,8 @@ public class EntityCompy extends EntityTameable
   this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
   this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, true));
-  
+  this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityChicken.class, 1.0, false));
+  this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityChicken.class, 0, true));
  }
  
 	@Override
