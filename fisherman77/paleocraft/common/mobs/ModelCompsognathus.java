@@ -14,6 +14,7 @@ package fisherman77.paleocraft.common.mobs;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
 
 public class ModelCompsognathus extends ModelBase
 {
@@ -210,6 +211,20 @@ public class ModelCompsognathus extends ModelBase
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
   {
     //super.setRotationAngles(f, f1, f2, f3, f4, f5);
+    this.LeftLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+	  this.RightFoot.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+	  this.RightThigh.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+	  this.RightLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+	  this.LeftFoot.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+	  this.LeftThigh.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+	  Head.rotateAngleY = f3 / 57.29578F;
+	  Head.rotateAngleX = f4 / 57.29578F;
+	  Snout.rotateAngleY = f3 / 57.29578F;
+	  Snout.rotateAngleX = f4 / 57.29578F;
+	  SnoutTip.rotateAngleY = f3 / 57.29578F;
+	  SnoutTip.rotateAngleX = f4 / 57.29578F;
+	  Crest.rotateAngleY = f3 / 57.29578F;
+	  Crest.rotateAngleX = f4 / 57.29578F;
   }
 
 }
