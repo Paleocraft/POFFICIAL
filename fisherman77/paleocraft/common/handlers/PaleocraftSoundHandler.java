@@ -66,6 +66,12 @@ public class PaleocraftSoundHandler
             event.manager.addSound("paleocraft:largecarndeath.ogg");
             event.manager.addSound("paleocraft:spinomad1.ogg");
             event.manager.addSound("paleocraft:spinomad2.ogg");
+        
+        //Compsognathus
+            event.manager.addSound("paleocraft:Compy1.ogg");     
+            event.manager.addSound("paleocraft:Compy2.ogg");
+            event.manager.addSound("paleocraft:CompyDeath.ogg");
+            event.manager.addSound("paleocraft:CompyHurt.ogg");
         } 
         catch (Exception e)
         {
