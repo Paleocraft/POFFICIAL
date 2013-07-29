@@ -53,8 +53,10 @@ import fisherman77.paleocraft.common.handlers.PaleocraftServerPacketHandler;
 import fisherman77.paleocraft.common.handlers.PaleocraftSoundHandler;
 import fisherman77.paleocraft.common.mobs.EntityBaryonyx;
 import fisherman77.paleocraft.common.mobs.EntityCitipati;
+import fisherman77.paleocraft.common.mobs.EntityCompy;
 import fisherman77.paleocraft.common.mobs.EntityDimorphodon;
 import fisherman77.paleocraft.common.mobs.EntityDromaeosaurus;
+import fisherman77.paleocraft.common.mobs.EntityMasso;
 import fisherman77.paleocraft.common.mobs.EntitySpino;
 import fisherman77.paleocraft.common.mobs.EntityTroodon;
 import fisherman77.paleocraft.common.mobs.EntityTylo;
@@ -195,8 +197,10 @@ GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
 		
 	registerEntity(EntityBaryonyx.class, "Baryonyx",  0x405135, 0xC4C67D);
 	registerEntity(EntityCitipati.class, "Citipati",  0xA67822, 0xA14A5C);
+	registerEntity(EntityCompy.class, "Compsognathus", 0x4B4A31, 0xBDBC8B);
 	registerEntity(EntityDimorphodon.class, "Dimorphodon", 0xC8C968, 0x6064C4);
 	registerEntity(EntityDromaeosaurus.class, "Dromaeosaurus",  0x5C5B5C, 0x551305);
+	registerEntity(EntityMasso.class, "Massospondylus", 0x515151, 0x1E0F50);
 	registerEntity(EntitySpino.class, "Spinosaurus", 0x0E1640, 0xF78708);
 	registerEntity(EntityTroodon.class, "Troodon", 0x5A5A5A, 0xE8E1BF);
 	registerEntity(EntityTylo.class, "Tylosaurus", 0x45369F, 0xFFFFFF);
@@ -205,26 +209,20 @@ GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
 		LanguageRegistry.instance().addStringLocalization("entity.Baryonyx.name", "Baryonyx");
 	//Citipati
 		LanguageRegistry.instance().addStringLocalization("entity.Citipati.name", "Citipati");
-	//Dromaeosaurus
-		LanguageRegistry.instance().addStringLocalization("entity.Dromaeosaurus.name", "Dromaeosaurus");
-	//Troodon
-		LanguageRegistry.instance().addStringLocalization("entity.Troodon.name", "Troodon");
-		//if(spawnTroo == true){
-			//EntityRegistry.addSpawn(EntityTroodon.class, 3, 1, 3, EnumCreatureType.creature, Paleocraft.Paleoplains);
-		//}
+	//Compsognathus
+		LanguageRegistry.instance().addStringLocalization("entity.Compsognathus.name", "Compsognathus");
 	//Dimorphodon
 		LanguageRegistry.instance().addStringLocalization("entity.Dimorphodon.name", "Dimorphodon");
-		//if(spawnDimorph == true){
-		//	EntityRegistry.addSpawn(EntityDimorphodon.class, 8, 3, 10, EnumCreatureType.creature, Paleocraft.Paleoplains);
-		//}
-	//Tylosaurus
-		LanguageRegistry.instance().addStringLocalization("entity.Tylosaurus.name", "Tylosaurus");
-
-		
+	//Dromaeosaurus
+		LanguageRegistry.instance().addStringLocalization("entity.Dromaeosaurus.name", "Dromaeosaurus");
+	//Massospondylus
+		LanguageRegistry.instance().addStringLocalization("entity.Massospondylus.name", "Massospondylus");
 	//Spinosaurus
 		LanguageRegistry.instance().addStringLocalization("entity.Spinosaurus.name", "Spinosaurus");
-
-		
+	//Troodon
+		LanguageRegistry.instance().addStringLocalization("entity.Troodon.name", "Troodon");
+	//Tylosaurus
+		LanguageRegistry.instance().addStringLocalization("entity.Tylosaurus.name", "Tylosaurus");
 }
 	
 	public void registerEntity(Class<? extends Entity> entityClass, String entityName, int bkEggColor, int fgEggColor) {

@@ -17,7 +17,7 @@ import net.minecraft.entity.Entity;
 
 public class ModelMassospondylus extends ModelBase
 {
-  //fields
+	  //fields
     ModelRenderer Head1;
     ModelRenderer Neck1;
     ModelRenderer Neck2;
@@ -110,7 +110,7 @@ public class ModelMassospondylus extends ModelBase
       RightLegLower2.setTextureSize(128, 128);
       RightLegLower2.mirror = true;
       setRotation(RightLegLower2, 0F, 0F, 0F);
-      Foot2 = new ModelRenderer(this, 94, 119);
+      Foot2 = new ModelRenderer(this, 71, 120);
       Foot2.addBox(0.5F, 16F, -2F, 3, 2, 6);
       Foot2.setRotationPoint(3.5F, 6F, 8F);
       Foot2.setTextureSize(128, 128);
@@ -251,5 +251,6 @@ public class ModelMassospondylus extends ModelBase
   {
     //super.setRotationAngles(f, f1, f2, f3, f4, f5);
   }
+
 
 }

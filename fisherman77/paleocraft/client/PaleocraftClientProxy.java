@@ -3,22 +3,28 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import fisherman77.paleocraft.common.PaleocraftCommonProxy;
 import fisherman77.paleocraft.common.mobs.EntityBaryonyx;
 import fisherman77.paleocraft.common.mobs.EntityCitipati;
+import fisherman77.paleocraft.common.mobs.EntityCompy;
 import fisherman77.paleocraft.common.mobs.EntityDimorphodon;
 import fisherman77.paleocraft.common.mobs.EntityDromaeosaurus;
+import fisherman77.paleocraft.common.mobs.EntityMasso;
 import fisherman77.paleocraft.common.mobs.EntitySpino;
 import fisherman77.paleocraft.common.mobs.EntityTroodon;
 import fisherman77.paleocraft.common.mobs.EntityTylo;
 import fisherman77.paleocraft.common.mobs.ModelBaryonyx;
 import fisherman77.paleocraft.common.mobs.ModelCitipati;
+import fisherman77.paleocraft.common.mobs.ModelCompsognathus;
 import fisherman77.paleocraft.common.mobs.ModelDimorphodon;
 import fisherman77.paleocraft.common.mobs.ModelDromaeosaurus;
+import fisherman77.paleocraft.common.mobs.ModelMassospondylus;
 import fisherman77.paleocraft.common.mobs.ModelSpino;
 import fisherman77.paleocraft.common.mobs.ModelTroodon;
 import fisherman77.paleocraft.common.mobs.ModelTylo;
 import fisherman77.paleocraft.common.mobs.RenderBaryonyx;
 import fisherman77.paleocraft.common.mobs.RenderCitipati;
+import fisherman77.paleocraft.common.mobs.RenderCompy;
 import fisherman77.paleocraft.common.mobs.RenderDimorphodon;
 import fisherman77.paleocraft.common.mobs.RenderDromaeosaurus;
+import fisherman77.paleocraft.common.mobs.RenderMasso;
 import fisherman77.paleocraft.common.mobs.RenderSpino;
 import fisherman77.paleocraft.common.mobs.RenderTroodon;
 import fisherman77.paleocraft.common.mobs.RenderTylo;
@@ -39,6 +45,8 @@ public void registerRenderers(){
 	RenderingRegistry.registerEntityRenderingHandler(EntityTroodon.class, new RenderTroodon(new ModelTroodon(), shadowSize));
 	RenderingRegistry.registerEntityRenderingHandler(EntityTylo.class, new RenderTylo(new ModelTylo(), shadowSize));
 	RenderingRegistry.registerEntityRenderingHandler(EntitySpino.class, new RenderSpino(new ModelSpino(), shadowSize, 3.0F));
+	RenderingRegistry.registerEntityRenderingHandler(EntityCompy.class, new RenderCompy(new ModelCompsognathus(), shadowSize, 0.25F));
+	RenderingRegistry.registerEntityRenderingHandler(EntityMasso.class, new RenderMasso(new ModelMassospondylus(), shadowSize));
 }
 
 }
