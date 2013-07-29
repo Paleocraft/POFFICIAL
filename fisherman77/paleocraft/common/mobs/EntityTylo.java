@@ -32,14 +32,34 @@ import net.minecraft.world.World;
 public class EntityTylo extends EntityWaterMob
 {
   
- public EntityTylo(World par1World) 
+	 public float squidPitch;
+	    public float prevSquidPitch;
+	    public float squidYaw;
+	    public float prevSquidYaw;
+	    public float field_70867_h;
+	    public float field_70868_i;
+
+	    /** angle of the tentacles in radians */
+	    public float tentacleAngle;
+
+	    /** the last calculated angle of the tentacles in radians */
+	    public float prevTentacleAngle;
+	    private float randomMotionSpeed;
+	    private float field_70864_bA;
+	    private float field_70871_bB;
+	    private float randomMotionVecX;
+	    private float randomMotionVecY;
+	    private float randomMotionVecZ;
+
+
+public EntityTylo(World par1World) 
  {
   super(par1World);	
   
   this.setSize(1.0F, 1.0F);
   
   this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.6F, false));
-  this.tasks.addTask(1, new EntityAIWander(this, 0.4F));
+  //this.tasks.addTask(1, new EntityAIWander(this, 0.4F));
   this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
   this.tasks.addTask(0, new EntityAISwimming(this));
@@ -105,7 +125,7 @@ protected boolean isAIEnabled()
  */
 protected String getLivingSound()
 {
-    return "paleocraft.Tylo.Tylo1";
+    return "paleocraft:tyloliving1";
 }
 
 /**
@@ -113,7 +133,7 @@ protected String getLivingSound()
  */
 protected String getHurtSound()
 {
-    return "paleocraft.Tylo.TyloHurt";
+    return "paleocraft:tylohurt";
 }
 
 /**
@@ -121,11 +141,10 @@ protected String getHurtSound()
  */
 protected String getDeathSound()
 {
-    return "paleocraft.Tylo.LargeCarnDeath";
+    return "paleocraft:largecarndeath";
 }
 
 protected boolean canDespawn()
 {
 return false;
-}
-}
+}}
