@@ -147,4 +147,8 @@ protected String getDeathSound()
 protected boolean canDespawn()
 {
 return false;
+}
+protected void jump()
+{
+    this.isJumping = false;
 }}
