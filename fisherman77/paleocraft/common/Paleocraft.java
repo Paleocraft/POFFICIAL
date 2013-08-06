@@ -158,7 +158,7 @@ NetworkRegistry.instance().registerGuiHandler(this, proxy); //Registers the clas
 
 
 //Game registery 
-GameRegistry.addBiome(Paleoplains);
+//GameRegistry.addBiome(Paleoplains);
 GameRegistry.registerBlock(PaleocraftPortal, "Paleocraft Portal");
 GameRegistry.registerBlock(portalTrigger, "Fossilmiddle");
 //GameRegistry.registerWorldGenerator(new WorldGenPaleocraftTree1(false));
