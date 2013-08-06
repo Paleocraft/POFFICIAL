@@ -40,13 +40,13 @@ if(world.getFirstUncoveredBlock(chunkX, chunkZ) == Block.grass.blockID)
 for(int k = 0; k < 20; k++) //Creates a new integer, 'k', which is between 0 and whatever we used for the rarity.
 {
 //this below just tells me if its generating or not
-System.out.println("Generating Trees on surface");
+//System.out.println("Generating Trees on surface");
 
 int RandPosX = chunkX + random.nextInt(16); //These states the position of the structure; between 0 and 16 for the x and z axes, and between 0 and 128 (just below cloud level for the
 int RandPosY = random.nextInt(90); //y axis. This is very standard stuff, so you don't need to change any of this except the rarity. You can play around with these figures
 int RandPosZ = chunkZ + random.nextInt(16); //if you want, but nothing really needs to be altered.
 
-(new WorldGenPaleocraftTree1(false)).generate(world, random, RandPosX, RandPosY, RandPosZ);
+//(new WorldGenPaleocraftTree1(false)).generate(world, random, RandPosX, RandPosY, RandPosZ);
 }
 }
 }
@@ -66,13 +66,13 @@ private void generateTutorial(World world, Random random, int chunkX, int chunkZ
 for(int k = 0; k < 20; k++) //Creates a new integer, 'k', which is between 0 and whatever we used for the rarity.
 {
 //this below just tells me if its generating or not
-System.out.println("Generating Trees in dimension");
+//System.out.println("Generating Trees in dimension");
 
 int RandPosX = chunkX + random.nextInt(16); //These states the position of the structure; between 0 and 16 for the x and z axes, and between 0 and 128 (just below cloud level for the
 int RandPosY = random.nextInt(90); //y axis. This is very standard stuff, so you don't need to change any of this except the rarity. You can play around with these figures
 int RandPosZ = chunkZ + random.nextInt(16); //if you want, but nothing really needs to be altered.
 
-(new WorldGenPaleocraftTree1(false)).generate(world, random, RandPosX, RandPosY, RandPosZ);
+//(new WorldGenPaleocraftTree1(false)).generate(world, random, RandPosX, RandPosY, RandPosZ);
 }
 
 for(int k = 0; k < 10; k++) //Creates a new integer, 'k', which is between 0 and whatever we used for the rarity.

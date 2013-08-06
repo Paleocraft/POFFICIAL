@@ -93,7 +93,7 @@ public static BiomeGenBase Paleoforest;
 public static BiomeGenBase Paleoswamp;
 public static CreativeTabs PaleocraftBlocks = new PaleocraftBlocksCreativeTab(CreativeTabs.getNextID(),"Paleocraft");
 public static Block portalTrigger;
-public static Block treesapling1;
+//public static Block treesapling1;
 public static Block seaweed;
 public static Block dirttest;
 //public static Block portalPlacer2;
@@ -136,14 +136,9 @@ PaleocraftConfigCore.loadConfig(e);
 	seaweed = new Blockseaweed(254).setUnlocalizedName("seaweed");
 	portalTrigger = new portalTriggerPaleocraft(252, 1).setUnlocalizedName("portaltrigger");
 	PaleocraftPortal = new BlockPortalPaleocraft(251).setUnlocalizedName("paleocraftportal");
-    treesapling1 = new Blocktree1sapling(253, 0).setUnlocalizedName("tree1");
-    dirttest = new Blockdirttest(250).setUnlocalizedName("Test1");}
-    
-//Test (Trees)
-
-
-
-
+    //treesapling1 = new Blocktree1sapling(253, 0).setUnlocalizedName("tree1");
+    dirttest = new Blockdirttest(250).setUnlocalizedName("Test1");
+    }
 
 
 //Config
@@ -166,8 +161,8 @@ NetworkRegistry.instance().registerGuiHandler(this, proxy); //Registers the clas
 GameRegistry.addBiome(Paleoplains);
 GameRegistry.registerBlock(PaleocraftPortal, "Paleocraft Portal");
 GameRegistry.registerBlock(portalTrigger, "Fossilmiddle");
-GameRegistry.registerWorldGenerator(new WorldGenPaleocraftTree1(false));
-GameRegistry.registerBlock(treesapling1, "Tree 1");
+//GameRegistry.registerWorldGenerator(new WorldGenPaleocraftTree1(false));
+//GameRegistry.registerBlock(treesapling1, "Tree 1");
 GameRegistry.registerBlock(seaweed, "Seaweed");
 GameRegistry.registerBlock(dirttest, "Test1");
 MainRegistryPaleocraft.RegisterInit();
@@ -175,7 +170,7 @@ MainRegistryPaleocraft.RegisterInit();
  LanguageRegistry.addName(PaleocraftPortal, "Paleocraft Portal");
                 LanguageRegistry.addName(fossil, "Fossil");
                 LanguageRegistry.addName(portalTrigger, "Fossilmiddle");
-                LanguageRegistry.addName(treesapling1, "Tree 1");
+                //LanguageRegistry.addName(treesapling1, "Tree 1");
                 LanguageRegistry.addName(seaweed, "Seaweed");
                 LanguageRegistry.addName(dirttest, "Test1");
                 //Dimension
