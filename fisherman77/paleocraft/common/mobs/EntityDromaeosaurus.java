@@ -115,7 +115,7 @@ public class EntityDromaeosaurus extends EntityTameable
   */
  protected String getDeathSound()
  {
-     return "paleocraft:dromiesmallcarndeath";
+     return "paleocraft:smallcarndeath";
  }
  
  public EnumCreatureAttribute getCreatureAttribute()
