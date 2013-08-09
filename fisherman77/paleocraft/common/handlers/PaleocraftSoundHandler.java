@@ -26,8 +26,8 @@ public class PaleocraftSoundHandler
             event.manager.addSound("paleocraft:citiliving1.ogg");
             event.manager.addSound("paleocraft:citiliving2.ogg");
             event.manager.addSound("paleocraft:citiliving3.ogg");            
-            event.manager.addSound("paleocraft:citi/hurt.ogg");
-            event.manager.addSound("paleocraft:citi/smallherbdeath.ogg");
+            event.manager.addSound("paleocraft:citihurt.ogg");
+            event.manager.addSound("paleocraft:smallherbdeath.ogg");
             
         //DROMAEOSAURUS
             event.manager.addSound("paleocraft:dromieliving1.ogg");            
@@ -36,20 +36,20 @@ public class PaleocraftSoundHandler
             event.manager.addSound("paleocraft:dromieliving4.ogg");            
             event.manager.addSound("paleocraft:dromieliving5.ogg");
             event.manager.addSound("paleocraft:dromiehurt.ogg");
-            event.manager.addSound("paleocraft:dromie/smallcarndeath.ogg");
+            event.manager.addSound("paleocraft:smallcarndeath.ogg");
 
         //TROODON
             event.manager.addSound("paleocraft:trooliving1.ogg");            
             event.manager.addSound("paleocraft:trooliving2.ogg");            
             event.manager.addSound("paleocraft:trooliving3.ogg");            
-            event.manager.addSound("paleocraft:troo/hurt.ogg");
-            event.manager.addSound("paleocraft:troo/smallcarndeath.ogg");
+            event.manager.addSound("paleocraft:troohurt.ogg");
+            event.manager.addSound("paleocraft:smallcarndeath.ogg");
             
         //DIMORPHODON
             event.manager.addSound("paleocraft:dimorphliving1.ogg");            
             event.manager.addSound("paleocraft:dimorphliving2.ogg");            
-            event.manager.addSound("paleocraft:dimorph/hurt.ogg");
-            event.manager.addSound("paleocraft:dimorph/smallcarndeath.ogg");
+            event.manager.addSound("paleocraft:dimorphhurt.ogg");
+            event.manager.addSound("paleocraft:smallcarndeath.ogg");
             
         //Tylo
             event.manager.addSound("paleocraft:tyloliving1.ogg");            
@@ -72,6 +72,13 @@ public class PaleocraftSoundHandler
             event.manager.addSound("paleocraft:Compy2.ogg");
             event.manager.addSound("paleocraft:CompyDeath.ogg");
             event.manager.addSound("paleocraft:CompyHurt.ogg");
+        
+           //Massospondylus
+            event.manager.addSound("paleocraft:Masso1.ogg"); 
+            event.manager.addSound("paleocraft:Masso2.ogg"); 
+            event.manager.addSound("paleocraft:Masso3.ogg"); 
+            event.manager.addSound("paleocraft:MassoHurt.ogg"); 
+            event.manager.addSound("paleocraft:MedHerbDeath.ogg"); 
         } 
         catch (Exception e)
         {
@@ -79,3 +86,4 @@ public class PaleocraftSoundHandler
         }
     }
 }
+
