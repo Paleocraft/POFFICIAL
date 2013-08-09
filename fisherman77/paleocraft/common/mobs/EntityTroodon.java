@@ -86,7 +86,7 @@ protected String getHurtSound()
  */
 protected String getDeathSound()
 {
-    return "paleocraft:troosmallcarndeath";
+    return "paleocraft:smallcarndeath";
 }
 
 
