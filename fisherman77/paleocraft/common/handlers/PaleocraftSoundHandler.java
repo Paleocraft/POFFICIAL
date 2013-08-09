@@ -35,7 +35,7 @@ public class PaleocraftSoundHandler
             event.manager.addSound("paleocraft:dromieliving3.ogg");
             event.manager.addSound("paleocraft:dromieliving4.ogg");            
             event.manager.addSound("paleocraft:dromieliving5.ogg");
-            event.manager.addSound("paleocraft:dromie/hurt.ogg");
+            event.manager.addSound("paleocraft:dromiehurt.ogg");
             event.manager.addSound("paleocraft:dromie/smallcarndeath.ogg");
 
         //TROODON
