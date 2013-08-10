@@ -19,17 +19,15 @@ import net.minecraftforge.common.MinecraftForge;
 import bladeking68.paleocraft.dimension.BiomeGenPaleoSwamp;
 import bladeking68.paleocraft.dimension.BiomeGenPaleodesert;
 import bladeking68.paleocraft.dimension.BiomeGenPaleoforest;
-import bladeking68.paleocraft.dimension.BiomeGenPaleoplains;
+//import bladeking68.paleocraft.dimension.BiomeGenPaleoplains;
 import bladeking68.paleocraft.dimension.BiomeGenPaleosea;
 import bladeking68.paleocraft.dimension.BlockPortalPaleocraft;
 import bladeking68.paleocraft.dimension.Blockdirttest;
 import bladeking68.paleocraft.dimension.Blockseaweed;
-import bladeking68.paleocraft.dimension.Blocktree1sapling;
 import bladeking68.paleocraft.dimension.ItemFossil;
 import bladeking68.paleocraft.dimension.MainRegistryPaleocraft;
 import bladeking68.paleocraft.dimension.PaleocraftBlocksCreativeTab;
 import bladeking68.paleocraft.dimension.PaleocraftEventClass;
-import bladeking68.paleocraft.dimension.WorldGenPaleocraftTree1;
 import bladeking68.paleocraft.dimension.WorldProviderPaleocraft;
 import bladeking68.paleocraft.dimension.portalTriggerPaleocraft;
 import cpw.mods.fml.common.Mod;
@@ -57,6 +55,7 @@ import fisherman77.paleocraft.common.mobs.EntityCompy;
 import fisherman77.paleocraft.common.mobs.EntityDimorphodon;
 import fisherman77.paleocraft.common.mobs.EntityDromaeosaurus;
 import fisherman77.paleocraft.common.mobs.EntityMasso;
+import fisherman77.paleocraft.common.mobs.EntityMegalodon;
 import fisherman77.paleocraft.common.mobs.EntitySpino;
 import fisherman77.paleocraft.common.mobs.EntityTroodon;
 import fisherman77.paleocraft.common.mobs.EntityTylo;
@@ -73,7 +72,7 @@ serverPacketHandlerSpec = @SidedPacketHandler(channels = {"Paleocraft"}, packetH
 @Mod(modid="Paleocraft",name="Paleocraft",version="Dev Build")
 
 public class Paleocraft {
-	public static Block PaleocraftPortal;
+;
 	
 	@Instance("Paleocraft") //The instance, this is very important later on
 public static Paleocraft instance = new Paleocraft();
@@ -81,25 +80,25 @@ public static Paleocraft instance = new Paleocraft();
 @SidedProxy(clientSide = "fisherman77.paleocraft.client.PaleocraftClientProxy", serverSide = "fisherman77.paleocraft.common.PaleocraftCommonProxy") //Tells Forge the location of your proxies
 public static PaleocraftCommonProxy proxy;
 
+public static Block PaleocraftPortal = new BlockPortalPaleocraft(251).setUnlocalizedName("paleocraftportal");
 boolean spawnBary;
 boolean spawnCiti;
 boolean spawnDromie;
 boolean spawnTroo;
 boolean spawnDimorph;
-public static BiomeGenBase Paleoplains;
+public static int PaleocraftDimension = 20;
+//public static BiomeGenBase Paleoplains;
+public static CreativeTabs PaleocraftBlocks = new PaleocraftBlocksCreativeTab(CreativeTabs.getNextID(),"Paleocraft");
+public static Block portalTrigger;
+//public static Block treesapling1;
+public static Block seaweed = new Blockseaweed(254).setUnlocalizedName("seaweed");;
+public static Block dirttest = new Blockdirttest(250).setUnlocalizedName("Test1");;
+//public static Block portalPlacer2;
+public static Item fossil;
 public static BiomeGenBase Paleodesert;
 public static BiomeGenBase Paleosea;
 public static BiomeGenBase Paleoforest;
 public static BiomeGenBase Paleoswamp;
-public static CreativeTabs PaleocraftBlocks = new PaleocraftBlocksCreativeTab(CreativeTabs.getNextID(),"Paleocraft");
-public static Block portalTrigger;
-//public static Block treesapling1;
-public static Block seaweed;
-public static Block dirttest;
-//public static Block portalPlacer2;
-public static int PaleocraftDimension = 20;
-public static Item fossil;
-public static BiomeGenBase TutorialBiomeDeafult; 
 
 @PreInit
 public void PreLoad(FMLPreInitializationEvent e)
@@ -121,23 +120,23 @@ PaleocraftConfigCore cc = new PaleocraftConfigCore();
 
 PaleocraftConfigCore.loadConfig(e);
 
+DimensionManager.registerProviderType(PaleocraftDimension, WorldProviderPaleocraft.class, true);
+
+DimensionManager.registerDimension(PaleocraftDimension, PaleocraftDimension);
+
 /**
  * We've got to put this stuff here in case we reference it in the Init
  */
-//Biomes
-	Paleoplains = new BiomeGenPaleoplains(56).setColor(2900485).setBiomeName("PaleoPlains").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
-	Paleodesert = new BiomeGenPaleodesert(54).setColor(2900485).setBiomeName("Paleodesert").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
-	Paleosea = new BiomeGenPaleosea(55).setColor(2900485).setBiomeName("Paleosea").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(-1.0F, 0.4F);
-	Paleoforest = new BiomeGenPaleoforest(53).setColor(2900485).setBiomeName("Paleoforest").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(-0.2F, 0.1F);
-	Paleoswamp = new BiomeGenPaleoSwamp(52).setColor(522674).setBiomeName("PaleoSwamp").func_76733_a(9154376).setMinMaxHeight(-0.2F, 0.1F).setTemperatureRainfall(0.8F, 0.9F);
-	fossil = new ItemFossil(253).setUnlocalizedName("Fossil");
 
 //Blocks
-	seaweed = new Blockseaweed(254).setUnlocalizedName("seaweed");
+	//seaweed = new Blockseaweed(254).setUnlocalizedName("seaweed");
 	portalTrigger = new portalTriggerPaleocraft(252, 1).setUnlocalizedName("portaltrigger");
-	PaleocraftPortal = new BlockPortalPaleocraft(251).setUnlocalizedName("paleocraftportal");
+	//PaleocraftPortal = new BlockPortalPaleocraft(251).setUnlocalizedName("paleocraftportal");
     //treesapling1 = new Blocktree1sapling(253, 0).setUnlocalizedName("tree1");
-    dirttest = new Blockdirttest(250).setUnlocalizedName("Test1");
+    //dirttest = new Blockdirttest(250).setUnlocalizedName("Test1");
+    
+    
+  	fossil = new ItemFossil(253).setUnlocalizedName("Fossil");
     }
 
 
@@ -174,9 +173,6 @@ MainRegistryPaleocraft.RegisterInit();
                 LanguageRegistry.addName(seaweed, "Seaweed");
                 LanguageRegistry.addName(dirttest, "Test1");
                 //Dimension
-  DimensionManager.registerProviderType(PaleocraftDimension, WorldProviderPaleocraft.class, true);
-
-DimensionManager.registerDimension(PaleocraftDimension, PaleocraftDimension);
 
 
 //crafting recipe (Fossil)
@@ -196,6 +192,7 @@ GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
 	registerEntity(EntityDimorphodon.class, "Dimorphodon", 0xC8C968, 0x6064C4);
 	registerEntity(EntityDromaeosaurus.class, "Dromaeosaurus",  0x5C5B5C, 0x551305);
 	registerEntity(EntityMasso.class, "Massospondylus", 0x515151, 0x1E0F50);
+	registerEntity(EntityMegalodon.class, "Megalodon", 0x676767, 0x9c9c9c);
 	registerEntity(EntitySpino.class, "Spinosaurus", 0x0E1640, 0xF78708);
 	registerEntity(EntityTroodon.class, "Troodon", 0x5A5A5A, 0xE8E1BF);
 	registerEntity(EntityTylo.class, "Tylosaurus", 0x45369F, 0xFFFFFF);
@@ -212,12 +209,22 @@ GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
 		LanguageRegistry.instance().addStringLocalization("entity.Dromaeosaurus.name", "Dromaeosaurus");
 	//Massospondylus
 		LanguageRegistry.instance().addStringLocalization("entity.Massospondylus.name", "Massospondylus");
+	//Megalodon
+		LanguageRegistry.instance().addStringLocalization("entity.Megalodon.name", "Megalodon");
 	//Spinosaurus
 		LanguageRegistry.instance().addStringLocalization("entity.Spinosaurus.name", "Spinosaurus");
 	//Troodon
 		LanguageRegistry.instance().addStringLocalization("entity.Troodon.name", "Troodon");
 	//Tylosaurus
 		LanguageRegistry.instance().addStringLocalization("entity.Tylosaurus.name", "Tylosaurus");
+		
+		
+	//Biomes
+	  	//Paleoplains = new BiomeGenPaleoplains(56).setColor(2900485).setBiomeName("PaleoPlains").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
+	  	Paleodesert = new BiomeGenPaleodesert(54).setColor(2900485).setBiomeName("Paleodesert").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
+	  	Paleosea = new BiomeGenPaleosea(55).setColor(2900485).setBiomeName("Paleosea").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(-1.0F, 0.4F);
+	  	Paleoforest = new BiomeGenPaleoforest(53).setColor(2900485).setBiomeName("Paleoforest").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(-0.2F, 0.1F);
+	  	Paleoswamp = new BiomeGenPaleoSwamp(52).setColor(522674).setBiomeName("PaleoSwamp").func_76733_a(9154376).setMinMaxHeight(-0.2F, 0.1F).setTemperatureRainfall(0.8F, 0.9F);
 }
 	
 	public void registerEntity(Class<? extends Entity> entityClass, String entityName, int bkEggColor, int fgEggColor) {
