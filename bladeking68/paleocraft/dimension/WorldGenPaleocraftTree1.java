@@ -35,6 +35,7 @@ this.vinesGrow = par5;
 }
 public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
 {
+	System.out.println("This shouldn't be generating.");
 int l = par2Random.nextInt(3) + this.minTreeHeight;
 boolean flag = true;
 if (par4 >= 1 && par4 + l + 1 <= 256)
@@ -86,7 +87,7 @@ else
 {
 i1 = par1World.getBlockId(par3, par4 - 1, par5);
 Block soil = Block.blocksList[i1];                                                                                                                                                       //SAPLING
-boolean isSoil = (soil != null && soil.canSustainPlant(par1World, par3, par4 - 1, par5, ForgeDirection.UP, (Blocktree1sapling)fisherman77.paleocraft.common.Paleocraft.treesapling1));
+boolean isSoil = true; //(soil != null && soil.canSustainPlant(par1World, par3, par4 - 1, par5, ForgeDirection.UP, (Blocktree1sapling)fisherman77.paleocraft.common.Paleocraft.treesapling1));
 if (isSoil && par4 < 256 - l - 1)
 {
          soil.onPlantGrow(par1World, par3, par4 - 1, par5, par3, par4, par5);
