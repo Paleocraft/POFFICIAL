@@ -26,7 +26,6 @@ public EntitySpino(World par1World)
  {
   super(par1World);
   
-  this.yOffset *= 3.0F;
   this.setSize(this.width * 3.0F, this.height * 3.0F);
   
   this.tasks.addTask(0, new EntityAISwimming(this));
@@ -42,8 +41,8 @@ public EntitySpino(World par1World)
 	    super.func_110147_ax();
 	    
 	    func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.4); // moveSpeed
-	    func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(20); // maxHealth
-	    func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(10); //attackStrength
+	    func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(75); // maxHealth
+	    func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(20); //attackStrength
 	}
  
 	 /**

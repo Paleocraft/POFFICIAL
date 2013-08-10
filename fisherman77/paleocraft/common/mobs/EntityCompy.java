@@ -65,7 +65,7 @@ public class EntityCompy extends EntityTameable
 	    super.func_110147_ax();
 	    
 	    func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.4); // moveSpeed
-	    func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(9); // maxHealth
+	    func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(3); // maxHealth
 	}
  
  /**

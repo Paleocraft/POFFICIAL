@@ -26,7 +26,6 @@ public EntityBaryonyx(World par1World)
  {
   super(par1World);
   
-  this.yOffset *= 2.5F;
   this.setSize(this.width * 2.5F, this.height * 2.5F);
   
   this.tasks.addTask(0, new EntityAISwimming(this));
