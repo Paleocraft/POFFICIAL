@@ -7,6 +7,7 @@ import fisherman77.paleocraft.common.mobs.EntityCompy;
 import fisherman77.paleocraft.common.mobs.EntityDimorphodon;
 import fisherman77.paleocraft.common.mobs.EntityDromaeosaurus;
 import fisherman77.paleocraft.common.mobs.EntityMasso;
+import fisherman77.paleocraft.common.mobs.EntityMegalodon;
 import fisherman77.paleocraft.common.mobs.EntitySpino;
 import fisherman77.paleocraft.common.mobs.EntityTroodon;
 import fisherman77.paleocraft.common.mobs.EntityTylo;
@@ -16,6 +17,7 @@ import fisherman77.paleocraft.common.mobs.ModelCompsognathus;
 import fisherman77.paleocraft.common.mobs.ModelDimorphodon;
 import fisherman77.paleocraft.common.mobs.ModelDromaeosaurus;
 import fisherman77.paleocraft.common.mobs.ModelMassospondylus;
+import fisherman77.paleocraft.common.mobs.ModelMegalodon;
 import fisherman77.paleocraft.common.mobs.ModelSpino;
 import fisherman77.paleocraft.common.mobs.ModelTroodon;
 import fisherman77.paleocraft.common.mobs.ModelTylo;
@@ -25,6 +27,7 @@ import fisherman77.paleocraft.common.mobs.RenderCompy;
 import fisherman77.paleocraft.common.mobs.RenderDimorphodon;
 import fisherman77.paleocraft.common.mobs.RenderDromaeosaurus;
 import fisherman77.paleocraft.common.mobs.RenderMasso;
+import fisherman77.paleocraft.common.mobs.RenderMegalodon;
 import fisherman77.paleocraft.common.mobs.RenderSpino;
 import fisherman77.paleocraft.common.mobs.RenderTroodon;
 import fisherman77.paleocraft.common.mobs.RenderTylo;
@@ -40,13 +43,14 @@ public void registerRenderers(){
 	
 	RenderingRegistry.registerEntityRenderingHandler(EntityBaryonyx.class, new RenderBaryonyx(new ModelBaryonyx(), shadowSize, 2.5F));
 	RenderingRegistry.registerEntityRenderingHandler(EntityCitipati.class, new RenderCitipati(new ModelCitipati(), shadowSize));
+	RenderingRegistry.registerEntityRenderingHandler(EntityCompy.class, new RenderCompy(new ModelCompsognathus(), shadowSize, 0.25F));
 	RenderingRegistry.registerEntityRenderingHandler(EntityDimorphodon.class, new RenderDimorphodon(new ModelDimorphodon(), shadowSize, 0.25F));
 	RenderingRegistry.registerEntityRenderingHandler(EntityDromaeosaurus.class, new RenderDromaeosaurus(new ModelDromaeosaurus(), shadowSize));
-	RenderingRegistry.registerEntityRenderingHandler(EntityTroodon.class, new RenderTroodon(new ModelTroodon(), shadowSize));
-	RenderingRegistry.registerEntityRenderingHandler(EntityTylo.class, new RenderTylo(new ModelTylo(), shadowSize));
-	RenderingRegistry.registerEntityRenderingHandler(EntitySpino.class, new RenderSpino(new ModelSpino(), shadowSize, 3.0F));
-	RenderingRegistry.registerEntityRenderingHandler(EntityCompy.class, new RenderCompy(new ModelCompsognathus(), shadowSize, 0.25F));
 	RenderingRegistry.registerEntityRenderingHandler(EntityMasso.class, new RenderMasso(new ModelMassospondylus(), shadowSize));
+	RenderingRegistry.registerEntityRenderingHandler(EntityMegalodon.class, new RenderMegalodon(new ModelMegalodon(), shadowSize, 2.5F));
+	RenderingRegistry.registerEntityRenderingHandler(EntitySpino.class, new RenderSpino(new ModelSpino(), shadowSize, 3.0F));
+	RenderingRegistry.registerEntityRenderingHandler(EntityTroodon.class, new RenderTroodon(new ModelTroodon(), shadowSize));
+	RenderingRegistry.registerEntityRenderingHandler(EntityTylo.class, new RenderTylo(new ModelTylo(), shadowSize, 3.0F));
 }
 
 }
