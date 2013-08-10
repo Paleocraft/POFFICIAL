@@ -6,10 +6,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityChicken;
@@ -31,38 +33,19 @@ import net.minecraft.world.World;
 
 public class EntityTylo extends EntityWaterMob
 {
-  
-	 public float squidPitch;
-	    public float prevSquidPitch;
-	    public float squidYaw;
-	    public float prevSquidYaw;
-	    public float field_70867_h;
-	    public float field_70868_i;
-
-	    /** angle of the tentacles in radians */
-	    public float tentacleAngle;
-
-	    /** the last calculated angle of the tentacles in radians */
-	    public float prevTentacleAngle;
-	    private float randomMotionSpeed;
-	    private float field_70864_bA;
-	    private float field_70871_bB;
-	    private float randomMotionVecX;
-	    private float randomMotionVecY;
-	    private float randomMotionVecZ;
 
 
-public EntityTylo(World par1World) 
+public EntityTylo(World par1World)  
  {
   super(par1World);	
   
-  this.setSize(1.0F, 1.0F);
+  this.setSize(3.0F, 3.0F);
   
   this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.6F, false));
   //this.tasks.addTask(1, new EntityAIWander(this, 0.4F));
-  this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+  this.tasks.addTask(1, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+  this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true)); 
   this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-  this.tasks.addTask(0, new EntityAISwimming(this));
   this.getNavigator().setCanSwim(true);
  }
 
@@ -71,7 +54,7 @@ protected void func_110147_ax() {
     super.func_110147_ax();
     
     func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.4); // moveSpeed
-    func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(9); // maxHealth
+    func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(50); // maxHealth
 } 
  
 //ATTACKING OTHER MOBS - OVERRIDING ENTITYWATERMOB
@@ -89,7 +72,7 @@ protected void attackEntity(Entity par1Entity, float par2)
 
 public boolean attackEntityAsMob(Entity par1Entity)
 {
-	int i = 2; //attackStrength
+	int i = 20; //attackStrength
    return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float)i);
 }
 
