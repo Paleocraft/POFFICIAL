@@ -2,8 +2,8 @@
  {
  "modid": "Paleocraft",
  "name": "Paleocraft",
- "description": "Realistic dinosaurs in Minecraft. Paleocraft adds dinosaurs to Minecraft. Baryonyx, Citipati, Dromaeosaurus, Dimorphodon, Troodons, and more!",
- "version": "Cambrian 1.1",
+ "description": "Realistic dinosaurs in Minecraft. Paleocraft adds dinosaurs to Minecraft. Baryonyx, Citipati, Dromaeosaurus, Dimorphodon, Troodon, and more!",
+ "version": "Cambrian 1.2.1",
  "mcversion": "1.6.2",
  "url": "http://www.minecraftforum.net/topic/1543527-wip-paleocraft-realistic-dinosaurs-in-minecraft/",
  "updateUrl": "http://fisherman77.mcwargate.com/downloads2.html",
@@ -13,7 +13,7 @@
  "fisherman77"
  ],
  "credits": "Modeling and Texturing by Dan_Wallace, Coding by BladeKing68 & fisherman77",
- "logoFile": "/logo/paleocraft_logo.png",
+ "logoFile": "/logo/paleocraft.png",
  "screenshots": [],
  "parent": "",
  "dependencies": [

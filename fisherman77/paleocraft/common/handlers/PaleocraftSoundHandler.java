@@ -36,14 +36,14 @@ public class PaleocraftSoundHandler
             event.manager.addSound("paleocraft:dromieliving4.ogg");            
             event.manager.addSound("paleocraft:dromieliving5.ogg");
             event.manager.addSound("paleocraft:dromiehurt.ogg");
-            event.manager.addSound("paleocraft:smallcarndeath.ogg");
+            //event.manager.addSound("paleocraft:smallcarndeath.ogg");
 
         //TROODON
             event.manager.addSound("paleocraft:trooliving1.ogg");            
             event.manager.addSound("paleocraft:trooliving2.ogg");            
             event.manager.addSound("paleocraft:trooliving3.ogg");            
             event.manager.addSound("paleocraft:troohurt.ogg");
-            event.manager.addSound("paleocraft:smallcarndeath.ogg");
+            //event.manager.addSound("paleocraft:smallcarndeath.ogg");
             
         //DIMORPHODON
             event.manager.addSound("paleocraft:dimorphliving1.ogg");            
@@ -56,7 +56,7 @@ public class PaleocraftSoundHandler
             event.manager.addSound("paleocraft:tyloliving2.ogg");            
             event.manager.addSound("paleocraft:tyloliving3.ogg");            
             event.manager.addSound("paleocraft:tylohurt.ogg");
-            event.manager.addSound("paleocraft:largecarndeath.ogg");
+            //event.manager.addSound("paleocraft:largecarndeath.ogg");
              
             //Spinosaurus
             event.manager.addSound("paleocraft:spinoliving1.ogg");            
@@ -68,17 +68,17 @@ public class PaleocraftSoundHandler
             event.manager.addSound("paleocraft:spinomad2.ogg");
         
         //Compsognathus
-            event.manager.addSound("paleocraft:Compy1.ogg");     
-            event.manager.addSound("paleocraft:Compy2.ogg");
-            event.manager.addSound("paleocraft:CompyDeath.ogg");
-            event.manager.addSound("paleocraft:CompyHurt.ogg");
+            event.manager.addSound("paleocraft:compyliving1.ogg");     
+            event.manager.addSound("paleocraft:compyliving2.ogg");
+            event.manager.addSound("paleocraft:compydeath.ogg");
+            event.manager.addSound("paleocraft:compyhurt.ogg");
         
            //Massospondylus
-            event.manager.addSound("paleocraft:Masso1.ogg"); 
-            event.manager.addSound("paleocraft:Masso2.ogg"); 
-            event.manager.addSound("paleocraft:Masso3.ogg"); 
-            event.manager.addSound("paleocraft:MassoHurt.ogg"); 
-            event.manager.addSound("paleocraft:MedHerbDeath.ogg"); 
+            event.manager.addSound("paleocraft:massoliving1.ogg"); 
+            event.manager.addSound("paleocraft:massoliving2.ogg"); 
+            event.manager.addSound("paleocraft:massoliving3.ogg"); 
+            event.manager.addSound("paleocraft:massohurt.ogg"); 
+            event.manager.addSound("paleocraft:medherbdeath.ogg"); 
         } 
         catch (Exception e)
         {

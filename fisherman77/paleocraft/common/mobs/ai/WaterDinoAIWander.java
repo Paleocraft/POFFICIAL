@@ -7,17 +7,16 @@ import net.minecraft.util.Vec3;
 
 public class WaterDinoAIWander extends EntityAIBase
 {
-    private EntityCreature theEntity;
-    
-    private double targetX;
-    private double targetZ;
-    private final float FLOAT_SPEED;
+    private EntityCreature entity;
+    private double xPosition;
+    private double yPosition;
+    private double zPosition;
+    private double speed;
 
-    public WaterDinoAIWander(EntityCreature par1EntityCreature, float var3)
+    public WaterDinoAIWander(EntityCreature par1EntityCreature, double par2)
     {
-        this.theEntity = par1EntityCreature;
-        
-        this.FLOAT_SPEED = var3;
+        this.entity = par1EntityCreature;
+        this.speed = par2;
         this.setMutexBits(1);
     }
 
@@ -26,38 +25,50 @@ public class WaterDinoAIWander extends EntityAIBase
      */
     public boolean shouldExecute()
     {
-    	if (this.theEntity.getRNG().nextInt(30) != 0)
-        {
-            return false;
-        }
-        else
-        {
-            Vec3 var1 = RandomPositionGenerator.findRandomTarget(this.theEntity, 10, 7);
-
-            if (var1 == null)
-            {
-                return false;
-            }
-            else
-            {
-                this.targetX = var1.xCoord;
-                this.targetZ = var1.zCoord;
-                return true;
-            }
-        }
+    	if(entity.isInWater())
+    	{
+	        Vec3 vec3 = RandomPositionGenerator.findRandomTarget(this.entity, 30, 10);
+	
+	        if (vec3 == null)
+	        {
+	            return false;
+	        }
+	        else
+	        {
+	            this.xPosition = vec3.xCoord;
+	            this.yPosition = vec3.yCoord;
+	            this.zPosition = vec3.zCoord;
+	            
+	            if(this.yPosition < 63.0D)
+	            {
+	            	return true;
+	            }
+	            else
+	            {
+	            	return false;
+	            }
+	            
+	        }
+    	}
+    	else
+    	{
+    		return false;
+    	}
     }
-    
-    /**
-    * Returns whether an in-progress EntityAIBase should continue executing
-    */
-        public boolean continueExecuting()
-        {
-            return !this.theEntity.getNavigator().noPath();
-        }
 
-        /**
-    * Execute a one shot task or start executing a continuous task
-    */
-        public void startExecuting() {}
-        
+    /**
+     * Returns whether an in-progress EntityAIBase should continue executing
+     */
+    public boolean continueExecuting()
+    {
+        return !this.entity.getNavigator().noPath();
+    }
+
+    /**
+     * Execute a one shot task or start executing a continuous task
+     */
+    public void startExecuting()
+    {
+        this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
+    }
 }

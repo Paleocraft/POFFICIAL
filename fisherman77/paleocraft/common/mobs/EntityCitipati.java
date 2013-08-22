@@ -59,10 +59,10 @@ public class EntityCitipati extends EntityAnimal
         return EnumCreatureAttribute.UNDEAD;
     }
 
-protected boolean isAIEnabled()
-{
-    return true;
-}
+	protected boolean isAIEnabled()
+	{
+	    return true;
+	}
 
 /**
  * Returns the sound this mob makes while it's alive.
@@ -99,22 +99,22 @@ public EntityAgeable createChild(EntityAgeable entityageable) {
 	return null;
 }
 
-//ATTACKING OTHER MOBS - OVERRIDING ENTITYANIMAL
-/**
- * Basic mob attack. Default to touch of death in EntityCreature. Overridden by each mob to define their attack.
- */
-protected void attackEntity(Entity par1Entity, float par2)
-{
-    if (this.attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY && par1Entity.boundingBox.minY < this.boundingBox.maxY)
-    {
-        this.attackTime = 20;
-        this.attackEntityAsMob(par1Entity);
-    }
-}
-
-public boolean attackEntityAsMob(Entity par1Entity)
-{
-	int i = 10; //attackStrength
-    return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float)i);
-}
+	//ATTACKING OTHER MOBS - OVERRIDING ENTITYANIMAL
+	/**
+	 * Basic mob attack. Default to touch of death in EntityCreature. Overridden by each mob to define their attack.
+	 */
+	protected void attackEntity(Entity par1Entity, float par2)
+	{
+	    if (this.attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY && par1Entity.boundingBox.minY < this.boundingBox.maxY)
+	    {
+	        this.attackTime = 20;
+	        this.attackEntityAsMob(par1Entity);
+	    }
+	}
+	
+	public boolean attackEntityAsMob(Entity par1Entity)
+	{
+		int i = 10; //attackStrength
+	    return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float)i);
+	}
 }

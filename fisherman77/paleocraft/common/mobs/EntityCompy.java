@@ -48,7 +48,7 @@ public class EntityCompy extends EntityTameable
  {
   super(par1World);
   
-  this.setSize(0.25F, 0.25F);
+  this.setSize(0.5F, 0.5F);
   
   this.tasks.addTask(0, new EntityAISwimming(this));
   this.tasks.addTask(1, new EntityAILeapAtTarget(this, 0.4F));

@@ -27,17 +27,17 @@ public class RenderTroodon extends RenderLiving
 		setRenderPassModel(new ModelTroodon());
 	}
 
-	public void renderCroc(EntityTroodon entitycroc, double d, double d1, double d2, float f, float f1) {
+	public void renderTroodon(EntityTroodon entitycroc, double d, double d1, double d2, float f, float f1) {
 		super.doRenderLiving(entitycroc, d, d1, d2, f, f1);
 	}
 
 	public void doRenderLiving(EntityLivingBase entityliving, double d, double d1, double d2, float f, float f1) {
-		renderCroc((EntityTroodon) entityliving, d, d1, d2, f, f1);
+		renderTroodon((EntityTroodon) entityliving, d, d1, d2, f, f1);
 	}
 
     @Override
 	public void doRender(Entity entity, double d, double d1, double d2,	float f, float f1) {
-		renderCroc((EntityTroodon) entity, d, d1, d2, f, f1);
+		renderTroodon((EntityTroodon) entity, d, d1, d2, f, f1);
 	}
 
 	/*protected int setCrocEyeBrightness(EntityTroodon entitycroc, int i, float f) {

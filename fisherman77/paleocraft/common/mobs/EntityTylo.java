@@ -2,6 +2,8 @@ package fisherman77.paleocraft.common.mobs;
 
 import java.util.Random;
 
+import fisherman77.paleocraft.common.mobs.ai.WaterDinoAIWander;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentThorns;
@@ -15,6 +17,7 @@ import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -39,13 +42,19 @@ public EntityTylo(World par1World)
  {
   super(par1World);	
   
-  this.setSize(3.0F, 3.0F);
+  this.setSize(2.5F, 2.5F);
   
-  this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.6F, false));
-  //this.tasks.addTask(1, new EntityAIWander(this, 0.4F));
-  this.tasks.addTask(1, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+  this.getNavigator().setAvoidsWater(false);
+  
+  //this.tasks.addTask(0, new EntityAISwimming(this));
+  this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0F, false));
+  this.tasks.addTask(1, new WaterDinoAIWander(this, 0.2F));
+  this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true)); 
-  this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+  this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+  this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityBoat.class, 0, true));
+  this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, EntitySquid.class, 0, true));
+
   this.getNavigator().setCanSwim(true);
  }
 
@@ -53,7 +62,7 @@ public EntityTylo(World par1World)
 protected void func_110147_ax() {
     super.func_110147_ax();
     
-    func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.4); // moveSpeed
+    func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(1.0); // moveSpeed
     func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(50); // maxHealth
 } 
  
@@ -130,4 +139,31 @@ protected String getDeathSound()
 protected boolean canDespawn()
 {
 return false;
-}}
+}
+
+/**
+ * Gets called every tick from main Entity class
+ */
+public void onEntityUpdate()
+{
+    int i = this.getAir();
+    super.onEntityUpdate();
+
+    if (this.isEntityAlive() && !this.isInWater())
+    {
+        --i;
+        this.setAir(i);
+
+        if (this.getAir() == -20)
+        {
+            this.setAir(0);
+            this.attackEntityFrom(DamageSource.drown, 15.0F);
+        }
+    }
+    else
+    {
+        this.setAir(300);
+    }
+}
+
+}

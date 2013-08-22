@@ -30,10 +30,10 @@ public EntityBaryonyx(World par1World)
   
   this.tasks.addTask(0, new EntityAISwimming(this));
   this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.6D, false));
-  this.tasks.addTask(3, new EntityAIWander(this, 0.4));
-  this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+  this.tasks.addTask(2, new EntityAIWander(this, 0.4));
+  this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true)); 
-  this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+  this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
   }
 
 	@Override
