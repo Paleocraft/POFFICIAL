@@ -96,7 +96,7 @@ public class EntityCompy extends EntityTameable
   */
  protected String getLivingSound()
  {
-     return "paleocraft:compyliving";
+     return "paleocraft:Compy1";
  }
 
  /**
@@ -104,7 +104,7 @@ public class EntityCompy extends EntityTameable
   */
  protected String getHurtSound()
  {
-     return "paleocraft:compyhurt";
+     return "paleocraft:CompyHurt";
  }
 
  /**
@@ -112,7 +112,7 @@ public class EntityCompy extends EntityTameable
   */
  protected String getDeathSound()
  {
-     return "paleocraft:compydeath";
+     return "paleocraft:CompyDeath";
  }
  
  public EnumCreatureAttribute getCreatureAttribute()
