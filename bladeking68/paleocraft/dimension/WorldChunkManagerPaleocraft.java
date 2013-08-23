@@ -31,8 +31,8 @@ protected WorldChunkManagerPaleocraft()
 {
 this.myBiomeCache = new BiomeCache(this);
 this.myBiomesToSpawnIn = new ArrayList<BiomeGenBase>();
-//this.myBiomesToSpawnIn.add(fisherman77.paleocraft.common.Paleocraft.TutorialBiomeDeafult);
-//this.myBiomesToSpawnIn.add(fisherman77.paleocraft.common.Paleocraft.Paleoplains); <- EDITED -- TOOK OUT PALEOPLAINS
+
+this.myBiomesToSpawnIn.add(fisherman77.paleocraft.common.Paleocraft.Paleoplains); 
 this.myBiomesToSpawnIn.add(fisherman77.paleocraft.common.Paleocraft.Paleodesert);
 this.myBiomesToSpawnIn.add(fisherman77.paleocraft.common.Paleocraft.Paleoforest);
 this.myBiomesToSpawnIn.add(fisherman77.paleocraft.common.Paleocraft.Paleosea);
