@@ -11,7 +11,7 @@ import net.minecraft.world.gen.layer.IntCache;
 public class GenLayerBiomesPaleocraft extends GenLayer {
 
 	//EDITED -- TOOK OUT PALEOPLAINS
-protected BiomeGenBase[] allowedBiomes = {fisherman77.paleocraft.common.Paleocraft.Paleodesert, fisherman77.paleocraft.common.Paleocraft.Paleoforest, fisherman77.paleocraft.common.Paleocraft.Paleosea, fisherman77.paleocraft.common.Paleocraft.Paleoswamp};
+protected BiomeGenBase[] allowedBiomes = {fisherman77.paleocraft.common.Paleocraft.Paleoplains, fisherman77.paleocraft.common.Paleocraft.Paleodesert, fisherman77.paleocraft.common.Paleocraft.Paleoforest, fisherman77.paleocraft.common.Paleocraft.Paleosea, fisherman77.paleocraft.common.Paleocraft.Paleoswamp};
 
 public GenLayerBiomesPaleocraft(long seed, GenLayer genlayer) {
 super(seed);
