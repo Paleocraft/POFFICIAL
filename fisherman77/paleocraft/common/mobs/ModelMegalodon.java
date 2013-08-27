@@ -14,6 +14,10 @@ package fisherman77.paleocraft.common.mobs;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.boss.EntityDragon;
+import net.minecraft.entity.monster.EntityIronGolem;
+import net.minecraft.util.MathHelper;
 
 public class ModelMegalodon extends ModelBase
 {
@@ -32,7 +36,9 @@ public class ModelMegalodon extends ModelBase
     ModelRenderer BackFins;
     ModelRenderer Dorsal;
     ModelRenderer NoseTip;
-  
+    private float partialTicks;
+	private EntityDragon par1Entity;
+	private float f3;
   public ModelMegalodon()
   {
     textureWidth = 200;
@@ -151,9 +157,29 @@ public class ModelMegalodon extends ModelBase
     model.rotateAngleZ = z;
   }
   
-  public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
+  
+ 
+  
+  
+  public void setLivingAnimations(EntityLivingBase par1EntityLivingBase, float par2, float par3, float par4)
   {
-	  
+     // this.partialTicks = par4;
+      //this.Jaw.rotateAngleX = (float)(Math.sin((double)(f3 * (float)Math.PI * 2.0F)) + 1.0D) * 0.2F;
+      
+  }
+
+private float func_78172_a(float f, float g) {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
+  {
+	
+	//this.Jaw.rotateAngleX = (float)(Math.sin((double)(f3 * (float)Math.PI * 0.4F)) + 1.0D) * 0.2F;
+	
+	 this.Jaw.rotateAngleX = MathHelper.cos(f * 0.6662F) * 0.5F * f1;
+
   }
 
 }
