@@ -1,7 +1,9 @@
-package bladeking68.paleocraft.dimension;
+package bladeking68.paleocraft.BlocksItems;
 
 import java.util.List;
 import java.util.Random;
+
+import bladeking68.paleocraft.Tree.WorldGenPaleocraftTree1;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
