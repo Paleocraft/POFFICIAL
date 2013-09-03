@@ -1,8 +1,7 @@
-package bladeking68.paleocraft.BlocksItems;
+package bladeking68.paleocraft.dimension;
 
 
 
-import bladeking68.paleocraft.dimension.TeleporterPaleocraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
@@ -309,5 +308,4 @@ public int idPicked(World par1World, int par2, int par3, int par4)
 {
 return 0;
 }
-
 }

@@ -4,6 +4,8 @@ import java.beans.EventHandler;
 
 import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import fisherman77.paleocraft.common.Paleocraft;
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -11,6 +13,7 @@ import net.minecraftforge.event.ForgeSubscribe;
 
 public class PaleocraftSoundHandler
 {
+	@SideOnly(Side.CLIENT)
     @ForgeSubscribe
     public void onSound(SoundLoadEvent event)
     {

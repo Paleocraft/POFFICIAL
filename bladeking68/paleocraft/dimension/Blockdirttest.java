@@ -1,4 +1,4 @@
-package bladeking68.paleocraft.BlocksItems;
+package bladeking68.paleocraft.dimension;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;

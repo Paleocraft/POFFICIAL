@@ -1,10 +1,8 @@
-package bladeking68.paleocraft.Tree;
+package bladeking68.paleocraft.dimension;
 
 import java.awt.Event;
 import java.util.ArrayList;
 import java.util.Random;
-
-import bladeking68.paleocraft.BlocksItems.Blocktree1sapling;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
@@ -17,7 +15,7 @@ import net.minecraftforge.event.entity.player.BonemealEvent;
 public class PaleocraftEventClass
 {
 private int BlockID;
-/** Used to make the sapling grow the tree **/
+/** Used to make the sapling grow the tree *
 @ForgeSubscribe
 public void bonemealUsed(BonemealEvent event)
 {
@@ -25,5 +23,5 @@ if(event.world.getBlockId(event.X, event.Y, event.Z) == fisherman77.paleocraft.c
 {
 ((Blocktree1sapling)fisherman77.paleocraft.common.Paleocraft.treesapling1).growTree(event.world, event.X, event.Y, event.Z, event.world.rand);
 }
-}
+}*/
 }

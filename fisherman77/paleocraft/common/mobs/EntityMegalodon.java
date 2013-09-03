@@ -2,6 +2,7 @@ package fisherman77.paleocraft.common.mobs;
 
 import java.util.Random;
 
+import fisherman77.paleocraft.common.mobs.ai.WaterDinoAIFishSwimming;
 import fisherman77.paleocraft.common.mobs.ai.WaterDinoAIWander;
 
 import net.minecraft.block.material.Material;
@@ -46,6 +47,7 @@ public EntityMegalodon(World par1World)
   
   //this.tasks.addTask(0, new EntityAISwimming(this));
   this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0F, false));
+  this.tasks.addTask(1, new WaterDinoAIFishSwimming(this));
   this.tasks.addTask(1, new WaterDinoAIWander(this, 0.4F));
   this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true)); 

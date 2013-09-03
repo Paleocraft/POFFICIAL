@@ -1,10 +1,8 @@
-package bladeking68.paleocraft.Biomes;
+package bladeking68.paleocraft.dimension;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
-
-import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.ColorizerGrass;
@@ -28,13 +26,7 @@ public class BiomeGenPaleoSwamp extends BiomeGenBase
         this.theBiomeDecorator.clayPerChunk = 1;
         this.theBiomeDecorator.waterlilyPerChunk = 4;
         this.waterColorMultiplier = 14745518;
-        this.spawnableMonsterList.clear();
-        this.spawnableCreatureList.clear();
-        this.spawnableWaterCreatureList.clear();
-       
-        // this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityBaryonyx.class,  1, 1, 1));
-        //this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntitySpino.class,  1, 4, 4));
-       // this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityDimorphodon.class,  8, 4, 4));
+        this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityBaryonyx.class,  1, 1, 1));
         //this.spawnableMonsterList.add(new SpawnListEntry(EntitySlime.class, 1, 1, 1));
     }
 

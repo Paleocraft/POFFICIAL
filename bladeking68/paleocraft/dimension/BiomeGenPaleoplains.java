@@ -1,8 +1,6 @@
-package bladeking68.paleocraft.Biomes;
+package bladeking68.paleocraft.dimension;
 
 import java.util.Random;
-
-import bladeking68.paleocraft.Tree.WorldGenPaleocraftTree1;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.passive.EntityWolf;
@@ -33,13 +31,13 @@ public class BiomeGenPaleoplains extends BiomeGenBase
              this.spawnableCreatureList.clear();
              this.spawnableWaterCreatureList.clear();
              
-             //  this.spawnableMonsterList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityDromaeosaurus.class, 1, 4, 4)); //Fisherman just keep coping this for each dino and the numbers are the spawn rate i think so you can edit that if you want
-            // this.spawnableMonsterList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityDromaeosaurus.class, 3, 4, 4));
-             //this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityCitipati.class, 100, 4, 4));
-            // this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityDimorphodon.class,  8, 4, 4));
-            // this.spawnableMonsterList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityBaryonyx.class,  1, 1, 1));
-             //this.spawnableMonsterList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityTroodon.class,  2, 1, 1));}{
-             this.WorldGenPaleocraft1 = new WorldGenPaleocraftTree1(false);}
+             //   this.spawnableMonsterList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityDromaeosaurus.class, 1, 4, 4)); //Fisherman just keep coping this for each dino and the numbers are the spawn rate i think so you can edit that if you want
+             //this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityDromaeosaurus.class, 3, 4, 4));
+             this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityCitipati.class,  3, 1, 1));
+             this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityDimorphodon.class,  4, 4, 4));}
+             //this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityBaryonyx.class,  1, 1, 1));
+             //this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityTroodon.class,  2, 1, 1));}{
+             //this.WorldGenPaleocraft1 = new WorldGenPaleocraftTree1(false);}
        
        public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
    	{

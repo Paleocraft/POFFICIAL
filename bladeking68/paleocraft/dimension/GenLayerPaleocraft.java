@@ -1,4 +1,4 @@
-package bladeking68.paleocraft.Biomes;
+package bladeking68.paleocraft.dimension;
 
 import net.minecraft.world.WorldType;
 import net.minecraft.world.gen.layer.GenLayer;

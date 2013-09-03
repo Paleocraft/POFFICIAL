@@ -18,6 +18,8 @@ public class WaterDinoAIWander extends EntityAIBase
         this.entity = par1EntityCreature;
         this.speed = par2;
         this.setMutexBits(1);
+        par1EntityCreature.getNavigator().setCanSwim(true);
+
     }
 
     /**
@@ -39,7 +41,7 @@ public class WaterDinoAIWander extends EntityAIBase
 	            this.yPosition = vec3.yCoord;
 	            this.zPosition = vec3.zCoord;
 	            
-	            if(this.yPosition < 63.0D)
+	            if(this.yPosition > 63.0D)
 	            {
 	            	return true;
 	            }
@@ -69,6 +71,6 @@ public class WaterDinoAIWander extends EntityAIBase
      */
     public void startExecuting()
     {
-        this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
+    		this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
     }
 }

@@ -3,6 +3,8 @@ package fisherman77.paleocraft.common;
 import java.lang.reflect.Type;
 import java.util.LinkedList;
 
+import com.jadarstudios.developercapes.DevCapesUtil;
+
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -19,7 +21,7 @@ import net.minecraftforge.common.MinecraftForge;
 import bladeking68.paleocraft.dimension.BiomeGenPaleoSwamp;
 import bladeking68.paleocraft.dimension.BiomeGenPaleodesert;
 import bladeking68.paleocraft.dimension.BiomeGenPaleoforest;
-import bladeking68.paleocraft.dimension.BiomeGenPaleoplains;
+//import bladeking68.paleocraft.dimension.BiomeGenPaleoplains;
 import bladeking68.paleocraft.dimension.BiomeGenPaleosea;
 import bladeking68.paleocraft.dimension.BlockPortalPaleocraft;
 import bladeking68.paleocraft.dimension.Blockdirttest;
@@ -45,6 +47,8 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import fisherman77.paleocraft.common.config.PaleocraftConfigCore;
 import fisherman77.paleocraft.common.handlers.PaleocraftClientPacketHandler;
 import fisherman77.paleocraft.common.handlers.PaleocraftServerPacketHandler;
@@ -86,13 +90,13 @@ boolean spawnCiti;
 boolean spawnDromie;
 boolean spawnTroo;
 boolean spawnDimorph;
-public static int PaleocraftDimension = 20;
-public static BiomeGenBase Paleoplains;
+public static int PaleocraftDimension;
+//public static BiomeGenBase Paleoplains;
 public static CreativeTabs PaleocraftBlocks = new PaleocraftBlocksCreativeTab(CreativeTabs.getNextID(),"Paleocraft");
 public static Block portalTrigger = new portalTriggerPaleocraft(252, 1).setUnlocalizedName("portaltrigger");;
-public static Block treesapling1;
-public static Block seaweed = new Blockseaweed(254).setUnlocalizedName("seaweed");;
-public static Block dirttest = new Blockdirttest(250).setUnlocalizedName("Test1");;
+//public static Block treesapling1;
+public static Block seaweed = new Blockseaweed(254).setUnlocalizedName("seaweed");
+public static Block dirttest = new Blockdirttest(250).setUnlocalizedName("Test1");
 //public static Block portalPlacer2;
 public static Item fossil;
 public static BiomeGenBase Paleodesert;
@@ -108,35 +112,37 @@ public void PreLoad(FMLPreInitializationEvent e)
 	MinecraftForge.EVENT_BUS.register(new PaleocraftEventClass());
 	
 	
-/**
-* Registering Paleocraft sounds...
-**/
-MinecraftForge.EVENT_BUS.register(new PaleocraftSoundHandler());
-
-/**
- * Registering the Core Config class
- */
-PaleocraftConfigCore cc = new PaleocraftConfigCore();
-
-PaleocraftConfigCore.loadConfig(e);
-
-DimensionManager.registerProviderType(PaleocraftDimension, WorldProviderPaleocraft.class, true);
-
-DimensionManager.registerDimension(PaleocraftDimension, PaleocraftDimension);
+	/**
+	* Registering Paleocraft sounds...
+	**/
+		MinecraftForge.EVENT_BUS.register(new PaleocraftSoundHandler());
+	
+	/**
+	 * Registering the Core Config class
+	 */
+		PaleocraftConfigCore cc = new PaleocraftConfigCore();
+		
+		PaleocraftConfigCore.loadConfig(e);
+		
+		PaleocraftDimension = 20;
+		
+		DimensionManager.registerProviderType(PaleocraftDimension, WorldProviderPaleocraft.class, true);
+		
+		DimensionManager.registerDimension(PaleocraftDimension, PaleocraftDimension);
 
 /**
  * We've got to put this stuff here in case we reference it in the Init
  */
 
 //Blocks
-	seaweed = new Blockseaweed(254).setUnlocalizedName("seaweed");
-	portalTrigger = new portalTriggerPaleocraft(252, 1).setUnlocalizedName("portaltrigger");
-	paleocraftPortal = new BlockPortalPaleocraft(251).setUnlocalizedName("paleocraftportal");
-    treesapling1 = new Blocktree1sapling(253, 0).setUnlocalizedName("tree1");
-    dirttest = new Blockdirttest(250).setUnlocalizedName("Test1");
+	//seaweed = new Blockseaweed(254).setUnlocalizedName("seaweed");
+	//portalTrigger = new portalTriggerPaleocraft(252, 1).setUnlocalizedName("portaltrigger");
+	//PaleocraftPortal = new BlockPortalPaleocraft(251).setUnlocalizedName("paleocraftportal");
+    //treesapling1 = new Blocktree1sapling(253, 0).setUnlocalizedName("tree1");
+    //dirttest = new Blockdirttest(250).setUnlocalizedName("Test1");
     
     
-  	fossil = new ItemFossil(3963).setUnlocalizedName("Fossil");
+  	fossil = new ItemFossil(2963).setUnlocalizedName("Fossil");
     }
 
 
@@ -153,74 +159,77 @@ DimensionManager.registerDimension(PaleocraftDimension, PaleocraftDimension);
 @Init
 public void InitPaleocraft(FMLInitializationEvent event){ //Your main initialization method
 
-NetworkRegistry.instance().registerGuiHandler(this, proxy); //Registers the class that deals with GUI data
-
-
-//Game registery 
-//GameRegistry.addBiome(Paleoplains);
-GameRegistry.registerBlock(PaleocraftPortal, "Paleocraft Portal");
-GameRegistry.registerBlock(portalTrigger, "Fossilmiddle");
-GameRegistry.registerWorldGenerator(new WorldGenPaleocraftTree1(false));
-GameRegistry.registerBlock(treesapling1, "Tree 1");
-GameRegistry.registerBlock(seaweed, "Seaweed");
-GameRegistry.registerBlock(dirttest, "Test1");
-//MainRegistryPaleocraft.RegisterInit();
-//Language registery
- LanguageRegistry.addName(PaleocraftPortal, "Paleocraft Portal");
-                LanguageRegistry.addName(fossil, "Fossil");
-                LanguageRegistry.addName(portalTrigger, "Fossilmiddle");
-                LanguageRegistry.addName(treesapling1, "Tree 1");
-                LanguageRegistry.addName(seaweed, "Seaweed");
-                LanguageRegistry.addName(dirttest, "Test1");
-                //Dimension
-
-
-//crafting recipe (Fossil)
-ItemStack stonestack = new ItemStack(Block.stone);
-ItemStack bonestack = new ItemStack(Item.bone);
-GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
-        'x', stonestack, 'y', bonestack);
-
-
-
-//MOBS
-	proxy.registerRenderers();
+	//Capes
+		DevCapesUtil.getInstance().addFileUrl("https://dl.dropboxusercontent.com/u/43717161/Mods/Paleocraft/Capes/PaleocraftCapeIndex.txt");
+			
+		NetworkRegistry.instance().registerGuiHandler(this, proxy); //Registers the class that deals with GUI data
 		
-	registerEntity(EntityBaryonyx.class, "Baryonyx",  0x405135, 0xC4C67D);
-	registerEntity(EntityCitipati.class, "Citipati",  0xA67822, 0xA14A5C);
-	registerEntity(EntityCompy.class, "Compsognathus", 0x4B4A31, 0xBDBC8B);
-	registerEntity(EntityDimorphodon.class, "Dimorphodon", 0xC8C968, 0x6064C4);
-	registerEntity(EntityDromaeosaurus.class, "Dromaeosaurus",  0x5C5B5C, 0x551305);
-	registerEntity(EntityMasso.class, "Massospondylus", 0x515151, 0x1E0F50);
-	registerEntity(EntityMegalodon.class, "Megalodon", 0x676767, 0x9c9c9c);
-	registerEntity(EntitySpino.class, "Spinosaurus", 0x0E1640, 0xF78708);
-	registerEntity(EntityTroodon.class, "Troodon", 0x5A5A5A, 0xE8E1BF);
-	registerEntity(EntityTylo.class, "Tylosaurus", 0x45369F, 0xFFFFFF);
+		
+	//Game registery 
+		//GameRegistry.addBiome(Paleoplains);
+		GameRegistry.registerBlock(PaleocraftPortal, "Paleocraft Portal");
+		GameRegistry.registerBlock(portalTrigger, "Fossilmiddle");
+		//GameRegistry.registerWorldGenerator(new WorldGenPaleocraftTree1(false));
+		//GameRegistry.registerBlock(treesapling1, "Tree 1");
+		GameRegistry.registerBlock(seaweed, "Seaweed");
+		GameRegistry.registerBlock(dirttest, "Test1");
+		MainRegistryPaleocraft.RegisterInit();
+	//Language registery
+		 LanguageRegistry.addName(PaleocraftPortal, "Paleocraft Portal");
+		                LanguageRegistry.addName(fossil, "Fossil");
+		                LanguageRegistry.addName(portalTrigger, "Fossilmiddle");
+		                //LanguageRegistry.addName(treesapling1, "Tree 1");
+		                LanguageRegistry.addName(seaweed, "Seaweed");
+		                LanguageRegistry.addName(dirttest, "Test1");
+		                //Dimension
+		
+		
+	//crafting recipe (Fossil)
+		ItemStack stonestack = new ItemStack(Block.stone);
+		ItemStack bonestack = new ItemStack(Item.bone);
+		GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
+		        'x', stonestack, 'y', bonestack);
 
-	//Baryonyx
-		LanguageRegistry.instance().addStringLocalization("entity.Baryonyx.name", "Baryonyx");
-	//Citipati
-		LanguageRegistry.instance().addStringLocalization("entity.Citipati.name", "Citipati");
-	//Compsognathus
-		//LanguageRegistry.instance().addStringLocalization("entity.Compsognathus.name", "Compsognathus");
-	//Dimorphodon
-		LanguageRegistry.instance().addStringLocalization("entity.Dimorphodon.name", "Dimorphodon");
-	//Dromaeosaurus
-		LanguageRegistry.instance().addStringLocalization("entity.Dromaeosaurus.name", "Dromaeosaurus");
-	//Massospondylus
-		LanguageRegistry.instance().addStringLocalization("entity.Massospondylus.name", "Massospondylus");
-	//Megalodon
-		LanguageRegistry.instance().addStringLocalization("entity.Megalodon.name", "Megalodon");
-	//Spinosaurus
-		LanguageRegistry.instance().addStringLocalization("entity.Spinosaurus.name", "Spinosaurus");
-	//Troodon
-		LanguageRegistry.instance().addStringLocalization("entity.Troodon.name", "Troodon");
-	//Tylosaurus
-		LanguageRegistry.instance().addStringLocalization("entity.Tylosaurus.name", "Tylosaurus");
+
+
+	//MOBS
+		proxy.registerRenderers();
+			
+		registerEntity(EntityBaryonyx.class, "Baryonyx",  0x405135, 0xC4C67D);
+		registerEntity(EntityCitipati.class, "Citipati",  0xA67822, 0xA14A5C);
+		//registerEntity(EntityCompy.class, "Compsognathus", 0x4B4A31, 0xBDBC8B);
+		registerEntity(EntityDimorphodon.class, "Dimorphodon", 0xC8C968, 0x6064C4);
+		registerEntity(EntityDromaeosaurus.class, "Dromaeosaurus",  0x5C5B5C, 0x551305);
+		//registerEntity(EntityMasso.class, "Massospondylus", 0x515151, 0x1E0F50);
+		registerEntity(EntityMegalodon.class, "Megalodon", 0x676767, 0x9c9c9c);
+		//registerEntity(EntitySpino.class, "Spinosaurus", 0x0E1640, 0xF78708);
+		registerEntity(EntityTroodon.class, "Troodon", 0x5A5A5A, 0xE8E1BF);
+		//registerEntity(EntityTylo.class, "Tylosaurus", 0x45369F, 0xFFFFFF);
+	
+		//Baryonyx
+			LanguageRegistry.instance().addStringLocalization("entity.Baryonyx.name", "Baryonyx");
+		//Citipati
+			LanguageRegistry.instance().addStringLocalization("entity.Citipati.name", "Citipati");
+		//Compsognathus
+			//LanguageRegistry.instance().addStringLocalization("entity.Compsognathus.name", "Compsognathus");
+		//Dimorphodon
+			LanguageRegistry.instance().addStringLocalization("entity.Dimorphodon.name", "Dimorphodon");
+		//Dromaeosaurus
+			LanguageRegistry.instance().addStringLocalization("entity.Dromaeosaurus.name", "Dromaeosaurus");
+		//Massospondylus
+			//LanguageRegistry.instance().addStringLocalization("entity.Massospondylus.name", "Massospondylus");
+		//Megalodon
+			LanguageRegistry.instance().addStringLocalization("entity.Megalodon.name", "Megalodon");
+		//Spinosaurus
+			//LanguageRegistry.instance().addStringLocalization("entity.Spinosaurus.name", "Spinosaurus");
+		//Troodon
+			LanguageRegistry.instance().addStringLocalization("entity.Troodon.name", "Troodon");
+		//Tylosaurus
+			//LanguageRegistry.instance().addStringLocalization("entity.Tylosaurus.name", "Tylosaurus");
 		
 		
 	//Biomes
-	  	Paleoplains = new BiomeGenPaleoplains(56).setColor(2900485).setBiomeName("PaleoPlains").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
+	  	//Paleoplains = new BiomeGenPaleoplains(56).setColor(2900485).setBiomeName("PaleoPlains").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
 	  	Paleodesert = new BiomeGenPaleodesert(54).setColor(2900485).setBiomeName("Paleodesert").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.2F);
 	  	Paleosea = new BiomeGenPaleosea(55).setColor(2900485).setBiomeName("Paleosea").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(-1.0F, 0.4F);
 	  	Paleoforest = new BiomeGenPaleoforest(53).setColor(2900485).setBiomeName("Paleoforest").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(-0.2F, 0.1F);

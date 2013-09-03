@@ -1,4 +1,4 @@
-package bladeking68.paleocraft.BlocksItems;
+package bladeking68.paleocraft.dimension;
 
 import java.util.Random;
 
@@ -34,7 +34,7 @@ public class Blockseaweed extends BlockFlower
     }
     public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
     {
-        par5Entity.motionX *= 0.2D;
-        par5Entity.motionZ *= 0.2D;
+        par5Entity.motionX *= 0.4D;
+        par5Entity.motionZ *= 0.4D;
     }
 }

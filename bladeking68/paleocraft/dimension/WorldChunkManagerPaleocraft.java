@@ -5,8 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import bladeking68.paleocraft.Biomes.GenLayerPaleocraft;
-
 
 
 
@@ -33,8 +31,8 @@ protected WorldChunkManagerPaleocraft()
 {
 this.myBiomeCache = new BiomeCache(this);
 this.myBiomesToSpawnIn = new ArrayList<BiomeGenBase>();
-this.myBiomesToSpawnIn.add(fisherman77.paleocraft.common.Paleocraft.TutorialBiomeDeafult);
-this.myBiomesToSpawnIn.add(fisherman77.paleocraft.common.Paleocraft.Paleoplains);
+//this.myBiomesToSpawnIn.add(fisherman77.paleocraft.common.Paleocraft.TutorialBiomeDeafult);
+//this.myBiomesToSpawnIn.add(fisherman77.paleocraft.common.Paleocraft.Paleoplains); <- EDITED -- TOOK OUT PALEOPLAINS
 this.myBiomesToSpawnIn.add(fisherman77.paleocraft.common.Paleocraft.Paleodesert);
 this.myBiomesToSpawnIn.add(fisherman77.paleocraft.common.Paleocraft.Paleoforest);
 this.myBiomesToSpawnIn.add(fisherman77.paleocraft.common.Paleocraft.Paleosea);
@@ -71,7 +69,7 @@ public BiomeGenBase getBiomeGenAt(int x, int z)
 BiomeGenBase biome = this.myBiomeCache.getBiomeGenAt(x, z);
 if (biome == null)
 {
-return fisherman77.paleocraft.common.Paleocraft.TutorialBiomeDeafult;
+return fisherman77.paleocraft.common.Paleocraft.Paleoforest;
 }
 
 return biome;
@@ -161,7 +159,7 @@ if (aint[i] >= 0) {
 par1ArrayOfBiomeGenBase[i] = BiomeGenBase.biomeList[aint[i]];
 } else {
 //Change this to a biome
-par1ArrayOfBiomeGenBase[i] = fisherman77.paleocraft.common.Paleocraft.TutorialBiomeDeafult;
+par1ArrayOfBiomeGenBase[i] = fisherman77.paleocraft.common.Paleocraft.Paleodesert;
 }
 }
 
@@ -201,7 +199,7 @@ if (aint[i] >= 0) {
 par1ArrayOfBiomeGenBase[i] = BiomeGenBase.biomeList[aint[i]];
 } else {
 //Change this to a biome
-par1ArrayOfBiomeGenBase[i] = fisherman77.paleocraft.common.Paleocraft.TutorialBiomeDeafult;
+par1ArrayOfBiomeGenBase[i] = fisherman77.paleocraft.common.Paleocraft.Paleodesert;
 }
 }
 
