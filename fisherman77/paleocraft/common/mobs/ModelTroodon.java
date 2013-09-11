@@ -248,3 +248,4 @@ public class ModelTroodon extends ModelBase
 	 Snout.rotateAngleY = f3 / 57.29578F;
 	 Snout.rotateAngleX = f4 / 57.29578F;
   }
+}
