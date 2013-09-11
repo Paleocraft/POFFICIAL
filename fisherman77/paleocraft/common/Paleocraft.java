@@ -197,35 +197,35 @@ public void InitPaleocraft(FMLInitializationEvent event){ //Your main initializa
 			
 		registerEntity(EntityBaryonyx.class, "Baryonyx",  0x405135, 0xC4C67D);
 		registerEntity(EntityCitipati.class, "Citipati",  0xA67822, 0xA14A5C);
-		//registerEntity(EntityCompy.class, "Compsognathus", 0x4B4A31, 0xBDBC8B);
+		registerEntity(EntityCompy.class, "Compsognathus", 0x4B4A31, 0xBDBC8B);
 		registerEntity(EntityDimorphodon.class, "Dimorphodon", 0xC8C968, 0x6064C4);
 		registerEntity(EntityDromaeosaurus.class, "Dromaeosaurus",  0x5C5B5C, 0x551305);
-		//registerEntity(EntityMasso.class, "Massospondylus", 0x515151, 0x1E0F50);
+		registerEntity(EntityMasso.class, "Massospondylus", 0x515151, 0x1E0F50);
 		registerEntity(EntityMegalodon.class, "Megalodon", 0x676767, 0x9c9c9c);
-		//registerEntity(EntitySpino.class, "Spinosaurus", 0x0E1640, 0xF78708);
+		registerEntity(EntitySpino.class, "Spinosaurus", 0x0E1640, 0xF78708);
 		registerEntity(EntityTroodon.class, "Troodon", 0x5A5A5A, 0xE8E1BF);
-		//registerEntity(EntityTylo.class, "Tylosaurus", 0x45369F, 0xFFFFFF);
+		registerEntity(EntityTylo.class, "Tylosaurus", 0x45369F, 0xFFFFFF);
 	
 		//Baryonyx
 			LanguageRegistry.instance().addStringLocalization("entity.Baryonyx.name", "Baryonyx");
 		//Citipati
 			LanguageRegistry.instance().addStringLocalization("entity.Citipati.name", "Citipati");
 		//Compsognathus
-			//LanguageRegistry.instance().addStringLocalization("entity.Compsognathus.name", "Compsognathus");
+			LanguageRegistry.instance().addStringLocalization("entity.Compsognathus.name", "Compsognathus");
 		//Dimorphodon
 			LanguageRegistry.instance().addStringLocalization("entity.Dimorphodon.name", "Dimorphodon");
 		//Dromaeosaurus
 			LanguageRegistry.instance().addStringLocalization("entity.Dromaeosaurus.name", "Dromaeosaurus");
 		//Massospondylus
-			//LanguageRegistry.instance().addStringLocalization("entity.Massospondylus.name", "Massospondylus");
+			LanguageRegistry.instance().addStringLocalization("entity.Massospondylus.name", "Massospondylus");
 		//Megalodon
 			LanguageRegistry.instance().addStringLocalization("entity.Megalodon.name", "Megalodon");
 		//Spinosaurus
-			//LanguageRegistry.instance().addStringLocalization("entity.Spinosaurus.name", "Spinosaurus");
+			LanguageRegistry.instance().addStringLocalization("entity.Spinosaurus.name", "Spinosaurus");
 		//Troodon
 			LanguageRegistry.instance().addStringLocalization("entity.Troodon.name", "Troodon");
 		//Tylosaurus
-			//LanguageRegistry.instance().addStringLocalization("entity.Tylosaurus.name", "Tylosaurus");
+			LanguageRegistry.instance().addStringLocalization("entity.Tylosaurus.name", "Tylosaurus");
 		
 		
 	//Biomes
