@@ -175,15 +175,15 @@ private float func_78172_a(float f, float g) {
 
 public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
   {
-	
+
 	//this.Jaw.rotateAngleX = (float)(Math.sin((double)(f3 * (float)Math.PI * 0.4F)) + 1.0D) * 0.2F;
-	
+
 	 this.Jaw.rotateAngleX = MathHelper.cos(f * 0.6662F) * 0.5F * f1;
 	 this.TailFin.rotateAngleY = MathHelper.cos(f * 0.6662F) * 0.5F * f1;
-	 this.Tail1.rotateAngleY = MathHelper.cos(f * 0.6662F) * 0.5F * f1;
+	 //this.Tail1.rotateAngleY = MathHelper.cos(f * 0.6662F) * 0.5F * f1;
 	 this.Tail2.rotateAngleY = MathHelper.cos(f * 0.6662F) * 0.5F * f1;
 	 this.BackFins.rotateAngleY = MathHelper.cos(f * 0.6662F) * 0.5F * f1;
-	 
+
   }
 
 }
