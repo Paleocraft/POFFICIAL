@@ -47,6 +47,8 @@ public EntityMegalodon(World par1World)
   
   //this.tasks.addTask(0, new EntityAISwimming(this));
   this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0F, false));
+  this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntitySquid.class, 1.0F, false));
+  this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityBoat.class, 1.0F, false));
   this.tasks.addTask(1, new WaterDinoAIFishSwimming(this));
   this.tasks.addTask(1, new WaterDinoAIWander(this, 0.4F));
   this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
