@@ -182,6 +182,7 @@ public boolean interact(EntityPlayer par1EntityPlayer)
 				if (!this.worldObj.isRemote)
 				{
 	                this.setTamed(true);
+	                
 	                this.setPathToEntity((PathEntity)null);
 	                this.setAttackTarget((EntityLiving)null);
 	                this.setEntityHealth(20);
@@ -202,7 +203,7 @@ public boolean interact(EntityPlayer par1EntityPlayer)
     }
 	else
 	{
-		par1EntityPlayer.addChatMessage("[Paleocraft] You need raw meat to tame a Dromaeosaurus.");
+		par1EntityPlayer.addChatMessage("[Paleocraft] You need raw beef to tame a Dromaeosaurus.");
 	}
 	
 	return true;
