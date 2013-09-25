@@ -76,7 +76,7 @@ serverPacketHandlerSpec = @SidedPacketHandler(channels = {"Paleocraft"}, packetH
 @Mod(modid="Paleocraft",name="Paleocraft",version="Dev Build")
 
 public class Paleocraft {
-;
+ 
 	
 	@Instance("Paleocraft") //The instance, this is very important later on
 public static Paleocraft instance = new Paleocraft();

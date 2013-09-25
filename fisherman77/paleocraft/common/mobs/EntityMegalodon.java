@@ -3,6 +3,8 @@ package fisherman77.paleocraft.common.mobs;
 import java.util.Random;
 
 import fisherman77.paleocraft.common.mobs.ai.WaterDinoAIFishSwimming;
+import fisherman77.paleocraft.common.mobs.ai.WaterDinoAIHurtByTarget;
+import fisherman77.paleocraft.common.mobs.ai.WaterDinoAINearestAttackableTarget;
 import fisherman77.paleocraft.common.mobs.ai.WaterDinoAIWander;
 
 import net.minecraft.block.material.Material;
@@ -43,17 +45,17 @@ public EntityMegalodon(World par1World)
  {
   super(par1World);	
   
-  this.setSize(2.5F, 2.5F);
+  this.setSize(3.75F, 3.75F);
   
   //this.tasks.addTask(0, new EntityAISwimming(this));
-  this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0F, false));
+  this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0F, false));
   this.tasks.addTask(1, new WaterDinoAIFishSwimming(this));
   this.tasks.addTask(1, new WaterDinoAIWander(this, 0.4F));
   this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-  this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true)); 
-  this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-  this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityBoat.class, 0, true));
-  this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, EntitySquid.class, 0, true));
+  this.targetTasks.addTask(1, new WaterDinoAIHurtByTarget(this, true)); 
+  this.targetTasks.addTask(2, new WaterDinoAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+  this.targetTasks.addTask(3, new WaterDinoAINearestAttackableTarget(this, EntityBoat.class, 0, true));
+  this.targetTasks.addTask(4, new WaterDinoAINearestAttackableTarget(this, EntitySquid.class, 0, true));
 
   this.getNavigator().setCanSwim(true);
  }
@@ -139,5 +141,18 @@ protected String getDeathSound()
 protected boolean canDespawn()
 {
 return false;
+}
+
+/**
+ * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
+ * use this to react to sunlight and start to burn.
+ */
+public void onLivingUpdate()
+{
+    super.onLivingUpdate();
+    
+    if (!this.isInWater()){
+    	
+    }
 }
 }
