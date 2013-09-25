@@ -14,8 +14,8 @@ import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.Ev
 import java.util.List;
 import java.util.Random;
 
-import bladeking68.paleocraft.BlocksItems.WorldGenseaweed;
-import bladeking68.paleocraft.Tree.WorldGenPaleocraftTree1;
+/*import bladeking68.paleocraft.BlocksItems.WorldGenseaweed;
+import bladeking68.paleocraft.Tree.WorldGenPaleocraftTree1;*/
 
 
 import net.minecraft.block.Block;
