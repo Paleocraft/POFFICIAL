@@ -59,11 +59,11 @@ public EntityTylo(World par1World)
  }
 
 @Override
-protected void func_110147_ax() {
-    super.func_110147_ax();
+protected void applyEntityAttributes() {
+    super.applyEntityAttributes();
     
-    func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(1.0); // moveSpeed
-    func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(50); // maxHealth
+    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0); // moveSpeed
+    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50); // maxHealth
 } 
  
 //ATTACKING OTHER MOBS - OVERRIDING ENTITYWATERMOB

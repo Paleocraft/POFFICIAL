@@ -37,12 +37,12 @@ public EntitySpino(World par1World)
   }
 
 	@Override
-	protected void func_110147_ax() {
-	    super.func_110147_ax();
+	protected void applyEntityAttributes() {
+	    super.applyEntityAttributes();
 	    
-	    func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.4); // moveSpeed
-	    func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(75); // maxHealth
-	    func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(20); //attackStrength
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.4); // moveSpeed
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(75); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(20); //attackStrength
 	}
  
 	 /**

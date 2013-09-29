@@ -31,11 +31,11 @@ public class EntityDimorphodon extends EntityFlying implements IMob
     }
     
 	@Override
-	protected void func_110147_ax() {
-	    super.func_110147_ax();
+	protected void applyEntityAttributes() {
+	    super.applyEntityAttributes();
 	    
-	    func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.4); // moveSpeed
-	    func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(9); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.4); // moveSpeed
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(9); // maxHealth
 	}
 
     @SideOnly(Side.CLIENT)

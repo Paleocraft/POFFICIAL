@@ -37,7 +37,7 @@ public class WaterDinoAIHurtByTarget extends EntityAITarget
 
         if (this.entityCallsForHelp)
         {
-            double d0 = this.func_111175_f();
+            double d0 = this.getTargetDistance();
             List list = this.taskOwner.worldObj.getEntitiesWithinAABB(this.taskOwner.getClass(), AxisAlignedBB.getAABBPool().getAABB(this.taskOwner.posX, this.taskOwner.posY, this.taskOwner.posZ, this.taskOwner.posX + 1.0D, this.taskOwner.posY + 1.0D, this.taskOwner.posZ + 1.0D).expand(d0, 10.0D, d0));
             Iterator iterator = list.iterator();
 
@@ -45,7 +45,7 @@ public class WaterDinoAIHurtByTarget extends EntityAITarget
             {
                 EntityCreature entitycreature = (EntityCreature)iterator.next();
 
-                if (this.taskOwner != entitycreature && entitycreature.getAttackTarget() == null && !entitycreature.func_142014_c(this.taskOwner.getAITarget()))
+                if (this.taskOwner != entitycreature && entitycreature.getAttackTarget() == null && !entitycreature.isOnSameTeam(this.taskOwner.getAITarget()))
                 {
                     entitycreature.setAttackTarget(this.taskOwner.getAITarget());
                 }

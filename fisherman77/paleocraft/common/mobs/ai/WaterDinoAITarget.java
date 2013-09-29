@@ -86,8 +86,8 @@ public abstract class WaterDinoAITarget extends EntityAIBase
 
     protected double func_111175_f()
     {
-        AttributeInstance attributeinstance = this.taskOwner.func_110148_a(SharedMonsterAttributes.field_111265_b);
-        return attributeinstance == null ? 16.0D : attributeinstance.func_111126_e();
+        AttributeInstance attributeinstance = this.taskOwner.getEntityAttribute(SharedMonsterAttributes.followRange);
+        return attributeinstance == null ? 16.0D : attributeinstance.getAttributeValue();
     }
 
     /**

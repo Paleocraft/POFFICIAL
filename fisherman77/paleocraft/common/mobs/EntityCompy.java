@@ -61,11 +61,11 @@ public class EntityCompy extends EntityTameable
  }
  
 	@Override
-	protected void func_110147_ax() {
-	    super.func_110147_ax();
+	protected void applyEntityAttributes() {
+	    super.applyEntityAttributes();
 
-	    func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.4); // moveSpeed
-	    func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(3); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.4); // moveSpeed
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(3); // maxHealth
 	}
  
  /**

@@ -64,11 +64,11 @@ public class EntityDromaeosaurus extends EntityTameable
  }
  
 	@Override
-	protected void func_110147_ax() {
-	    super.func_110147_ax();
+	protected void applyEntityAttributes() {
+	    super.applyEntityAttributes();
 	    
-	    func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.4); // moveSpeed
-	    func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(9); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.4); // moveSpeed
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(9); // maxHealth
 	}
  
  /**
@@ -184,7 +184,7 @@ public boolean interact(EntityPlayer par1EntityPlayer)
 	                this.setTamed(true);
 	                this.setPathToEntity((PathEntity)null);
 	                this.setAttackTarget((EntityLiving)null);
-	                this.setEntityHealth(20);
+	                this.setHealth(20);
 	                this.setOwner(par1EntityPlayer.username);
 	                this.playTameEffect(true);
 	                this.worldObj.setEntityState(this, (byte)7);
