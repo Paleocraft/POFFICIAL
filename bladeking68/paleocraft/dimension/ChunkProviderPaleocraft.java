@@ -14,8 +14,8 @@ import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.Ev
 import java.util.List;
 import java.util.Random;
 
-/*import bladeking68.paleocraft.BlocksItems.WorldGenseaweed;
-import bladeking68.paleocraft.Tree.WorldGenPaleocraftTree1;*/
+import bladeking68.paleocraft.BlocksItems.WorldGenseaweed;
+import bladeking68.paleocraft.Tree.WorldGenPaleocraftTree1;
 
 
 import net.minecraft.block.Block;
@@ -521,8 +521,8 @@ public class ChunkProviderPaleocraft implements IChunkProvider {
 			}
 		}
 
-		//Paleoforest TREES
-		 /* for (int y = 1; y <= 255; y++)
+	/*	//Paleoforest TREES
+		  for (int y = 1; y <= 255; y++)
 	        {
 	                int j2 = k + rand.nextInt(16) + 8;
 	                int l3 = rand.nextInt(120);
@@ -617,5 +617,11 @@ public class ChunkProviderPaleocraft implements IChunkProvider {
 			this.strongholdGenerator.generate(this, this.worldObj, par1, par2, (byte[]) null);
 			this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, (byte[]) null);
 		}
+	}
+
+	@Override
+	public void saveExtraData() {
+		// TODO Auto-generated method stub
+		
 	}
 }
