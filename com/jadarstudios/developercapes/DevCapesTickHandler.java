@@ -1,7 +1,7 @@
 /**
  * DeveloperCapes by Jadar
  * License: MIT License (https://raw.github.com/jadar/DeveloperCapes/master/LICENSE)
- * version 2.0
+ * version 2.1
  */
 package com.jadarstudios.developercapes;
 
@@ -20,7 +20,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class DevCapesTickHandler implements ITickHandler {
 
 	private static final Minecraft mc = Minecraft.getMinecraft();
-	private static final DevCapesUtil instance = DevCapesUtil.getInstance();
+	private static final DevCapes instance = DevCapesUtil.getInstance();
 
 	// Keep at false when packaging..
 	private boolean debug = false;
@@ -54,14 +54,14 @@ public class DevCapesTickHandler implements ITickHandler {
 					// has a cape from another mod,) then it will be true.
 					// This statement checks for false. Will not replace any
 					// capes.
-					if (!p.field_110315_c.func_110557_a()) {
+					if (!p.downloadImageCape.isTextureUploaded()) {
 						String userGroup = instance.getUserGroup(lowerUsername);
 
 						if(debug)
 							System.out.println("Changing the cape of: " + p.username);
 						// Sets the cape URL.
-						p.field_110313_e = instance.getCapeResource(userGroup);
-						p.field_110315_c = instance.getDownloadThread(userGroup);
+						p.locationCape = instance.getCapeResource(userGroup);
+						p.downloadImageCape = instance.getDownloadThread(userGroup);
 					}
 
 					//notifies qualified user that developer capes is outdated.
