@@ -521,7 +521,11 @@ public class ChunkProviderPaleocraft implements IChunkProvider {
 			}
 		}
 
+<<<<<<< HEAD
 		//Paleoforest TREES
+=======
+	/*	//Paleoforest TREES
+>>>>>>> deccc55e75cf9a625ed9ae3521b325483ac14154
 		  for (int y = 1; y <= 255; y++)
 	        {
 	                int j2 = k + rand.nextInt(16) + 8;
@@ -620,6 +624,13 @@ public class ChunkProviderPaleocraft implements IChunkProvider {
 
 	@Override
 	public void saveExtraData() {
+<<<<<<< HEAD
 	// TODO Auto-generated method stub
 	}
 }
+=======
+		// TODO Auto-generated method stub
+		
+	}
+}
+>>>>>>> deccc55e75cf9a625ed9ae3521b325483ac14154
