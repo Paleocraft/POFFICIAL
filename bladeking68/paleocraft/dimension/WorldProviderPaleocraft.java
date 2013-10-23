@@ -51,7 +51,7 @@ return new ChunkProviderPaleocraft(worldObj, worldObj.getSeed(), true);
 /** Can player re-spawn here **/
 public boolean canRespawnHere()
 {
-return false;
+return true;
 }
 
 /** Set user message **/

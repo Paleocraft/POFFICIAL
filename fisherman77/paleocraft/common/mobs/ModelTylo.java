@@ -156,7 +156,7 @@ public class ModelTylo extends ModelBase
     //super.setRotationAngles(f, f1, f2, f3, f4, f5);
     Head.rotateAngleY = f3 / 57.29578F;
 	  Head.rotateAngleX = f4 / 57.29578F;
-	  Jaws.rotateAngleY = f3 / 57.29578F;
+	 Jaws.rotateAngleY = f3 / 57.29578F;
 	  Jaws.rotateAngleX = f4 / 57.29578F;
 	  JawsTip.rotateAngleY = f3 / 57.29578F;
 	  JawsTip.rotateAngleX = f4 / 57.29578F;

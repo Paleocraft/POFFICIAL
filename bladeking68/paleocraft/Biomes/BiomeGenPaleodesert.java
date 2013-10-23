@@ -1,4 +1,4 @@
-package bladeking68.paleocraft.dimension;
+package bladeking68.paleocraft.Biomes;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.passive.EntityWolf;
@@ -13,8 +13,8 @@ public class BiomeGenPaleodesert extends BiomeGenBase
        public BiomeGenPaleodesert(int par1)
        {
              super(par1);
-             this.topBlock = (byte)Block.sand.blockID;
-             this.fillerBlock = (byte)Block.sand.blockID;
+             this.topBlock = (byte)fisherman77.paleocraft.common.Paleocraft.paleodesertsand.blockID;
+             this.fillerBlock = (byte)fisherman77.paleocraft.common.Paleocraft.paleodesertsand.blockID;
              
              
              this.theBiomeDecorator.treesPerChunk = -999;
@@ -26,6 +26,7 @@ public class BiomeGenPaleodesert extends BiomeGenBase
              this.spawnableCreatureList.clear();
              this.spawnableWaterCreatureList.clear();
           //   this.spawnableMonsterList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityDromaeosaurus.class, 1, 4, 4)); //Fisherman just keep coping this for each dino and the numbers are the spawn rate i think so you can edit that if you want
-             this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityTroodon.class,  2, 1, 1));
+           //this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityTroodon.class, 5, 2, 6));
+             //this.spawnableCreatureList.add(new SpawnListEntry(fisherman77.paleocraft.common.mobs.EntityDimorphodon.class,  8, 4, 4));
        }
 }

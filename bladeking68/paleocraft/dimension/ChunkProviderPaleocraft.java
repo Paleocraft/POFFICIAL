@@ -14,8 +14,8 @@ import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.Ev
 import java.util.List;
 import java.util.Random;
 
-/*import bladeking68.paleocraft.BlocksItems.WorldGenseaweed;
-import bladeking68.paleocraft.Tree.WorldGenPaleocraftTree1;*/
+import bladeking68.paleocraft.BlocksItems.WorldGenseaweed;
+import bladeking68.paleocraft.Tree.WorldGenPaleocraftTree1;
 
 
 import net.minecraft.block.Block;
@@ -522,12 +522,12 @@ public class ChunkProviderPaleocraft implements IChunkProvider {
 		}
 
 		//Paleoforest TREES
-		 /* for (int y = 1; y <= 255; y++)
+		  for (int y = 1; y <= 255; y++)
 	        {
 	                int j2 = k + rand.nextInt(16) + 8;
 	                int l3 = rand.nextInt(120);
 	                int j5 = l + rand.nextInt(16) + 8;
-	                if ((worldObj.getBlockId(j2, l3, j5) == 0) && (worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID))
+	                if ((worldObj.getBlockId(j2, l3, j5) == 0) && (worldObj.getBlockId(j2, l3 - 1, j5) == fisherman77.paleocraft.common.Paleocraft.paleoforestgrass.blockID))
 	                {
 	                        new WorldGenPaleocraftTree1(true).generate(worldObj, rand, j2, l3, j5);
 	                }
@@ -543,7 +543,7 @@ public class ChunkProviderPaleocraft implements IChunkProvider {
 	                {
 	                        new WorldGenseaweed().generate(worldObj, rand, j2, l3, j5);
 	                }
-	        }*/
+	        }
       
 		  
 		  
@@ -564,8 +564,7 @@ public class ChunkProviderPaleocraft implements IChunkProvider {
 		return true;
 	}
 
-	public void func_104112_b() {
-	}
+	
 
 	/**
 	 * Unloads chunks that are marked to be unloaded. This is not guaranteed to
@@ -617,5 +616,10 @@ public class ChunkProviderPaleocraft implements IChunkProvider {
 			this.strongholdGenerator.generate(this, this.worldObj, par1, par2, (byte[]) null);
 			this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, (byte[]) null);
 		}
+	}
+
+	@Override
+	public void saveExtraData() {
+	// TODO Auto-generated method stub
 	}
 }

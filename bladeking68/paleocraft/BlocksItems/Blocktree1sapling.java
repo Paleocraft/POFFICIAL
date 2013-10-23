@@ -1,7 +1,9 @@
-package bladeking68.paleocraft.dimension;
+package bladeking68.paleocraft.BlocksItems;
 
 import java.util.List;
 import java.util.Random;
+
+import bladeking68.paleocraft.Tree.WorldGenPaleocraftTree1;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
@@ -49,7 +51,7 @@ public void func_96477_c(World par1World, int par2, int par3, int par4, Random p
 {
 int l = par1World.getBlockMetadata(par2, par3, par4);
 /** change this block to your custom grass block **/
-if ((l & 8) == Block.grass.blockID)
+if ((l & 8) == fisherman77.paleocraft.common.Paleocraft.paleoforestgrass.blockID)
 {
 par1World.setBlockMetadataWithNotify(par2, par3, par4, l | 8, 4);
 }
@@ -154,7 +156,7 @@ return par1World.getBlockId(par2, par3, par4) == this.blockID && (par1World.getB
 protected boolean canThisPlantGrowOnThisBlockID(int par1)
 {
 /** Change this to your custom grass **/
-return par1 == Block.grass.blockID || par1 == Block.grass.blockID || par1 == Block.tilledField.blockID;
+return par1 == fisherman77.paleocraft.common.Paleocraft.paleoforestgrass.blockID || par1 == fisherman77.paleocraft.common.Paleocraft.paleoforestgrass.blockID || par1 == Block.tilledField.blockID;
 }
 public void registerIcons(IconRegister iconRegister)
 {

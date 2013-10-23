@@ -1,4 +1,4 @@
-package bladeking68.paleocraft.dimension;
+package bladeking68.paleocraft.BlocksItems;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
