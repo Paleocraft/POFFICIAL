@@ -267,50 +267,44 @@ GameRegistry.addRecipe(new ItemStack(fossil), "xxx", "xyx", "xxx",
 		
 	registerEntity(EntityBaryonyx.class, "Baryonyx",  0x405135, 0xC4C67D);
 	registerEntity(EntityCitipati.class, "Citipati",  0xA67822, 0xA14A5C);
-	//registerEntity(EntityCompy.class, "Compsognathus", 0x4B4A31, 0xBDBC8B);
+	registerEntity(EntityCompy.class, "Compsognathus", 0x4B4A31, 0xBDBC8B);
 	registerEntity(EntityDimorphodon.class, "Dimorphodon", 0xC8C968, 0x6064C4);
-	//registerEntity(EntityQuetzalcoatlus.class, "Quetzalcoatlus", 0xC8C968, 0x6064C4);
-	//registerEntity(EntityDromaeosaurus.class, "Dromaeosaurus",  0x5C5B5C, 0x551305);
-	//registerEntity(EntityMasso.class, "Massospondylus", 0x515151, 0x1E0F50);
-	//registerEntity(EntitySpino.class, "Spinosaurus", 0x0E1640, 0xF78708);
+	registerEntity(EntityQuetzalcoatlus.class, "Quetzalcoatlus", 0xC8C968, 0x6064C4);
+	registerEntity(EntityDromaeosaurus.class, "Dromaeosaurus",  0x5C5B5C, 0x551305);
+	registerEntity(EntityMasso.class, "Massospondylus", 0x515151, 0x1E0F50);
+	registerEntity(EntitySpino.class, "Spinosaurus", 0x0E1640, 0xF78708);
 	registerEntity(EntityTroodon.class, "Troodon", 0x5A5A5A, 0xE8E1BF);
-	//registerEntity(EntityTylo.class, "Tylosaurus", 0x45369F, 0xFFFFFF);
+	registerEntity(EntityTylo.class, "Tylosaurus", 0x45369F, 0xFFFFFF);
 	registerEntity(EntityMegalodon.class, "Megalodon", 0x676767, 0x9c9c9c);
-	// EntityRegistry.registerModEntity(EntityQuetzalcoatlus.class, "Quetzalcoatlus", 1, this, 80, 3, true);
+	//EntityRegistry.registerModEntity(EntityQuetzalcoatlus.class, "Quetzalcoatlus", 1, this, 80, 3, true);
 	//Baryonyx
 		LanguageRegistry.instance().addStringLocalization("entity.Baryonyx.name", "Baryonyx");
+		
 		EntityRegistry.addSpawn(EntityBaryonyx.class, 10, 4, 4, EnumCreatureType.creature, Paleocraft.Paleoswamp);
-		//Citipati
+	//Citipati
 		LanguageRegistry.instance().addStringLocalization("entity.Citipati.name", "Citipati");
 	//Compsognathus
 		LanguageRegistry.instance().addStringLocalization("entity.Compsognathus.name", "Compsognathus");
 	//Dimorphodon
 		LanguageRegistry.instance().addStringLocalization("entity.Dimorphodon.name", "Dimorphodon");
-	
-		//Quetzalcoatlus
-		
-				LanguageRegistry.instance().addStringLocalization("entity.Quetzalcoatlus.name", "Quetzalcoatlus");
-		
+	//Quetzalcoatlus
+		LanguageRegistry.instance().addStringLocalization("entity.Quetzalcoatlus.name", "Quetzalcoatlus");
 	//Dromaeosaurus
-		//LanguageRegistry.instance().addStringLocalization("entity.Dromaeosaurus.name", "Dromaeosaurus");
-		//EntityRegistry.addSpawn(EntityDromaeosaurus.class, 10, 4, 4, EnumCreatureType.creature, Paleocraft.Paleoforest);
-		
-		//Massospondylus
+		LanguageRegistry.instance().addStringLocalization("entity.Dromaeosaurus.name", "Dromaeosaurus");
+		EntityRegistry.addSpawn(EntityDromaeosaurus.class, 10, 4, 4, EnumCreatureType.creature, Paleocraft.Paleoforest);
+	//Massospondylus
 		LanguageRegistry.instance().addStringLocalization("entity.Massospondylus.name", "Massospondylus");
 	//Spinosaurus
 		LanguageRegistry.instance().addStringLocalization("entity.Spinosaurus.name", "Spinosaurus");
 	//Troodon
 		LanguageRegistry.instance().addStringLocalization("entity.Troodon.name", "Troodon");
         EntityRegistry.addSpawn(EntityTroodon.class, 50, 3, 8, EnumCreatureType.monster, Paleocraft.Paleodesert);
-		//Tylosaurus
+	//Tylosaurus
 		LanguageRegistry.instance().addStringLocalization("entity.Tylosaurus.name", "Tylosaurus");
-		
-		//Megalodon
+	//Megalodon
 		LanguageRegistry.instance().addStringLocalization("entity.Megalodon.name", "Megalodon");
-
-		//Quetzalcoatlus
-		
-		//LanguageRegistry.instance().addStringLocalization("entity.Quetzalcoatlus.name", "Quetzalcoatlus");
+	//Quetzalcoatlus
+		LanguageRegistry.instance().addStringLocalization("entity.Quetzalcoatlus.name", "Quetzalcoatlus");
 }
 	
 	public void registerEntity(Class<? extends Entity> entityClass, String entityName, int bkEggColor, int fgEggColor) {
