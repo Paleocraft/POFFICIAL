@@ -43,12 +43,11 @@ public class PaleocraftClientProxy extends PaleocraftCommonProxy {
 
 public void registerRenderers(){
 	float shadowSize = 0.5F;
-//	RenderingRegistry.registerEntityRenderingHandler(EntityQuetzalcoatlus.class, new RenderQuetzalcoatlus(new ModelQuetzalcoatlus(), shadowSize, 2.5F));
+	RenderingRegistry.registerEntityRenderingHandler(EntityQuetzalcoatlus.class, new RenderQuetzalcoatlus(new ModelQuetzalcoatlus(), shadowSize));
 	RenderingRegistry.registerEntityRenderingHandler(EntityBaryonyx.class, new RenderBaryonyx(new ModelBaryonyx(), shadowSize, 2.5F));
 	RenderingRegistry.registerEntityRenderingHandler(EntityCitipati.class, new RenderCitipati(new ModelCitipati(), shadowSize));
 	RenderingRegistry.registerEntityRenderingHandler(EntityCompy.class, new RenderCompy(new ModelCompsognathus(), shadowSize, 0.5F));
 	RenderingRegistry.registerEntityRenderingHandler(EntityDimorphodon.class, new RenderDimorphodon(new ModelDimorphodon(), shadowSize, 0.25F));
-	// RenderingRegistry.registerEntityRenderingHandler(EntityQuetzalcoatlus.class, new RenderQuetzalcoatlus(new ModelQuetzalcoatlus(), 0.3F));
 	RenderingRegistry.registerEntityRenderingHandler(EntityDromaeosaurus.class, new RenderDromaeosaurus(new ModelDromaeosaurus(), shadowSize));
 	RenderingRegistry.registerEntityRenderingHandler(EntityMasso.class, new RenderMasso(new ModelMassospondylus(), shadowSize));
 	RenderingRegistry.registerEntityRenderingHandler(EntityMegalodon.class, new RenderMegalodon(new ModelMegalodon(), shadowSize, 3.75F));
