@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 public class RenderQuetzalcoatlus extends RenderLiving
 {
  protected ModelQuetzalcoatlus model;
- private static final ResourceLocation skin = new ResourceLocation("pokemon", "textures/entity/quetz.png");
+ private static final ResourceLocation skin = new ResourceLocation("paleocraft", "textures/entity/Quetz.png");
  public RenderQuetzalcoatlus (ModelQuetzalcoatlus modelquetzalcoatlus, float f)
  {
   super(modelquetzalcoatlus, f);
