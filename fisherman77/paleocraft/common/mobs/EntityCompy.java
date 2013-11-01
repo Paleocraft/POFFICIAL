@@ -96,7 +96,7 @@ public class EntityCompy extends EntityTameable
   */
  protected String getLivingSound()
  {
-     return "paleocraft:Compy1";
+     return "paleocraft:Compy";
  }
 
  /**
