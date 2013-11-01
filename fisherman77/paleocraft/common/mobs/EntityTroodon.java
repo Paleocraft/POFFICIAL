@@ -1,5 +1,3 @@
-package fisherman77.paleocraft.common.mobs;
-
 import java.util.Random;
 
 import net.minecraft.enchantment.EnchantmentHelper;
