@@ -115,7 +115,7 @@ protected boolean isAIEnabled()
  */
 protected String getLivingSound()
 {
-    return "paleocraft:tyloliving1";
+    return "paleocraft:tyloliving";
 }
 
 /**
