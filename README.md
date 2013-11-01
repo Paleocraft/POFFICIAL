@@ -1,7 +1,7 @@
 Paleocraft
 ==========
 
-Adding Dinos to Minecraft
+Realistic Dinosaurs in Minecraft
 
 Copyright:
 All of this code is © Paleocraft Dev (which is fisherman77, bladeking68, and Dan_Wallace if he ever learns to code :) )
