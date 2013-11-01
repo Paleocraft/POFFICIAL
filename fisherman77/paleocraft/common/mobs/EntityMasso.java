@@ -95,7 +95,7 @@ public class EntityMasso extends EntityTameable
   */
  protected String getLivingSound()
  {
-     return "paleocraft:massoliving";
+     return "paleocraft:Masso";
  }
 
  /**
@@ -103,7 +103,7 @@ public class EntityMasso extends EntityTameable
   */
  protected String getHurtSound()
  {
-     return "paleocraft:massohurt";
+     return "paleocraft:MassoHurt";
  }
 
  /**
@@ -111,7 +111,7 @@ public class EntityMasso extends EntityTameable
   */
  protected String getDeathSound()
  {
-     return "paleocraft:medherbdeath";
+     return "paleocraft:MedHerbDeath";
  }
  
  public EnumCreatureAttribute getCreatureAttribute()
