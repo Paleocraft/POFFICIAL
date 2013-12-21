@@ -4,10 +4,13 @@ import java.util.Random;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fisherman77.paleocraft.common.mobs.ai.DinoAIEatLeaves;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAIAvoidEntity;
+import net.minecraft.entity.ai.EntityAIEatGrass;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
@@ -19,6 +22,7 @@ import net.minecraft.entity.ai.EntityAITargetNonTamed;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityTameable;
@@ -43,20 +47,22 @@ import net.minecraft.world.World;
 
 public class EntityMasso extends EntityTameable
 {
-	
- public EntityMasso(World par1World) 
+	/* private DinoAIEatLeaves aiEatLeaves = new DinoAIEatLeaves(this);
+	 private int sheepTimer;*/
+	 public EntityMasso(World par1World) 
  {
   super(par1World);
   
   this.setSize(1.0F, 1.0F);
-  
+
   this.tasks.addTask(0, new EntityAISwimming(this));
   this.tasks.addTask(1, new EntityAILeapAtTarget(this, 0.4F));
   this.tasks.addTask(4, new EntityAIWander(this, 0.4));
   this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
   this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, true));
-  
+  //this.tasks.addTask(5, this.aiEatLeaves);
+  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityBaryonyx.class, 8.0F, 0.6D, 0.6D));
  }
  
 	@Override
@@ -187,5 +193,6 @@ public void setAngry(boolean par1)
         this.dataWatcher.updateObject(16, Byte.valueOf((byte)(b0 & -3)));
     }
 }
+
 
 }
