@@ -1,6 +1,7 @@
 package fisherman77.paleocraft.client;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import fisherman77.paleocraft.common.PaleocraftCommonProxy;
+import fisherman77.paleocraft.common.handlers.PaleocraftSoundHandler;
 import fisherman77.paleocraft.common.mobs.EntityBaryonyx;
 import fisherman77.paleocraft.common.mobs.EntityCitipati;
 import fisherman77.paleocraft.common.mobs.EntityCompy;
@@ -35,6 +36,7 @@ import fisherman77.paleocraft.common.mobs.RenderSpino;
 import fisherman77.paleocraft.common.mobs.RenderTroodon;
 import fisherman77.paleocraft.common.mobs.RenderTylo;
 import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.common.MinecraftForge;
 public class PaleocraftClientProxy extends PaleocraftCommonProxy {
         
 	public void registerRenderInformation() {
@@ -57,4 +59,7 @@ public void registerRenderers(){
 	RenderingRegistry.registerEntityRenderingHandler(EntityTylo.class, new RenderTylo(new ModelTylo(), shadowSize, 2.5F));
 }
 
+public void registerSounds() {
+	MinecraftForge.EVENT_BUS.register(new PaleocraftSoundHandler());
+}
 }

@@ -140,7 +140,7 @@ public void PreLoad(FMLPreInitializationEvent e)
 /**
 * Registering Paleocraft sounds...
 **/
-MinecraftForge.EVENT_BUS.register(new PaleocraftSoundHandler());
+proxy.registerSounds();
 
 /**
  * Registering the Core Config class

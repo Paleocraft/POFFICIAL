@@ -40,4 +40,8 @@ public void addRecipes(){ //For adding your Item's recipes
 public void registerRenderers(){
 	
 }
+
+public void registerSounds() {
+	
+}
 }
