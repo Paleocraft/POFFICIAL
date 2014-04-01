@@ -34,8 +34,8 @@ public class EntityDimorphodon extends EntityFlying implements IMob
 	protected void applyEntityAttributes() {
 	    super.applyEntityAttributes();
 	    
-	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.4); // moveSpeed
-	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(9); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4); // moveSpeed
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(9); // maxHealth
 	}
 
     @SideOnly(Side.CLIENT)
