@@ -63,14 +63,15 @@ public class EntityMasso extends EntityTameable
   this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, true));
   //this.tasks.addTask(5, this.aiEatLeaves);
   this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityBaryonyx.class, 8.0F, 0.6D, 0.6D));
+  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntitySpino.class, 8.0F, 0.6D, 0.6D));
  }
  
 	@Override
 	protected void applyEntityAttributes() {
 	    super.applyEntityAttributes();
 	    
-	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.4); // moveSpeed
-	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4); // moveSpeed
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10); // maxHealth
 	}
  
  /**
@@ -126,10 +127,10 @@ public class EntityMasso extends EntityTameable
     }
 
 
-protected void func_82164_bB()
+/*protected void func_82164_bB()
 {
     this.setCurrentItemOrArmor(0, new ItemStack(Item.swordStone));
-}
+}*/
 
 //ATTACKING OTHER MOBS - OVERRIDING ENTITYANIMAL
 /**
