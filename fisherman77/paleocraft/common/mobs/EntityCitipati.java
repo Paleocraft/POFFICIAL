@@ -50,8 +50,8 @@ public class EntityCitipati extends EntityAnimal
 	protected void applyEntityAttributes() {
 	    super.applyEntityAttributes();
 	    
-	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.4); // moveSpeed
-	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(9); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4); // moveSpeed
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(9); // maxHealth
 	}
  
  public EnumCreatureAttribute getCreatureAttribute()
@@ -67,7 +67,8 @@ public class EntityCitipati extends EntityAnimal
 /**
  * Returns the sound this mob makes while it's alive.
  */
-protected String getLivingSound()
+@Override
+	protected String getLivingSound()
 {
     return "paleocraft:citiliving";
 }
@@ -75,6 +76,7 @@ protected String getLivingSound()
 /**
  * Returns the sound this mob makes when it is hurt.
  */
+@Override
 protected String getHurtSound()
 {
     return "paleocraft:citihurt";
@@ -83,6 +85,7 @@ protected String getHurtSound()
 /**
  * Returns the sound this mob makes on death.
  */
+@Override
 protected String getDeathSound()
 {
     return "paleocraft:smallherbdeath";
