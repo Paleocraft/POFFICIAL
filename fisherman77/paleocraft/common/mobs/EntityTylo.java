@@ -1,5 +1,8 @@
+package fisherman77.paleocraft.common.mobs;
+
 import java.util.Random;
 
+import fisherman77.paleocraft.common.mobs.ai.WaterDinoAIFishSwimming;
 import fisherman77.paleocraft.common.mobs.ai.WaterDinoAIWander;
 
 import net.minecraft.block.material.Material;
@@ -46,13 +49,14 @@ public EntityTylo(World par1World)
   
   //this.tasks.addTask(0, new EntityAISwimming(this));
   this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0F, false));
-  this.tasks.addTask(1, new WaterDinoAIWander(this, 0.2F));
+  //this.tasks.addTask(1, new WaterDinoAIWander(this, 0.2F));
   this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true)); 
   this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
   this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityBoat.class, 0, true));
   this.targetTasks.addTask(4, new EntityAINearestAttackableTarget(this, EntitySquid.class, 0, true));
-
+  this.tasks.addTask(1, new WaterDinoAIFishSwimming(this));
+  this.tasks.addTask(1, new WaterDinoAIWander(this, 0.4F));
   this.getNavigator().setCanSwim(true);
  }
 
@@ -60,8 +64,8 @@ public EntityTylo(World par1World)
 protected void applyEntityAttributes() {
     super.applyEntityAttributes();
     
-    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0); // moveSpeed
-    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50); // maxHealth
+    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(1.0); // moveSpeed
+    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(50); // maxHealth
 } 
  
 //ATTACKING OTHER MOBS - OVERRIDING ENTITYWATERMOB
