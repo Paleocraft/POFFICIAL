@@ -4,7 +4,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.boss.EntityDragon;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityLargeFireball;
@@ -24,18 +28,20 @@ public class EntityQuetzalcoatlus extends EntityFlying implements IMob
     public double waypointY;
     public double waypointZ;
 
-    public EntityQuetzalcoatlus(World par1World)
+    public EntityQuetzalcoatlus(World par1World)  
     {
-        super(par1World);
+     super(par1World);	
+    	//.this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+    	
         this.setSize(0.4F, 0.4F);
     }
     
-	@Override
+    @Override
 	protected void applyEntityAttributes() {
 	    super.applyEntityAttributes();
 	    
-	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.4); // moveSpeed
-	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(9); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4); // moveSpeed
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(9); // maxHealth
 	}
 
     @SideOnly(Side.CLIENT)
@@ -109,13 +115,9 @@ public class EntityQuetzalcoatlus extends EntityFlying implements IMob
 
         return true;
     }
-
-    /**
-     * Returns the sound this mob makes while it's alive.
-     */
     protected String getLivingSound()
     {
-        return "paleocraft:dimorphliving";
+        return "paleocraft:Quetz";
     }
 
     /**
@@ -123,7 +125,7 @@ public class EntityQuetzalcoatlus extends EntityFlying implements IMob
      */
     protected String getHurtSound()
     {
-        return "paleocraft:dimorphhurt";
+        return "paleocraft:QuetzHurt";
     }
 
     /**
@@ -131,6 +133,6 @@ public class EntityQuetzalcoatlus extends EntityFlying implements IMob
      */
     protected String getDeathSound()
     {
-        return "paleocraft:smallcarndeath";
+        return "paleocraft:MedCarnDeath";
     }
 }
