@@ -56,16 +56,16 @@ public class EntityCompy extends EntityTameable
   this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
   this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, true));
-  this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityChicken.class, 1.0, false));
-  this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityChicken.class, 0, true));
+ // this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityChicken.class, 1.0, false));
+  //this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityChicken.class, 0, true));
  }
  
 	@Override
 	protected void applyEntityAttributes() {
 	    super.applyEntityAttributes();
 
-	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.4); // moveSpeed
-	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(3); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4); // moveSpeed
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(3); // maxHealth
 	}
  
  /**
@@ -120,11 +120,11 @@ public class EntityCompy extends EntityTameable
         return EnumCreatureAttribute.UNDEFINED;
     }
 
-
-protected void func_82164_bB()
+//compy has a sword o_O
+/*protected void func_82164_bB()
 {
     this.setCurrentItemOrArmor(0, new ItemStack(Item.swordStone));
-}
+}*/
 
 //ATTACKING OTHER MOBS - OVERRIDING ENTITYANIMAL
 /**
