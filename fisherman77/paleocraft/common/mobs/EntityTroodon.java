@@ -1,3 +1,5 @@
+package fisherman77.paleocraft.common.mobs;
+
 import java.util.Random;
 
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -19,6 +21,7 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.DamageSource;
@@ -49,8 +52,8 @@ public class EntityTroodon extends EntityAnimal
 	protected void applyEntityAttributes() {
 	    super.applyEntityAttributes();
 	    
-	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.4); // moveSpeed
-	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(8); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4); // moveSpeed
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(8); // maxHealth
 	}
  
  public EnumCreatureAttribute getCreatureAttribute()
@@ -121,7 +124,7 @@ public boolean attackEntityAsMob(Entity par1Entity)
 
 protected void dropFewItems(boolean par1, int par2)
 {
-  this.dropItem(Item.feather.itemID, 2);
+  this.dropItem(Items.feather, 2);
 }
 
 }
