@@ -30,6 +30,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -60,15 +61,15 @@ public class EntityDromaeosaurus extends EntityTameable
   this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, true));
   this.targetTasks.addTask(3, new EntityAIOwnerHurtTarget(this));
   this.targetTasks.addTask(4, new EntityAITargetNonTamed(this, EntityChicken.class, 0, true));
-  
+  this.setTamed(false);
  }
  
 	@Override
 	protected void applyEntityAttributes() {
 	    super.applyEntityAttributes();
 	    
-	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.4); // moveSpeed
-	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(9); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4); // moveSpeed
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(9); // maxHealth
 	}
  
  /**
@@ -124,10 +125,10 @@ public class EntityDromaeosaurus extends EntityTameable
     }
 
 
-protected void func_82164_bB()
+/*protected void func_82164_bB()
 {
     this.setCurrentItemOrArmor(0, new ItemStack(Item.swordStone));
-}
+}*/
 
 //ATTACKING OTHER MOBS - OVERRIDING ENTITYANIMAL
 /**
@@ -164,7 +165,7 @@ public boolean interact(EntityPlayer par1EntityPlayer)
 {
 	ItemStack itemstack = par1EntityPlayer.inventory.getCurrentItem();
 	
-	if (itemstack != null && itemstack.itemID == Item.beefRaw.itemID)
+	if (itemstack != null && itemstack == Items.beef)
     {
 		if(!this.isAngry())
 		{
