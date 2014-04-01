@@ -65,8 +65,8 @@ public EntityMegalodon(World par1World)
 protected void applyEntityAttributes() {
     super.applyEntityAttributes();
     
-    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0); // moveSpeed
-    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(100); // maxHealth
+    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(1.0); // moveSpeed
+    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(100); // maxHealth
 } 
  
 //ATTACKING OTHER MOBS - OVERRIDING ENTITYWATERMOB
