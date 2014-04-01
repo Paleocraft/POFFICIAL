@@ -15,6 +15,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
@@ -29,7 +30,7 @@ public EntitySpino(World par1World)
   this.setSize(this.width * 3.0F, this.height * 3.0F);
   
   this.tasks.addTask(0, new EntityAISwimming(this));
-  this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.6D, false));
+  this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.4D, false));
   this.tasks.addTask(3, new EntityAIWander(this, 0.4));
   this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true)); 
@@ -40,9 +41,9 @@ public EntitySpino(World par1World)
 	protected void applyEntityAttributes() {
 	    super.applyEntityAttributes();
 	    
-	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.4); // moveSpeed
-	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(75); // maxHealth
-	    getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(20); //attackStrength
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.8); // moveSpeed
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(75); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(20); //attackStrength
 	}
  
 	 /**
@@ -86,6 +87,6 @@ public EntitySpino(World par1World)
 	
 	protected void dropFewItems(boolean par1, int par2)
 	{
-	  this.dropItem(Item.fishRaw.itemID, 3);
+	  this.dropItem(Items.fish, 3);
 	}
 }
