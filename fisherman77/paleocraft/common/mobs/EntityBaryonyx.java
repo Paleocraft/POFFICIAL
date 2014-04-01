@@ -15,7 +15,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFishFood;
 import net.minecraft.world.World;
 
 
@@ -29,7 +31,8 @@ public EntityBaryonyx(World par1World)
   this.setSize(this.width * 2.5F, this.height * 2.5F);
   
   this.tasks.addTask(0, new EntityAISwimming(this));
-  this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.6D, false));
+ 
+  this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.4D, false));
   this.tasks.addTask(2, new EntityAIWander(this, 0.4));
   this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true)); 
@@ -40,9 +43,9 @@ public EntityBaryonyx(World par1World)
 	protected void applyEntityAttributes() {
 	    super.applyEntityAttributes();
 	    
-	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.4);
-	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20);
-	    getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(10);
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.8);
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20);
+	    getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(10);
 	}
  
 	 /**
@@ -86,6 +89,6 @@ public EntityBaryonyx(World par1World)
 	
 	protected void dropFewItems(boolean par1, int par2)
 	{
-	  this.dropItem(Item.fishRaw.itemID, 3);
+	  this.dropItem(Items.fish, 3);
 	}
 }
