@@ -9,6 +9,7 @@ import net.minecraft.entity.ai.EntityAIFleeSun;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAIRestrictSun;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
@@ -37,12 +38,13 @@ public class EntityTroodon extends EntityAnimal
   super(par1World);
   
   this.setSize(1.0F, 1.0F);
-  
+  this.tasks.addTask(2, new EntityAIRestrictSun(this));
+  this.tasks.addTask(3, new EntityAIFleeSun(this, 1.0D));
   this.tasks.addTask(0, new EntityAISwimming(this));
-  this.tasks.addTask(1, new EntityAIFleeSun(this, 1.0));
+  //this.tasks.addTask(1, new EntityAIFleeSun(this, 1.0));
   this.tasks.addTask(2, new EntityAILeapAtTarget(this, 0.4F));
   this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityChicken.class, 1.0, false));
-  this.tasks.addTask(4, new EntityAIWander(this, 0.4));
+  this.tasks.addTask(4, new EntityAIWander(this, 0.5D));
   this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
   this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityChicken.class, 0, true));
@@ -52,14 +54,11 @@ public class EntityTroodon extends EntityAnimal
 	protected void applyEntityAttributes() {
 	    super.applyEntityAttributes();
 	    
-	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4); // moveSpeed
-	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(8); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.5); // moveSpeed
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(4); // maxHealth
 	}
  
- public EnumCreatureAttribute getCreatureAttribute()
-    {
-        return EnumCreatureAttribute.UNDEAD;
-    }
+
 
 protected boolean isAIEnabled()
 {
@@ -71,7 +70,8 @@ protected boolean isAIEnabled()
  */
 protected String getLivingSound()
 {
-    return "paleocraft:trooliving";
+	 playSound("Paleocraft:mob.troodon.trooliving", getSoundVolume(), getSoundPitch());
+		return null;
 }
 
 /**
@@ -79,7 +79,8 @@ protected String getLivingSound()
  */
 protected String getHurtSound()
 {
-    return "paleocraft:troohurt";
+	 playSound("Paleocraft:mob.troodon.TrooHurt", getSoundVolume(), getSoundPitch());
+		return null;
 }
 
 /**
@@ -87,7 +88,8 @@ protected String getHurtSound()
  */
 protected String getDeathSound()
 {
-    return "paleocraft:smallcarndeath";
+playSound("Paleocraft:mob.other.smallcarndeath", getSoundVolume(), getSoundPitch());
+return null;
 }
 
 
