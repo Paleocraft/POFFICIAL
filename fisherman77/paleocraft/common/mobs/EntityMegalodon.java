@@ -50,6 +50,7 @@ public EntityMegalodon(World par1World)
   //this.tasks.addTask(0, new EntityAISwimming(this));
   this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0F, false));
   this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntitySquid.class, 1.0F, false));
+  this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityBoat.class, 1.0F, false));
   this.tasks.addTask(1, new WaterDinoAIFishSwimming(this));
   this.tasks.addTask(1, new WaterDinoAIWander(this, 0.4F));
   this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
@@ -105,10 +106,7 @@ public boolean isInWater()
     return this.worldObj.handleMaterialAcceleration(this.boundingBox.expand(0.0D, -0.6000000238418579D, 0.0D), Material.water, this);
 }
  
- public EnumCreatureAttribute getCreatureAttribute()
-    {
-        return EnumCreatureAttribute.UNDEAD;
-    }
+
 
 protected boolean isAIEnabled()
 {
@@ -136,7 +134,8 @@ protected String getHurtSound()
  */
 protected String getDeathSound()
 {
-    return "paleocraft:largecarndeath";
+	 playSound("Paleocraft:mob.other.largecarndeath", getSoundVolume(), getSoundPitch());
+		return null;
 }
 
 protected boolean canDespawn()
