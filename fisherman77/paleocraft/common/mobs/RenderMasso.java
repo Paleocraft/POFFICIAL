@@ -20,7 +20,7 @@ public class RenderMasso extends RenderLiving
 
 	public void func_177_a(EntityMasso entityMasso, double d, double d1,
 			double d2, float f, float f1) {
-		super.doRenderLiving(entityMasso, d, d1, d2, f, f1);
+		super.doRender(entityMasso, d, d1, d2, f, f1);
 	}
 
 	public void doRenderLiving(EntityLivingBase entityliving, double d, double d1,
