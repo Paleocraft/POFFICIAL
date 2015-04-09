@@ -1,4 +1,4 @@
-package fisherman77.paleocraft.common.config;
+/*package fisherman77.paleocraft.common.config;
 
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
@@ -47,7 +47,7 @@ CBronzeItem = config.getItem("Celestial Bronze Ingot ID", 1400); //This gets the
 itemCBronzeIngotID = CBronzeItem.getInt(); //This gets the value*/
 
 //Item ID's (last left off: 1414)
-itemFossilID = config.getItem("Fossil ID", 2024).getInt(2024);
+/*itemFossilID = config.getItem("Fossil ID", 2024).getInt(2024);
 itemTroodonEggID = config.getItem("WIP ITEM 1", 2025).getInt(2025);
 itemDromaeosaurusEggID = config.getItem("WIP ITEM 2", 2026).getInt(2026);
 //Biomes
@@ -83,3 +83,4 @@ config.save(); //Saves the file
 }
 
 }
+*/
