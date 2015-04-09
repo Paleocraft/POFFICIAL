@@ -1,4 +1,4 @@
-package fisherman77.paleocraft.common.handlers;
+/*package fisherman77.paleocraft.common.handlers;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
@@ -17,4 +17,4 @@ public void onPacketData(INetworkManager manager, Packet250CustomPayload payload
 DataInputStream data = new DataInputStream(new ByteArrayInputStream(payload.data)); //Handles incoming data
 EntityPlayer sender = (EntityPlayer) player;
 }
-}
+}*/
