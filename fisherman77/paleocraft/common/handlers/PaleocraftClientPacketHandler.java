@@ -1,4 +1,4 @@
-package fisherman77.paleocraft.common.handlers;
+/*package fisherman77.paleocraft.common.handlers;
 
 
 import java.io.ByteArrayInputStream;
@@ -18,4 +18,4 @@ public class PaleocraftClientPacketHandler implements IPacketHandler{
 public void onPacketData(INetworkManager manager, Packet250CustomPayload payload, Player player){
 DataInputStream data = new DataInputStream(new ByteArrayInputStream(payload.data)); //Handles incoming data
 }
-}
+}*/
