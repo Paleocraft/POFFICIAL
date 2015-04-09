@@ -49,6 +49,8 @@ public EntityTylo(World par1World)
   
   //this.tasks.addTask(0, new EntityAISwimming(this));
   this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0F, false));
+  this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntitySquid.class, 1.0F, false));
+  this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityBoat.class, 1.0F, false));
   //this.tasks.addTask(1, new WaterDinoAIWander(this, 0.2F));
   this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true)); 
@@ -65,7 +67,7 @@ protected void applyEntityAttributes() {
     super.applyEntityAttributes();
     
     getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(1.0); // moveSpeed
-    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(50); // maxHealth
+    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(40); // maxHealth
 } 
  
 //ATTACKING OTHER MOBS - OVERRIDING ENTITYWATERMOB
@@ -104,10 +106,7 @@ public boolean isInWater()
     return this.worldObj.handleMaterialAcceleration(this.boundingBox.expand(0.0D, -0.6000000238418579D, 0.0D), Material.water, this);
 }
  
- public EnumCreatureAttribute getCreatureAttribute()
-    {
-        return EnumCreatureAttribute.UNDEAD;
-    }
+
 
 protected boolean isAIEnabled()
 {
@@ -119,7 +118,8 @@ protected boolean isAIEnabled()
  */
 protected String getLivingSound()
 {
-    return "paleocraft:tyloliving";
+	 playSound("Paleocraft:mob.tylo.tyloliving", getSoundVolume(), getSoundPitch());
+		return null;
 }
 
 /**
@@ -127,7 +127,8 @@ protected String getLivingSound()
  */
 protected String getHurtSound()
 {
-    return "paleocraft:tylohurt";
+	 playSound("Paleocraft:mob.tylo.TyloHurt", getSoundVolume(), getSoundPitch());
+		return null;
 }
 
 /**
@@ -135,7 +136,8 @@ protected String getHurtSound()
  */
 protected String getDeathSound()
 {
-    return "paleocraft:largecarndeath";
+	 playSound("Paleocraft:mob.other.largecarndeath", getSoundVolume(), getSoundPitch());
+		return null;
 }
 
 protected boolean canDespawn()
