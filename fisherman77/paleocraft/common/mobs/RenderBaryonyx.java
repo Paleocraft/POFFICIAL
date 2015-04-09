@@ -12,20 +12,20 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import fisherman77.paleocraft.common.Paleocraft;
+
 @SideOnly(Side.CLIENT)
 public class RenderBaryonyx extends RenderLiving
 {
     /** Scale of the model to use */
     private float scale;
     
-	private static final ResourceLocation skin = new ResourceLocation("paleocraft", "textures/entity/Bary.png");
-
-	public RenderBaryonyx(ModelBase par1ModelBase, float par2, float par3)
-    {
-        super(par1ModelBase, par2 * par3);
-        this.scale = par3;
-    }
+    private static final ResourceLocation skin = new ResourceLocation("paleocraft", "textures/entity/Bary.png");
 	
+	/*public RenderBaryonyx(ModelBaryonyx model, float shadowSize, float par3, float par2) {
+		super(model, shadowSize);
+		this.scale = par3;
+	}*/
     /**
      * Applies the scale to the transform matrix
      */
@@ -33,7 +33,12 @@ public class RenderBaryonyx extends RenderLiving
     {
         GL11.glScalef(this.scale, this.scale, this.scale);
     }
-
+    public RenderBaryonyx(ModelBase par1ModelBase, float par2, float par3)
+    {
+        super(par1ModelBase, par2 * par3);
+        this.scale = par3;
+    }
+	
     /**
      * Allows the render to do any OpenGL state modifications necessary before the model is rendered. Args:
      * entityLiving, partialTickTime
