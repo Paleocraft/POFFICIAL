@@ -1,43 +1,84 @@
 package fisherman77.paleocraft.common.mobs;
 
+import java.util.logging.Level;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fisherman77.paleocraft.common.handlers.GameLogger;
+
+import fisherman77.paleocraft.common.mobs.ai.FlyingMobAI;
+import fisherman77.paleocraft.common.mobs.ai.PaleocraftFlyingLandAI;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
+import net.minecraft.entity.passive.EntityAmbientCreature;
+import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.AchievementList;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-public class EntityDimorphodon extends EntityFlying implements IMob
+public class EntityDimorphodon extends EntityFlying
 {
     public int courseChangeCooldown;
     public double waypointX;
     public double waypointY;
     public double waypointZ;
-
+   
+    private int sheepTimer;
     public EntityDimorphodon(World par1World)
     {
         super(par1World);
+       this.tasks.addTask(3, new PaleocraftFlyingLandAI (this));
         this.setSize(0.4F, 0.4F);
+        this.setIsBatHanging(true);
+        this.getNavigator().setAvoidsWater(true);
+   //     this.tasks.addTask(0, new FlyingMobAI(this));
     }
     
+   
+
 	@Override
 	protected void applyEntityAttributes() {
 	    super.applyEntityAttributes();
 	    
 	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4); // moveSpeed
-	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(9); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(2); // maxHealth
 	}
+    
+	   public boolean getIsBatHanging()
+	    {
+	        return (this.dataWatcher.getWatchableObjectByte(16) & 1) != 0;
+	    }
 
+	    public void setIsBatHanging(boolean p_82236_1_)
+	    {
+	        byte b0 = this.dataWatcher.getWatchableObjectByte(16);
+
+	        if (p_82236_1_)
+	        {
+	            this.dataWatcher.updateObject(16, Byte.valueOf((byte)(b0 | 1)));
+	        }
+	        else
+	        {
+	            this.dataWatcher.updateObject(16, Byte.valueOf((byte)(b0 & -2)));
+	        }
+	    }
+    /**
+     * Called when the entity is attacked.
+     */
     @SideOnly(Side.CLIENT)
     public boolean func_110182_bF()
     {
@@ -49,11 +90,55 @@ public class EntityDimorphodon extends EntityFlying implements IMob
         super.entityInit();
         this.dataWatcher.addObject(16, Byte.valueOf((byte)0));
     }
+   
 
-    protected void updateEntityActionState()
+   
+    @Override
+   	protected String getLivingSound()
+   {
+   	playSound("Paleocraft:mob.dimorph.dimorphliving", getSoundVolume(), getSoundPitch());
+   	return null;
+   }
+
+    /**
+     * Returns the sound this mob makes when it is hurt.
+     */
+    @Override
+   	protected String getHurtSound()
+   {
+   	playSound("Paleocraft:mob.dimorph.dimorphhurt", getSoundVolume(), getSoundPitch());
+   	return null;
+   }
+
+    /**
+     * Returns the sound this mob makes on death.
+     */
+    @Override
+   	protected String getDeathSound()
+   {
+   	playSound("Paleocraft:mob.other.smallcarndeath", getSoundVolume(), getSoundPitch());
+   	return null;
+   }
+
+    protected boolean isAIEnabled()
+	{
+	    return true;
+	}
+	
+	protected boolean canDespawn()
+	{
+	return false;
+	}
+	
+	public void updateAITasks()
     {
+super.updateAITasks();
+      
+int blockX = (int) (posX - 0.5);
+int blockZ = (int) (posZ - 0.5);
+//return posY - worldObj.getHeightValue(blockX, blockZ);
 
-        double d0 = this.waypointX - this.posX;
+double d0 = this.waypointX - this.posX;
         double d1 = this.waypointY - this.posY;
         double d2 = this.waypointZ - this.posZ;
         double d3 = d0 * d0 + d1 * d1 + d2 * d2;
@@ -109,28 +194,12 @@ public class EntityDimorphodon extends EntityFlying implements IMob
 
         return true;
     }
-
-    /**
-     * Returns the sound this mob makes while it's alive.
-     */
-    protected String getLivingSound()
-    {
-        return "paleocraft:dimorphliving";
+  
+    public double getAltitude() {
+        int blockX = (int) (posX - 0.5);
+        int blockZ = (int) (posZ - 0.5);
+        return posY - worldObj.getHeightValue(blockX, blockZ);
     }
 
-    /**
-     * Returns the sound this mob makes when it is hurt.
-     */
-    protected String getHurtSound()
-    {
-        return "paleocraft:dimorphhurt";
-    }
 
-    /**
-     * Returns the sound this mob makes on death.
-     */
-    protected String getDeathSound()
-    {
-        return "paleocraft:smallcarndeath";
-    }
 }
