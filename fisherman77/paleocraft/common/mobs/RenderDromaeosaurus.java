@@ -20,7 +20,7 @@ public class RenderDromaeosaurus extends RenderLiving
 
 	public void func_177_a(EntityDromaeosaurus entityDromie, double d, double d1,
 			double d2, float f, float f1) {
-		super.doRenderLiving(entityDromie, d, d1, d2, f, f1);
+		super.doRender(entityDromie, d, d1, d2, f, f1);
 	}
 
 	public void doRenderLiving(EntityLivingBase entityliving, double d, double d1,
