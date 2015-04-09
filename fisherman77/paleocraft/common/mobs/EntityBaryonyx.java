@@ -2,6 +2,9 @@ package fisherman77.paleocraft.common.mobs;
 
 import java.util.Random;
 
+import cpw.mods.fml.common.registry.EntityRegistry;
+import fisherman77.paleocraft.common.mobs.ai.EntityPaleocraftMob;
+
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -13,6 +16,8 @@ import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.init.Items;
@@ -21,7 +26,7 @@ import net.minecraft.item.ItemFishFood;
 import net.minecraft.world.World;
 
 
-public class EntityBaryonyx extends EntityMob
+public class EntityBaryonyx extends EntityPaleocraftMob
 {
 
 public EntityBaryonyx(World par1World) 
@@ -33,11 +38,13 @@ public EntityBaryonyx(World par1World)
   this.tasks.addTask(0, new EntityAISwimming(this));
  
   this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.4D, false));
+  this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityMasso.class, 0.4D, false));
   this.tasks.addTask(2, new EntityAIWander(this, 0.4));
   this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true)); 
   this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-  }
+  this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityMasso.class, 0, true));
+ }
 
 	@Override
 	protected void applyEntityAttributes() {
@@ -45,7 +52,7 @@ public EntityBaryonyx(World par1World)
 	    
 	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.8);
 	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20);
-	    getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(10);
+	    getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(5);
 	}
  
 	 /**
@@ -53,7 +60,8 @@ public EntityBaryonyx(World par1World)
 	  */
 	 protected String getLivingSound()
 	 {
-	     return "paleocraft:baryliving";
+		 playSound("Paleocraft:mob.baryonyx.baryliving", getSoundVolume(), getSoundPitch());
+		return null;
 	 }
 	
 	 /**
@@ -61,7 +69,8 @@ public EntityBaryonyx(World par1World)
 	  */
 	 protected String getHurtSound()
 	 {
-	     return "paleocraft:baryhurt";
+		 playSound("Paleocraft:mob.baryonyx.baryhurt", getSoundVolume(), getSoundPitch());
+			return null;
 	 }
 	
 	 /**
@@ -69,12 +78,13 @@ public EntityBaryonyx(World par1World)
 	  */
 	 protected String getDeathSound()
 	 {
-	     return "paleocraft:baryhurt";
+		 playSound("Paleocraft:mob.other.largecarndeath", getSoundVolume(), getSoundPitch());
+			return null;
 	 }
 	 
 	 public EnumCreatureAttribute getCreatureAttribute()
 	    {
-	        return EnumCreatureAttribute.UNDEAD;
+	        return EnumCreatureAttribute.UNDEFINED;
 	    }
 	
 	protected boolean isAIEnabled()
