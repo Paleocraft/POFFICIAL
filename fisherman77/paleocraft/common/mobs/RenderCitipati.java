@@ -1,5 +1,4 @@
 package fisherman77.paleocraft.common.mobs;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
@@ -18,12 +17,12 @@ public class RenderCitipati extends RenderLiving
 		super(modelbase, shadowSize);
 	}
 
-	public void func_177_a(EntityCitipati entityCiti, double d, double d1,
+	public void func_177_a(EntityCitipati entityDromie, double d, double d1,
 			double d2, float f, float f1) {
-		super.doRender(entityCiti, d, d1, d2, f, f1);
+		super.doRender(entityDromie, d, d1, d2, f, f1);
 	}
-@Override
-	public void doRender(EntityLivingBase entityliving, double d, double d1,
+
+	public void doRenderLiving(EntityLivingBase entityliving, double d, double d1,
 			double d2, float f, float f1) {
 		func_177_a((EntityCitipati) entityliving, d, d1, d2, f, f1);
 	}
