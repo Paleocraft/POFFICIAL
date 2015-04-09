@@ -1,5 +1,13 @@
 package fisherman77.paleocraft.common.mobs;
 
+import org.lwjgl.opengl.GL11;
+
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.ResourceLocation;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
@@ -7,9 +15,12 @@ import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityGiantZombie;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
+
+import fisherman77.paleocraft.common.Paleocraft;
 
 @SideOnly(Side.CLIENT)
 public class RenderDimorphodon extends RenderLiving
@@ -17,22 +28,25 @@ public class RenderDimorphodon extends RenderLiving
     /** Scale of the model to use */
     private float scale;
     
-	private static final ResourceLocation skin = new ResourceLocation("paleocraft", "textures/entity/Dimorph.png");
-
-	public RenderDimorphodon(ModelBase par1ModelBase, float par2, float par3)
+    private static final ResourceLocation skin = new ResourceLocation("paleocraft", "textures/entity/Dimorph_fly.png");
+	
+	/*public RenderBaryonyx(ModelBaryonyx model, float shadowSize, float par3, float par2) {
+		super(model, shadowSize);
+		this.scale = par3;
+	}*/
+    /**
+     * Applies the scale to the transform matrix
+     */
+    protected void preRenderScale(EntityDimorphodon par1EntityBaryonyx, float par2)
+    {
+        GL11.glScalef(this.scale, this.scale, this.scale);
+    }
+    public RenderDimorphodon(ModelBase par1ModelBase, float par2, float par3)
     {
         super(par1ModelBase, par2 * par3);
         this.scale = par3;
     }
 	
-    /**
-     * Applies the scale to the transform matrix
-     */
-    protected void preRenderScale(EntityDimorphodon par1EntityDimorphodon, float par2)
-    {
-        GL11.glScalef(this.scale, this.scale, this.scale);
-    }
-
     /**
      * Allows the render to do any OpenGL state modifications necessary before the model is rendered. Args:
      * entityLiving, partialTickTime
