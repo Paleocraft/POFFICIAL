@@ -5,6 +5,7 @@ import java.util.Random;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
@@ -41,23 +42,28 @@ public class EntityCitipati extends EntityAnimal
   
   this.tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityChicken.class, 1.0D, false));
   this.tasks.addTask(1, new EntityAIPanic(this, 1.25D));
-  this.tasks.addTask(2, new EntityAIWander(this, 0.4D));
+  this.tasks.addTask(2, new EntityAIWander(this, 0.5D));
   this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
   this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityChicken.class, 0, true));
+  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityBaryonyx.class, 8.0F, 0.8D, 0.8D));
+  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntitySpino.class, 8.0F, 0.8D, 0.8D));
+ // this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityDromaeosaurus.class, 8.0F, 0.6D, 0.6D));
+  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityMegalodon.class, 8.0F, 0.8D, 0.8D));
+  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityTylo.class, 8.0F, 0.8D, 0.8D));
+  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityQuetzalcoatlus.class, 8.0F, 0.8D, 0.8D));
+  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityCryo.class, 8.0F, 0.8D, 0.8D));
+  this.tasks.addTask(0, new EntityAISwimming(this));
  }
  
 	@Override
 	protected void applyEntityAttributes() {
 	    super.applyEntityAttributes();
 	    
-	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4); // moveSpeed
-	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(9); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.5); // moveSpeed
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(4.5); // maxHealth
 	}
  
- public EnumCreatureAttribute getCreatureAttribute()
-    {
-        return EnumCreatureAttribute.UNDEAD;
-    }
+ 
 
 	protected boolean isAIEnabled()
 	{
@@ -70,7 +76,8 @@ public class EntityCitipati extends EntityAnimal
 @Override
 	protected String getLivingSound()
 {
-    return "paleocraft:citiliving";
+	playSound("Paleocraft:mob.citipati.citiliving", getSoundVolume(), getSoundPitch());
+	return null;
 }
 
 /**
@@ -79,7 +86,8 @@ public class EntityCitipati extends EntityAnimal
 @Override
 protected String getHurtSound()
 {
-    return "paleocraft:citihurt";
+	playSound("Paleocraft:mob.citipati.citihurt", getSoundVolume(), getSoundPitch());
+	return null;
 }
 
 /**
@@ -88,7 +96,8 @@ protected String getHurtSound()
 @Override
 protected String getDeathSound()
 {
-    return "paleocraft:smallherbdeath";
+	playSound("Paleocraft:mob.other.smallherbdeath", getSoundVolume(), getSoundPitch());
+	return null;
 }
 
 protected boolean canDespawn()
