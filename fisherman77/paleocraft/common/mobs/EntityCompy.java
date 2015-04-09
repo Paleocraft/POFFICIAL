@@ -8,6 +8,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
@@ -58,6 +59,14 @@ public class EntityCompy extends EntityTameable
   this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, true));
  // this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityChicken.class, 1.0, false));
   //this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityChicken.class, 0, true));
+  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityBaryonyx.class, 8.0F, 0.8D, 0.8D));
+  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntitySpino.class, 8.0F, 0.8D, 0.8D));
+  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityDromaeosaurus.class, 8.0F, 0.6D, 0.6D));
+  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityMegalodon.class, 8.0F, 0.8D, 0.8D));
+  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityTylo.class, 8.0F, 0.8D, 0.8D));
+  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityQuetzalcoatlus.class, 8.0F, 0.8D, 0.8D));
+  this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityCryo.class, 8.0F, 0.8D, 0.8D));
+ 
  }
  
 	@Override
@@ -65,7 +74,7 @@ public class EntityCompy extends EntityTameable
 	    super.applyEntityAttributes();
 
 	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4); // moveSpeed
-	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(3); // maxHealth
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(2); // maxHealth
 	}
  
  /**
@@ -94,25 +103,30 @@ public class EntityCompy extends EntityTameable
  /**
   * Returns the sound this mob makes while it's alive.
   */
- protected String getLivingSound()
- {
-     return "paleocraft:Compy";
- }
+ @Override
+	protected String getLivingSound()
+{
+	playSound("Paleocraft:mob.compy.Compy", getSoundVolume(), getSoundPitch());
+	return null;
+}
 
  /**
   * Returns the sound this mob makes when it is hurt.
   */
+ @Override
  protected String getHurtSound()
  {
-     return "paleocraft:CompyHurt";
+ 	playSound("Paleocraft:mob.compy.CompyHurt", getSoundVolume(), getSoundPitch());
+ 	return null;
  }
-
  /**
   * Returns the sound this mob makes on death.
   */
+ @Override
  protected String getDeathSound()
  {
-     return "paleocraft:CompyDeath";
+ 	playSound("Paleocraft:mob.compy.CompyDeath", getSoundVolume(), getSoundPitch());
+ 	return null;
  }
  
  public EnumCreatureAttribute getCreatureAttribute()
