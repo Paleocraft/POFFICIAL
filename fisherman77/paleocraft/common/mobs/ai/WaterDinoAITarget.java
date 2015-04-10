@@ -2,10 +2,12 @@ package fisherman77.paleocraft.common.mobs.ai;
 
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EntityOwnable;
+import net.minecraft.entity.IEntityOwnable;
+//import net.minecraft.entity.EntityOwnable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.ai.attributes.AttributeInstance;
+//import net.minecraft.entity.ai.attributes.AttributeInstance;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.pathfinding.PathPoint;
@@ -86,7 +88,7 @@ public abstract class WaterDinoAITarget extends EntityAIBase
 
     protected double func_111175_f()
     {
-        AttributeInstance attributeinstance = this.taskOwner.getEntityAttribute(SharedMonsterAttributes.followRange);
+        IAttributeInstance attributeinstance = this.taskOwner.getEntityAttribute(SharedMonsterAttributes.followRange);
         return attributeinstance == null ? 16.0D : attributeinstance.getAttributeValue();
     }
 
@@ -135,14 +137,14 @@ public abstract class WaterDinoAITarget extends EntityAIBase
         }
         else
         {
-            if (this.taskOwner instanceof EntityOwnable && StringUtils.isNotEmpty(((EntityOwnable)this.taskOwner).getOwnerName()))
+            if (this.taskOwner instanceof IEntityOwnable && StringUtils.isNotEmpty(((IEntityOwnable)this.taskOwner).func_152113_b()))
             {
-                if (par1EntityLivingBase instanceof EntityOwnable && ((EntityOwnable)this.taskOwner).getOwnerName().equals(((EntityOwnable)par1EntityLivingBase).getOwnerName()))
+                if (par1EntityLivingBase instanceof IEntityOwnable && ((IEntityOwnable)this.taskOwner).func_152113_b().equals(((IEntityOwnable)par1EntityLivingBase).func_152113_b()))
                 {
                     return false;
                 }
 
-                if (par1EntityLivingBase == ((EntityOwnable)this.taskOwner).getOwner())
+                if (par1EntityLivingBase == ((IEntityOwnable)this.taskOwner).getOwner())
                 {
                     return false;
                 }
@@ -152,7 +154,7 @@ public abstract class WaterDinoAITarget extends EntityAIBase
                 return false;
             }
 
-            if (!this.taskOwner.func_110176_b(MathHelper.floor_double(par1EntityLivingBase.posX), MathHelper.floor_double(par1EntityLivingBase.posY), MathHelper.floor_double(par1EntityLivingBase.posZ)))
+            if (!this.taskOwner.isWithinHomeDistance(MathHelper.floor_double(par1EntityLivingBase.posX), MathHelper.floor_double(par1EntityLivingBase.posY), MathHelper.floor_double(par1EntityLivingBase.posZ)))
             {
                 return false;
             }
