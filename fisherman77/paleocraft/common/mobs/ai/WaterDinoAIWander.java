@@ -17,7 +17,7 @@ public class WaterDinoAIWander extends EntityAIBase
     {
         this.entity = par1EntityCreature;
         this.speed = par2;
-        this.setMutexBits(1);
+        this.setMutexBits(7);
         par1EntityCreature.getNavigator().setCanSwim(true);
 
     }
