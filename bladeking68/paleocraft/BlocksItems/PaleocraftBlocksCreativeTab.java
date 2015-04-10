@@ -1,19 +1,26 @@
 package bladeking68.paleocraft.BlocksItems;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fisherman77.paleocraft.common.Paleocraft;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import cpw.mods.fml.relauncher.*;
 
 public class PaleocraftBlocksCreativeTab extends CreativeTabs {
-public PaleocraftBlocksCreativeTab(int position, String tabID) {
-super(position, tabID); //The constructor for your tab
-}
+	
+	public PaleocraftBlocksCreativeTab(String tabLabel)
+	{
+		super(tabLabel);
+	}
+
+
+
+@Override
 @SideOnly(Side.CLIENT)
-public int getTabIconItemIndex() //The item it displays for your tab
+public Item getTabIconItem()
 {
-return fisherman77.paleocraft.common.Paleocraft.fossil.itemID; 
-}
-public String getTranslatedTabLabel()
-{
-return "Paleocraft"; //The name of the tab ingame
+return Paleocraft.fossil;
 }
 }
