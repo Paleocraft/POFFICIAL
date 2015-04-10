@@ -12,7 +12,7 @@ public class WaterDinoAIFishSwimming extends EntityAIBase
     public WaterDinoAIFishSwimming(EntityLiving par1EntityLiving)
     {
         entity = par1EntityLiving;
-        setMutexBits(4);
+        setMutexBits(7);
         par1EntityLiving.getNavigator().setCanSwim(true);
     }
 
