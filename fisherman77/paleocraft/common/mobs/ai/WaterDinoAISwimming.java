@@ -19,7 +19,7 @@ public class WaterDinoAISwimming extends EntityAIBase
     public WaterDinoAISwimming(EntityLiving par1EntityLiving, boolean var2, float var3, float var4)
     {
         this.theEntity = par1EntityLiving;
-        this.setMutexBits(4);
+        this.setMutexBits(7);
         par1EntityLiving.getNavigator().setCanSwim(true);
         
         this.usuallySurface = true;
