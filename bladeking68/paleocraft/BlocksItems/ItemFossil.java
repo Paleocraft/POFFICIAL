@@ -1,80 +1,114 @@
 package bladeking68.paleocraft.BlocksItems;
 
+import java.util.List;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fisherman77.paleocraft.common.Paleocraft;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
+//import net.minecraft.client.renderer.texture.IconRegister;
 public class ItemFossil extends Item
 {
-       private Object iconIndex;
+	@SideOnly(Side.CLIENT)
+	protected IIcon itemIcon;
+   
+	
+	
+	private Object iconIndex;
 
-       public ItemFossil(int id)
+       public ItemFossil()
        {
-             super(id);
-             this.setCreativeTab(fisherman77.paleocraft.common.Paleocraft.PaleocraftBlocks);
+    	   this.setCreativeTab(fisherman77.paleocraft.common.Paleocraft.PaleocraftBlocks);    
+            
        }
       
    
-       public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
+       public boolean onItemUse(ItemStack p_77648_1_, EntityPlayer p_77648_2_, World p_77648_3_, int p_77648_4_, int p_77648_5_, int p_77648_6_, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_)
        {
-           if (par7 == 0)
+           if (p_77648_7_ == 0)
            {
-               --par5;
+               --p_77648_5_;
            }
 
-           if (par7 == 1)
+           if (p_77648_7_ == 1)
            {
-               ++par5;
+               ++p_77648_5_;
            }
 
-           if (par7 == 2)
+           if (p_77648_7_ == 2)
            {
-               --par6;
+               --p_77648_6_;
            }
 
-           if (par7 == 3)
+           if (p_77648_7_ == 3)
            {
-               ++par6;
+               ++p_77648_6_;
            }
 
-           if (par7 == 4)
+           if (p_77648_7_ == 4)
            {
-               --par4;
+               --p_77648_4_;
            }
 
-           if (par7 == 5)
+           if (p_77648_7_ == 5)
            {
-               ++par4;
+               ++p_77648_4_;
            }
 
-           if (!par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack))
+           if (!p_77648_2_.canPlayerEdit(p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, p_77648_1_))
            {
                return false;
            }
            else
            {
-               int i1 = par3World.getBlockId(par4, par5, par6);
-
-               if (i1 == 0)
+               if (p_77648_3_.isAirBlock(p_77648_4_, p_77648_5_, p_77648_6_))
                {
-                   par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-                   par3World.setBlock(par4, par5, par6, fisherman77.paleocraft.common.Paleocraft.portalTrigger.blockID);
+                   p_77648_3_.playSoundEffect((double)p_77648_4_ + 0.5D, (double)p_77648_5_ + 0.5D, (double)p_77648_6_ + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+                   p_77648_3_.setBlock(p_77648_4_, p_77648_5_, p_77648_6_, Paleocraft.portaltrigger);
+                 //  ((EntityPlayer) par1EntityPlayer).addChatComponentMessage(new ChatComponentTranslation("tile.beta.item", new Object[0]));         
                }
 
-               par1ItemStack.damageItem(1, par2EntityPlayer);
+               p_77648_1_.damageItem(1, p_77648_2_);
                return true;
-                }}
+           //    ((EntityPlayer) par1EntityPlayer).addChatComponentMessage(new ChatComponentTranslation("tile.tamed.dromie", new Object[0]));         
+           
+           }
+       }
+   
 
-       @Override
+     /*  @Override
        @SideOnly(Side.CLIENT)
-       public void registerIcons(IconRegister iconRegister)
+       public void registerIcons(IIconRegister iconRegister)
        {
        itemIcon = iconRegister.registerIcon("paleocraft:" + "Fossil");
-       }
+       }*/
+   	@SideOnly(Side.CLIENT)
+    public void registerItemIcons(IIconRegister p_149651_1_)
+    {
+    itemIcon = p_149651_1_.registerIcon("Paleocraft" + ":" + this.getUnlocalizedName().substring(5));
+    
+}
+
+
+   	@SideOnly(Side.CLIENT)
+    public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+    {
+    return itemIcon;
+    }
+   	@Override
+   	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
+   	{
+   	par3List.add("Activates Paleocraft Portal");
+   	}
+
 }
