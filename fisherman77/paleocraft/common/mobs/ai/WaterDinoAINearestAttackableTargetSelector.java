@@ -16,6 +16,8 @@ class EntityAINearestAttackableTargetSelector implements IEntitySelector
         this.field_111103_c = par2IEntitySelector;
     }
 
+	
+
     /**
      * Return whether the specified entity is applicable to this filter.
      */
