@@ -4,29 +4,36 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
 
+import fisherman77.paleocraft.common.Paleocraft;
+
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockGrass;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
+//import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.util.Icon;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.util.IIcon;
+//import net.minecraft.util.Icon;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class Blockpaleoforestgrass extends Block
+public class Blockpaleoforestgrass extends BlockGrass
 {
 @SideOnly(Side.CLIENT)
-private Icon iconGrassTop;
+private IIcon iconGrassTop;
 @SideOnly(Side.CLIENT)
-private Icon iconGrassBottom;
+private IIcon iconGrassBottom;
 @SideOnly(Side.CLIENT)
-private static Icon iconGrassSideOverlay;
+private static IIcon iconGrassSideOverlay;
 
-public Blockpaleoforestgrass(int par1)
+public Blockpaleoforestgrass()
 {
-super(par1, Material.grass);
+super();
 this.setTickRandomly(true);
-//this.setCreativeTab(CreativeTabs.tabBlock);
+//this.setCreativeTab(Paleocraft.PaleocraftBlocks);
 }
 
 @SideOnly(Side.CLIENT)
@@ -34,7 +41,7 @@ this.setTickRandomly(true);
 /**
 * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
 */
-public Icon getIcon(int par1, int par2)
+public IIcon getIcon(int par1, int par2)
 {
 return par1 == 1 ? this.iconGrassTop : (par1 == 0 ? this.iconGrassBottom : this.blockIcon);
 }
@@ -47,17 +54,16 @@ return par1 == 1 ? this.iconGrassTop : (par1 == 0 ? this.iconGrassBottom : this.
 /**
 * Returns the ID of the items to drop on destruction.
 */
-public int idDropped(int par1, Random par2Random, int par3)
+public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
 {
-return Block.dirt.idDropped(0, par2Random, par3);
+    return Blocks.dirt.getItemDropped(0, p_149650_2_, p_149650_3_);
 }
-
 @SideOnly(Side.CLIENT)
 
 /**
 * Retrieves the block texture to use based on the display side. Args: iBlockAccess, x, y, z, side
 */
-public Icon getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+public IIcon getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
 {
 if (par5 == 1)
 {
@@ -80,16 +86,16 @@ return this.blockIcon;
 * When this method is called, your block should register all the icons it needs with the given IconRegister. This
 * is the only chance you get to register icons.
 */
-public void registerIcons(IconRegister par1IconRegister)
+public void registerIcons(IIconRegister par1IconRegister)
 {
-this.blockIcon = par1IconRegister.registerIcon("paleocraft:ppgrass_side");
-this.iconGrassTop = par1IconRegister.registerIcon("paleocraft:pfgrass_top");
-this.iconGrassBottom = par1IconRegister.registerIcon("paleocraft:Paleoplains_dirt");
-this.iconGrassSideOverlay = par1IconRegister.registerIcon("paleocraft:ppgrass_side");
+//this.blockIcon = par1IconRegister.registerIcon(this.getTextureName() + "_side");
+//this.iconGrassTop = par1IconRegister.registerIcon(this.getTextureName() + "_top");
+//this.iconGrassBottom = par1IconRegister.registerIcon("paleocraft:Paleoplains_dirt");
+//this.iconGrassSideOverlay = par1IconRegister.registerIcon("paleocraft:ppgrass_side");
 }
 
 @SideOnly(Side.CLIENT)
-public static Icon getIconSideOverlay()
+public static IIcon getIconSideOverlay()
 {
 return iconGrassSideOverlay;
 }
